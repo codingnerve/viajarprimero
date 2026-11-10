@@ -22,12 +22,12 @@ type Size = "sm" | "md" | "lg";
  */
 const variantClasses: Record<Variant, string> = {
   primary: cn(
-    "bg-primary text-text-inverse shadow-[0_1px_2px_rgb(23_56_154/0.4),0_6px_16px_rgb(43_92_230/0.28)]",
-    "hover:bg-primary-hover hover:shadow-[0_1px_2px_rgb(23_56_154/0.4),0_10px_24px_rgb(43_92_230/0.34)]",
-    "active:bg-primary-active active:shadow-[0_1px_2px_rgb(23_56_154/0.4)]",
+    "bg-primary text-text-inverse shadow-[0_1px_2px_rgb(9_74_69/0.4),0_6px_16px_rgb(15_118_110/0.26)]",
+    "hover:bg-primary-hover hover:shadow-[0_1px_2px_rgb(9_74_69/0.4),0_10px_24px_rgb(15_118_110/0.32)]",
+    "active:bg-primary-active active:shadow-[0_1px_2px_rgb(9_74_69/0.4)]",
   ),
   accent: cn(
-    "bg-accent text-secondary shadow-[0_1px_2px_rgb(180_95_10/0.35),0_6px_16px_rgb(240_140_30/0.3)]",
+    "bg-accent text-text shadow-[0_1px_2px_rgb(150_50_25/0.35),0_6px_16px_rgb(240_115_79/0.3)]",
     "hover:bg-accent-hover hover:text-text-inverse",
     "active:brightness-95",
   ),
@@ -57,10 +57,9 @@ const sizeClasses: Record<Size, string> = {
 
 const baseClasses = cn(
   "relative inline-flex select-none items-center justify-center gap-2",
-  // Pill. The 16-28px card radii need a fully-round control beside them; a
-  // 10px-radius button next to a 22px card is the mismatch that made the old
-  // UI read as assembled rather than designed.
-  "rounded-full font-semibold whitespace-nowrap",
+  // Rounded rectangle, matching the 8-16px corners of the cards and fields
+  // around it rather than a pill that no other surface on the page shares.
+  "rounded-lg font-semibold whitespace-nowrap",
   "transition-[background-color,box-shadow,transform,color] duration-[var(--duration-fast)] ease-out",
   "active:translate-y-px motion-reduce:active:translate-y-0",
   "focus-ring",

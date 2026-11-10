@@ -55,6 +55,26 @@ export const esVerticals: Record<string, { label: string; blurb: string }> = {
   },
 };
 
+export const esHow = {
+  eyebrow: "Cómo funciona",
+  title: "De la primera llamada a la reserva confirmada",
+  steps: [
+    {
+      title: "Cuéntenos el viaje",
+      body: "Llame, escriba por chat o envíe una solicitud con la ruta, las fechas y quiénes viajan.",
+    },
+    {
+      title: "Buscamos y cotizamos las opciones",
+      body: "Un agente consulta a los proveedores y le responde con el precio completo: tarifa, impuestos y nuestro cargo en líneas separadas.",
+    },
+    {
+      title: "Usted decide",
+      body: "No se cobra nada hasta que usted diga que sí, y primero le explicamos las reglas de su tarifa.",
+    },
+  ],
+  link: "Vea cómo funciona",
+};
+
 export const esServices = {
   eyebrow: "Lo que reservamos",
   title: "Todo tipo de viaje, una sola agencia",
@@ -105,6 +125,7 @@ export const esAbout = {
 
 export const esDestinations = {
   eyebrow: "Adónde vamos",
+  title: "Guías de destinos",
   description:
     "Guías breves y prácticas sobre lo que cambia la forma de planificar, no una lista de atracciones que podría encontrar en cualquier parte.",
   readGuide: "Leer la guía",
@@ -162,6 +183,7 @@ export const esDestinations = {
 
 export const esBlog = {
   eyebrow: "Blog",
+  title: "Del blog de viajes",
   description:
     "Categorías tarifarias, reglas de conexión y qué es en realidad el deducible de un auto rentado. Explicaciones, no promesas: aquí nadie le dice que reserve un martes.",
   read: "Leer",
@@ -219,7 +241,8 @@ export const esSignUp = {
 };
 
 export const esFaq = {
-  eyebrow: "Preguntas frecuentes",
+  eyebrow: "Dudas comunes",
+  title: "Preguntas frecuentes",
   description:
     "Qué reservamos, cuánto cobramos y qué pasa si cambian sus planes. Respuestas claras antes de que se comprometa.",
   items: [

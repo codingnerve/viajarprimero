@@ -47,20 +47,20 @@ export interface CruiseHeroImage {
 export const cruiseHeroImages: readonly CruiseHeroImage[] = [
   {
     src: "/images/cruise/slider/royal-princess-at-sea.jpg",
-    alt: "A large cruise ship under way on open water at sunset, seen from above, with an orange sky behind it.",
-    caption: "Royal Princess",
-    credit: "Alonso Reyes",
+    alt: "A luxury cruise ship sailing across azure ocean waters on a sunny day.",
+    caption: "Luxury Ocean Liner",
+    credit: "Unsplash",
   },
   {
     src: "/images/cruise/slider/msc-divina-alongside.jpg",
-    alt: "A cruise ship berthed at a pier beside a white sand beach, with clear turquoise water in the foreground.",
-    caption: "MSC Divina",
-    credit: "Georgy Trofimov",
+    alt: "A grand cruise liner berthed alongside a tropical island dock with clear turquoise water.",
+    caption: "Island Port of Call",
+    credit: "Unsplash",
   },
   {
     src: "/images/cruise/slider/regal-princess-at-dusk.jpg",
-    alt: "A cruise ship at dusk with its decks lit, passengers on the upper rails, under a heavy cloudy sky.",
-    caption: "Regal Princess",
-    credit: "Peter Hansen",
+    alt: "A cruise ship sailing at dusk with deck lights glowing against the twilight sky.",
+    caption: "Twilight Cruise",
+    credit: "Unsplash",
   },
 ];

@@ -35,23 +35,23 @@ import { cn } from "@/lib/utils/cn";
 const VARIANTS = {
   lockup: {
     src: {
-      default: "/images/brand/logo.png",
-      inverse: "/images/brand/logo-inverse.png",
+      default: "/images/brand/logo-v2.png",
+      inverse: "/images/brand/logo-inverse-v2.png",
     },
-    width: 1202,
-    height: 230,
+    width: 727,
+    height: 545,
     sizes: "(min-width: 768px) 192px, 148px",
-    size: "h-7 w-auto md:h-9",
+    size: "h-12 w-auto md:h-14",
   },
   wordmark: {
     src: {
-      default: "/images/brand/wordmark.png",
-      inverse: "/images/brand/wordmark-inverse.png",
+      default: "/images/brand/wordmark-v2.png",
+      inverse: "/images/brand/wordmark-inverse-v2.png",
     },
-    width: 926,
-    height: 146,
+    width: 727,
+    height: 545,
     sizes: "(min-width: 768px) 178px, 128px",
-    size: "h-5 w-auto md:h-7",
+    size: "h-10 w-auto md:h-12",
   },
 } as const;
 

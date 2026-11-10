@@ -47,10 +47,10 @@ export function CallButton({
         href={href}
         aria-label={label}
         className={cn(
-          "relative inline-flex size-11 items-center justify-center rounded-full",
-          "bg-primary text-text-inverse",
+          "relative inline-flex size-11 items-center justify-center rounded-lg",
+          "bg-accent text-text",
           // Compact again between `xl` and `2xl`, where the full nav fills the bar.
-          "transition-colors hover:bg-primary-hover focus-ring md:hidden xl:inline-flex 2xl:hidden",
+          "transition-colors hover:bg-accent-hover hover:text-text-inverse focus-ring md:hidden xl:inline-flex 2xl:hidden",
           className,
         )}
       >
@@ -61,14 +61,14 @@ export function CallButton({
         href={href}
         aria-label={label}
         className={cn(
-          "relative hidden h-10 items-center gap-2.5 rounded-full pl-1.5 pr-4 md:inline-flex xl:hidden 2xl:inline-flex",
-          "bg-primary text-text-inverse",
+          "relative hidden h-11 items-center gap-2.5 rounded-lg pl-2 pr-4 md:inline-flex xl:hidden 2xl:inline-flex",
+          "bg-accent text-text",
           "transition-colors duration-[var(--duration-fast)]",
-          "hover:bg-primary-hover focus-ring",
+          "hover:bg-accent-hover hover:text-text-inverse focus-ring",
           className,
         )}
       >
-        <span className="grid size-7 shrink-0 place-items-center rounded-full bg-surface text-primary">
+        <span className="grid size-7 shrink-0 place-items-center rounded-md bg-surface text-primary">
           <PhoneIcon className="size-3.5" />
         </span>
 

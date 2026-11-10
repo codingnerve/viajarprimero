@@ -83,7 +83,7 @@ export function TravelHelpBubble({
           aria-label={label}
           className={cn(
             "flex min-w-0 items-center gap-3 rounded-12 bg-primary py-2 pl-2.5 pr-3",
-            "shadow-[0_12px_32px_rgb(43_92_230/0.35)]",
+            "shadow-[0_12px_32px_rgb(15_118_110/0.35)]",
             "transition-colors duration-[var(--duration-fast)] hover:bg-primary-hover",
             "focus-ring",
           )}

@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import { ButtonLink } from "@/components/ui/button";
+import { PhoneIcon } from "@/components/ui/icons";
 import { CookiePreferencesButton } from "@/components/layout/cookie-preferences-button";
 import { FooterSectionFlyout } from "@/components/layout/footer-section-flyout";
 import type { BookingSection } from "@/lib/content/section-links";
@@ -67,6 +69,38 @@ export function SiteFooter({ locale = "en" }: { locale?: Locale }) {
 
   return (
     <footer className="mt-auto bg-secondary text-text-on-dark">
+      {/* A thin coral-to-teal rule closes the page and marks where it ends. */}
+      <div aria-hidden="true" className="h-1 bg-gradient-to-r from-accent via-primary to-secondary" />
+
+      <div className="border-b border-white/10">
+        <div className="mx-auto flex max-w-page flex-col gap-6 px-gutter py-12 md:flex-row md:items-center md:justify-between">
+          <div className="max-w-xl">
+            <h2 className="text-h2 text-text-inverse">
+              {es ? t.ctaTitle : "Ready to plan your trip?"}
+            </h2>
+            <p className="mt-2 text-body text-text-on-dark">
+              {es
+                ? t.ctaBody
+                : "Call a real agent or send us the details — the full price comes before you pay."}
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-3">
+            {phone && phoneDisplay && (
+              <ButtonLink
+                href={`tel:${phone}`}
+                variant="accent"
+                size="lg"
+                icon={<PhoneIcon className="size-5" />}
+              >
+                {es ? t.ctaCall(phoneDisplay) : `Call ${phoneDisplay}`}
+              </ButtonLink>
+            )}
+            <ButtonLink href="/contact" variant="inverse" size="lg">
+              {es ? t.ctaQuote : "Request a quote"}
+            </ButtonLink>
+          </div>
+        </div>
+      </div>
       <div className="mx-auto max-w-page px-gutter py-16 md:py-20">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,20rem)_minmax(0,1fr)] lg:gap-20">
           <div>
@@ -91,7 +125,7 @@ export function SiteFooter({ locale = "en" }: { locale?: Locale }) {
                     {phoneDisplay}
                   </a>
                   {configured(contactConfig.supportHours) && (
-                    <span className="block text-caption text-gray-500">
+                    <span className="block text-caption text-gray-400">
                       {contactConfig.supportHours}
                     </span>
                   )}
@@ -131,7 +165,7 @@ export function SiteFooter({ locale = "en" }: { locale?: Locale }) {
                 <nav key={column.title} aria-labelledby={`footer-${id}`}>
                   <h2
                     id={`footer-${id}`}
-                    className="text-overline uppercase text-gray-500"
+                    className="text-overline uppercase text-gray-400"
                   >
                     {es ? (t.columns[column.title] ?? column.title) : column.title}
                   </h2>
@@ -177,7 +211,7 @@ export function SiteFooter({ locale = "en" }: { locale?: Locale }) {
           darker ground so it reads as a legal statement rather than as more
           navigation nobody will click. */}
       <div className="border-t border-white/10 bg-black/15">
-        <div className="mx-auto max-w-page space-y-4 px-gutter py-8 text-caption text-gray-500">
+        <div className="mx-auto max-w-page space-y-4 px-gutter py-8 text-caption text-gray-400">
           {businessModel === "agency" && es && (
             <p className="max-w-4xl">{t.agency(siteConfig.name)}</p>
           )}

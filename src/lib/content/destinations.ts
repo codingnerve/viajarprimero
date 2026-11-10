@@ -64,7 +64,6 @@ export const destinations: readonly Destination[] = [
   },
   {
     slug: "madrid",
-    src: "/images/home/hotel.jpg",
     city: "Madrid",
     country: "Spain",
     airportCode: "MAD",

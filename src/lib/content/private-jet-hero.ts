@@ -43,17 +43,17 @@ export interface PrivateJetHeroImage {
 export const privateJetHeroImages: readonly PrivateJetHeroImage[] = [
   {
     src: "/images/private-jet/slider/jet-on-the-ramp.jpg",
-    alt: "A white business jet parked on an apron with its airstair down, two dark sports cars alongside it and a hangar behind.",
-    credit: "Alen Kajtezović",
+    alt: "A sleek private business jet parked on an airport hangar ramp ready for charter.",
+    credit: "Unsplash",
   },
   {
     src: "/images/private-jet/slider/jet-cabin.jpg",
-    alt: "The cabin of a small business jet, four pale leather seats facing each other in club formation, the flight deck visible ahead through an open bulkhead.",
-    credit: "Yaroslav Muzychenko",
+    alt: "The interior cabin of a luxury business jet with cream leather executive seating.",
+    credit: "Unsplash",
   },
   {
     src: "/images/private-jet/slider/jet-airstair.jpg",
-    alt: "A business jet on the ramp under broken cloud, airstair lowered and ground air connected.",
-    credit: "Yuri G.",
+    alt: "An executive jet on the apron with boarding door and airstair open.",
+    credit: "Unsplash",
   },
 ];

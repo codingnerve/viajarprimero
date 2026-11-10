@@ -23,11 +23,11 @@ import { cn } from "@/lib/utils/cn";
  * the same contrast rules apply to it as to a photograph.
  */
 const PLATES = [
-  "from-[#12386f] via-[#1d4fa8] to-primary",
-  "from-[#0a1f3d] via-[#173a6b] to-[#2f6fb0]",
+  "from-[#0f4c5c] via-[#137a82] to-primary",
+  "from-[#0a323d] via-[#0f4c5c] to-[#2b8a8f]",
   "from-[#123b52] via-[#1a5b73] to-[#2b8ea6]",
-  "from-[#25204a] via-[#3a2d6b] to-[#5546a8]",
-  "from-[#0a1f3d] via-[#3a2c46] to-[#a35b1e]",
+  "from-[#17343f] via-[#2f5d62] to-[#6a9a8b]",
+  "from-[#0a323d] via-[#4a3b3a] to-[#c2562f]",
   "from-[#10314a] via-[#215a63] to-[#3f8f6b]",
 ] as const;
 

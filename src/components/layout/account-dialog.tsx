@@ -131,7 +131,7 @@ export function AccountButton({
   const label = children ?? (es ? esCopy.manageTrips : "Manage my trips");
 
   const pillClasses = cn(
-    "flex h-7 items-center gap-1.5 rounded-full bg-primary px-3 text-caption font-semibold text-text-inverse",
+    "flex h-7 items-center gap-1.5 rounded-md bg-primary px-3 text-caption font-semibold text-text-inverse",
     "transition-colors hover:bg-primary-hover focus-ring",
     className,
   );

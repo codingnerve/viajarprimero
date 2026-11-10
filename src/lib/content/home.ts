@@ -47,19 +47,19 @@ export const commitments = [
 export const carHirePhotos = [
   {
     src: "/images/home/car-hire-road-trip.jpg",
-    alt: "A camper van on an empty desert highway between red rock cliffs.",
+    alt: "A traveler on an adventure road trip beside a vehicle overlooking an expansive scenic canyon.",
   },
   {
     src: "/images/home/car-hire-compact.jpg",
-    alt: "A small blue five-door hatchback parked on a quiet suburban street.",
+    alt: "A compact vehicle parked along a picturesque European village street.",
   },
   {
     src: "/images/home/car-hire-suv.jpg",
-    alt: "A full-size white SUV parked on a gravel track in a red rock desert.",
+    alt: "A modern SUV traveling across a rugged mountain wilderness trail.",
   },
 ] as const;
 
 export const whyUsPhoto = {
   src: "/images/home/why-us-road.jpg",
-  alt: "A white SUV parked on a wet gravel road below a snow-covered mountain.",
+  alt: "A scenic winding highway passing through lush mountain peaks and wilderness.",
 } as const;

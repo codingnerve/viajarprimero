@@ -41,7 +41,7 @@ export function DealCategoryGrid({
           <li key={item.slug}>
             <Link
               href={`/deals#${item.slug}`}
-              className="group flex h-full items-start gap-3 rounded-xs bg-surface p-4 ring-1 ring-inset ring-border transition-shadow hover:shadow-md hover:ring-primary/40 focus-ring"
+              className="group flex h-full items-start gap-3 rounded-lg bg-surface p-4 ring-1 ring-inset ring-border transition-shadow hover:shadow-md hover:ring-primary/40 focus-ring"
             >
               <TagIcon className="mt-0.5 size-5 shrink-0 text-primary" />
               <span>
@@ -71,7 +71,7 @@ export function DealCategoryGrid({
               <li
                 key={item.slug}
                 id={item.slug}
-                className="flex scroll-mt-[calc(var(--header-height)+1.5rem)] flex-col rounded-xs bg-surface p-5 ring-1 ring-inset ring-border target:ring-2 target:ring-primary"
+                className="flex scroll-mt-[calc(var(--header-height)+1.5rem)] flex-col rounded-lg bg-surface p-5 ring-1 ring-inset ring-border target:ring-2 target:ring-primary"
               >
                 <TagIcon className="size-6 text-primary" />
                 <h3 className="mt-3 text-h5 text-text">{item.label}</h3>

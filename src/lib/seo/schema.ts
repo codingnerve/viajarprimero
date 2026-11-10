@@ -41,7 +41,7 @@ export function organizationSchema(): JsonLd {
     // the page it was found on. This is the file Google may show beside the
     // site in a knowledge panel, so it is the full lockup rather than the
     // square mark.
-    logo: `${siteConfig.url}/images/brand/logo.png`,
+    logo: `${siteConfig.url}/images/brand/logo-v2.png`,
     email: configured(contactConfig.email),
     telephone: configured(contactConfig.phone),
     address: hasAddress ? address : undefined,

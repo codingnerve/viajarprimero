@@ -38,17 +38,17 @@ export interface CarRentalHeroImage {
 export const carRentalHeroImages: readonly CarRentalHeroImage[] = [
   {
     src: "/images/car-rental/suv-desert-road.jpg",
-    alt: "A white full-size SUV parked on a gravel track in a red rock desert under a wide pale sky.",
-    credit: "Sven D",
+    alt: "A modern SUV traveling along a scenic winding highway through open landscapes.",
+    credit: "Unsplash",
   },
   {
     src: "/images/car-rental/cockpit.jpg",
-    alt: "The driver's side of a pickup truck cabin — steering wheel, instrument binnacle and a tall touchscreen showing a navigation map.",
-    credit: "Brock Wegner",
+    alt: "The driver's cockpit view of a modern luxury automobile with steering wheel and dashboard.",
+    credit: "Unsplash",
   },
   {
     src: "/images/car-rental/instrument-cluster.jpg",
-    alt: "A rev counter lit in white and blue against a black instrument cluster.",
-    credit: "Chris Liverani",
+    alt: "A glowing illuminated digital speedometer and instrument cluster display.",
+    credit: "Unsplash",
   },
 ];

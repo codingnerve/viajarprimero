@@ -2,9 +2,9 @@ import { TrainsPageContent } from "@/features/trains/components/trains-page-cont
 import { buildMetadata } from "@/lib/seo/metadata";
 
 export const metadata = buildMetadata({
-  title: "Train Tickets & Rail Booking Guides",
+  title: "Train Tickets & Rail Booking",
   description:
-    "Rail booking guides for train operators, with the corridors travellers ask about most. Send a rail request and an agent checks schedules and fares with you before anything is booked.",
+    "Book train tickets with a real travel agent. Send a rail request and we check schedules, fares and ticket rules with you before anything is booked.",
   path: "/trains",
 });
 

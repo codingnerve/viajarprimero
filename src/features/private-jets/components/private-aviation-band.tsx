@@ -86,16 +86,16 @@ export function PrivateAviationBand({ locale = "en" }: { locale?: Locale }) {
             src="/images/private-jet/slider/jet-cabin.jpg"
             alt={copy.cabinAlt}
             sizes="(min-width: 1024px) 460px, 70vw"
-            className="aspect-[4/5] w-[68%] rounded-xs"
+            className="aspect-[4/5] w-[68%] rounded-lg"
           />
-          <div className="absolute bottom-0 right-0 w-3/5 rounded-xs bg-surface p-1.5 shadow-xl">
+          <div className="absolute bottom-0 right-0 w-3/5 rounded-lg bg-surface p-1.5 shadow-xl">
             <Photo
               collection="home"
               slug="jet-airstair"
               src="/images/private-jet/slider/jet-airstair.jpg"
               alt={copy.airstairAlt}
               sizes="(min-width: 1024px) 340px, 60vw"
-              className="aspect-[3/2] rounded-xs"
+              className="aspect-[3/2] rounded-md"
             />
           </div>
         </div>

@@ -11,7 +11,6 @@ import { Button } from "@/components/ui/button";
 import { Field } from "@/components/ui/field";
 import { SearchIcon, SwapIcon } from "@/components/ui/icons";
 import { Input, Select } from "@/components/ui/input";
-import type { TrainStation } from "@/lib/content/trains";
 import { cn } from "@/lib/utils/cn";
 
 type TripType = "return" | "one-way";
@@ -40,24 +39,16 @@ const serverToday = () => "";
  * exists, send the form values from `handleSubmit` — do not add a fare grid.
  */
 export function RailSearch({
-  stations,
   title = "Search rail journeys",
   subtitle = "Compare train routes, flexible dates and passenger options for city-to-city travel.",
-  defaultFrom = "",
-  defaultTo = "",
-  className,
 }: {
-  stations: readonly TrainStation[];
   title?: string;
   subtitle?: string;
-  defaultFrom?: string;
-  defaultTo?: string;
-  className?: string;
 }) {
   const id = useId();
   const [tripType, setTripType] = useState<TripType>("return");
-  const [from, setFrom] = useState(defaultFrom);
-  const [to, setTo] = useState(defaultTo);
+  const [from, setFrom] = useState("");
+  const [to, setTo] = useState("");
   // Empty during server render and hydration, then the visitor's local date —
   // a `min` computed during render would differ between the two.
   const today = useSyncExternalStore(subscribeNever, localToday, serverToday);
@@ -70,7 +61,6 @@ export function RailSearch({
     depart: `${id}-depart`,
     return: `${id}-return`,
     travellers: `${id}-travellers`,
-    stations: `${id}-stations`,
     title: `${id}-title`,
   };
 
@@ -86,10 +76,7 @@ export function RailSearch({
   return (
     <section
       aria-labelledby={ids.title}
-      className={cn(
-        "rounded-2xl bg-surface p-5 shadow-lg ring-1 ring-inset ring-border md:p-7",
-        className,
-      )}
+      className="rounded-2xl bg-surface p-5 shadow-lg ring-1 ring-inset ring-border md:p-7"
     >
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div className="min-w-0">
@@ -128,20 +115,11 @@ export function RailSearch({
       </div>
 
       <form onSubmit={handleSubmit} className="mt-6">
-        <datalist id={ids.stations}>
-          {stations.map((station) => (
-            <option key={station.code} value={station.name}>
-              {station.city}
-            </option>
-          ))}
-        </datalist>
-
         <div className="grid gap-4 md:grid-cols-[1fr_auto_1fr] md:items-end">
           <Field htmlFor={ids.from} label="From" required>
             <Input
               id={ids.from}
               name="from"
-              list={ids.stations}
               value={from}
               onChange={(event) => setFrom(event.target.value)}
               placeholder="City or station"
@@ -163,7 +141,6 @@ export function RailSearch({
             <Input
               id={ids.to}
               name="to"
-              list={ids.stations}
               value={to}
               onChange={(event) => setTo(event.target.value)}
               placeholder="City or station"

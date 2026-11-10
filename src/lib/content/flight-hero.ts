@@ -35,17 +35,17 @@ export interface FlightHeroImage {
 export const flightHeroImages: readonly FlightHeroImage[] = [
   {
     src: "/images/flights/slider/departure-at-sunset.jpg",
-    alt: "An airliner lifting off a runway in low golden light, terminal buildings and hills behind it.",
-    credit: "Avel Chuklanov",
+    alt: "An airliner climbing into a vibrant golden sunset sky above mountains.",
+    credit: "Unsplash",
   },
   {
     src: "/images/flights/slider/short-final.jpg",
-    alt: "A widebody airliner on short final over lit approach lights, with a town and snow-covered mountains behind.",
-    credit: "Pascal Meier",
+    alt: "A passenger airliner cruising above mountain peaks under clear skies.",
+    credit: "Unsplash",
   },
   {
     src: "/images/flights/slider/on-approach.jpg",
-    alt: "A twin-engine airliner seen head-on with its gear down, against a blue sky and scattered cloud.",
-    credit: "John McArthur",
+    alt: "A commercial airliner banking in flight against a bright blue sky.",
+    credit: "Unsplash",
   },
 ];

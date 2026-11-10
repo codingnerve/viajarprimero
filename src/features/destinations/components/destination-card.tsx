@@ -39,7 +39,7 @@ export function DestinationCard({
       <Link
         href={`/destinations/${destination.slug}`}
         className={cn(
-          "flex h-full flex-col overflow-hidden rounded-xs bg-surface",
+          "flex h-full flex-col overflow-hidden rounded-lg bg-surface",
           "ring-1 ring-inset ring-border",
           "transition-[box-shadow,transform] duration-[var(--duration-normal)] ease-out",
           "hover:-translate-y-1 hover:shadow-lg motion-reduce:transform-none",

@@ -16,12 +16,12 @@ export const esChrome = {
 
   nav: {
     "/flights": "Vuelos",
-    "/private-jets": "Aviones privados",
+    "/private-jets": "Jets privados",
     "/cruises": "Cruceros",
     "/hotels": "Hoteles",
-    "/car-rentals": "Renta de autos",
+    "/car-rentals": "Autos",
     "/trains": "Trenes",
-    "/vacations": "Paquetes vacacionales",
+    "/vacations": "Paquetes",
     "/about": "Nosotros",
     "/deals": "Ofertas",
     "/reviews": "Reseñas",
@@ -30,6 +30,7 @@ export const esChrome = {
     "/contact": "Contáctenos",
   } as Record<string, string>,
 
+  strip: (hours: string) => `Agentes de viaje reales, ${hours}`,
   homeLabel: (name: string) => `${name} — inicio`,
   helpNavLabel: "Ayuda",
   mainNavLabel: "Principal",
@@ -97,6 +98,11 @@ export const esChrome = {
       "/photo-credits": "Créditos de fotos",
     } as Record<string, string>,
     cookieChoices: "Opciones de cookies",
+    ctaTitle: "¿Listo para planear su viaje?",
+    ctaBody:
+      "Llame a un agente real o envíenos los detalles: el precio completo va antes de que usted pague.",
+    ctaCall: (phone: string) => `Llamar al ${phone}`,
+    ctaQuote: "Solicitar cotización",
     agency: (name: string) =>
       `${name} es una agencia de viajes y corredor de vuelos chárter. Organizamos viajes aéreos, alojamiento, renta de autos, cruceros y vuelos privados como agente de las aerolíneas, hoteles, empresas de renta de autos, líneas de cruceros y transportistas aéreos con licencia que los operan; no somos una aerolínea, hotel, empresa de renta de autos, línea de cruceros ni transportista aéreo, y no somos propietarios, operadores ni tripulantes de ninguna aeronave, barco o vehículo. Las condiciones de transporte, las condiciones de reserva y las reglas tarifarias de cada proveedor rigen lo que usted compra. Los precios y la disponibilidad los proporcionan esos operadores y cambian hasta que la reserva se confirma y se emite el boleto.`,
     sellerOfTravel: (state: string, scheme: string, number: string) =>

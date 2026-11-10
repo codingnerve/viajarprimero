@@ -94,8 +94,8 @@ export function HeroVideo({
         className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-secondary/60 to-transparent"
       />
 
-      <div className="absolute inset-x-0 bottom-0 z-10">
-        <div className="mx-auto flex max-w-page justify-end px-gutter pb-5 md:pb-6">
+      <div className="absolute inset-x-0 top-0 z-10">
+        <div className="mx-auto flex max-w-page justify-end px-gutter pt-5 md:pt-6">
           <button
             type="button"
             onClick={() => setPlaying((current) => !current)}

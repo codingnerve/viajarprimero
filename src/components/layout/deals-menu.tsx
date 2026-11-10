@@ -66,14 +66,17 @@ export function DealsMenu({
   useEffect(() => () => window.clearTimeout(closeTimer.current), []);
 
   return (
-    <div ref={rootRef} className="relative" onMouseEnter={show} onMouseLeave={hide}>
+    <div ref={rootRef} className="flex" onMouseEnter={show} onMouseLeave={hide}>
       <div
         className={cn(
-          "flex h-9 items-center rounded-full pl-2.5 pr-1 text-h6 font-medium 2xl:pl-3",
+          "relative flex h-full items-center whitespace-nowrap pl-2.5 pr-1 text-h6 font-medium 2xl:pl-3",
           "transition-colors duration-[var(--duration-fast)] ease-out",
+          "after:absolute after:inset-x-2.5 after:bottom-0 after:h-0.5 after:rounded-full after:bg-primary",
+          "after:origin-left after:transition-transform after:duration-[var(--duration-normal)] after:ease-out",
+          "motion-reduce:after:transition-none",
           active || open
-            ? "bg-primary-soft text-primary"
-            : "text-gray-700 hover:bg-gray-100 hover:text-text",
+            ? "text-primary after:scale-x-100"
+            : "text-gray-700 after:scale-x-0 hover:text-text hover:after:scale-x-100",
         )}
       >
         <Link
@@ -121,8 +124,10 @@ export function DealsMenu({
         id={panelId}
         hidden={!open}
         className={cn(
-          "fixed left-1/2 top-[calc(var(--header-height)+0.25rem)] z-[var(--z-dropdown)] -translate-x-1/2",
-          "w-[min(60rem,calc(100vw-2rem))] rounded-xs bg-surface p-6 shadow-xl ring-1 ring-inset ring-border",
+          // Anchored to the header bar (its inner container is `relative`), so
+          // it opens flush under the bar at the width of the page.
+          "absolute inset-x-0 top-full z-[var(--z-dropdown)]",
+          "rounded-b-xl border-t border-border bg-surface p-6 shadow-xl",
         )}
       >
         <div className="grid grid-cols-4 gap-6">

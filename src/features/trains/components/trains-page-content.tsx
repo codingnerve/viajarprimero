@@ -1,32 +1,86 @@
-import Link from "next/link";
+import type { ComponentType, ReactNode } from "react";
 
 import { PageIntro } from "@/components/layout/page-intro";
 import { Section } from "@/components/layout/section";
+import { Accordion } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
 import { ButtonLink } from "@/components/ui/button";
 import {
   ArrowRightIcon,
+  CheckIcon,
+  InfoIcon,
+  MapPinIcon,
   PhoneIcon,
+  ReceiptIcon,
+  SearchIcon,
+  SeatIcon,
+  ShieldIcon,
+  SuitcaseIcon,
+  SwapIcon,
   TrainIcon,
+  UsersIcon,
 } from "@/components/ui/icons";
 import { RailSearch } from "@/features/trains/components/rail-search";
 import { getRailPhone } from "@/features/trains/lib/rail-phone";
-import {
-  allTrainStations,
-  trainOperators,
-  type TrainOperator,
-} from "@/lib/content/trains";
-import { cn } from "@/lib/utils/cn";
+import { siteConfig } from "@/lib/config/site";
+import { railGuide } from "@/lib/content/trains";
 
-const accentClasses: Record<TrainOperator["logoAccent"], string> = {
-  primary: "bg-primary-soft text-primary",
-  secondary: "bg-secondary text-text-inverse",
-  accent: "bg-accent-soft text-accent-hover",
-};
+type IconComponent = ComponentType<{ className?: string }>;
 
-/** The `/trains` hub: operator guides, a rail search, and a call-to-help band. */
+/** A titled card in the guide column. `id` makes it an anchor target. */
+function GuideCard({
+  id,
+  title,
+  icon: Icon,
+  children,
+}: {
+  id: string;
+  title: string;
+  icon: IconComponent;
+  children: ReactNode;
+}) {
+  return (
+    <section
+      id={id}
+      aria-labelledby={`${id}-heading`}
+      className="scroll-mt-24 rounded-2xl bg-surface p-6 shadow-sm ring-1 ring-inset ring-border md:p-8"
+    >
+      <div className="flex items-center gap-3">
+        <span
+          aria-hidden="true"
+          className="grid size-10 shrink-0 place-items-center rounded-full bg-primary-soft text-primary"
+        >
+          <Icon className="size-5" />
+        </span>
+        <h2 id={`${id}-heading`} className="text-h3 text-text">
+          {title}
+        </h2>
+      </div>
+      <div className="mt-4 space-y-4 text-body text-text-secondary">
+        {children}
+      </div>
+    </section>
+  );
+}
+
+/** The `/trains` page: a rail search and a brand-neutral booking guide. */
 export function TrainsPageContent() {
   const phone = getRailPhone();
+  const brand = siteConfig.name;
+
+  const contents = [
+    { id: "why-book", title: `Why book train tickets with ${brand}?` },
+    { id: "how-to-book", title: "How to book rail tickets" },
+    { id: "manage-booking", title: "Manage your rail booking" },
+    { id: "seating", title: "Seat selection and upgrades" },
+    { id: "changes", title: "Train change policy" },
+    { id: "cancellations", title: "Rail ticket cancellation policy" },
+    { id: "baggage", title: "Baggage policies" },
+    { id: "stations", title: "Station check-in" },
+    { id: "faq", title: "Rail booking questions" },
+  ];
+  const titleOf = (id: string) =>
+    contents.find((entry) => entry.id === id)?.title ?? "";
 
   return (
     <>
@@ -43,101 +97,159 @@ export function TrainsPageContent() {
         }
         title={
           <>
-            Rail booking guides for{" "}
-            <span className="text-accent-hover">trusted train operators</span>
+            Book train tickets with{" "}
+            <span className="text-accent-hover">a real travel agent</span>
           </>
         }
-        intro="Browse operator guides, see the corridors travellers ask about most, and send a rail booking request alongside your flights. Our team checks live schedules and fares with you before anything is confirmed."
+        intro={railGuide.intro}
       />
 
       <Section size="sm" containerClassName="space-y-12 md:space-y-14">
-        <RailSearch stations={allTrainStations} />
+        <RailSearch />
 
-        <ul className="grid items-stretch gap-5 lg:grid-cols-2">
-          {trainOperators.map((operator) => (
-            <li key={operator.id} className="flex">
-              <article className="relative flex w-full flex-col rounded-2xl bg-surface p-6 shadow-sm ring-1 ring-inset ring-border transition-shadow hover:shadow-md md:p-7">
-                <div className="flex flex-wrap items-center gap-2">
-                  <span
-                    className={cn(
-                      "rounded-full px-3 py-1 text-caption font-semibold tracking-wide",
-                      accentClasses[operator.logoAccent],
-                    )}
+        <div className="grid gap-8 lg:grid-cols-[15rem_minmax(0,1fr)] xl:grid-cols-[15rem_minmax(0,1fr)_18rem]">
+          <nav
+            aria-label="Contents"
+            className="hidden self-start lg:sticky lg:top-24 lg:block"
+          >
+            <p className="text-overline uppercase text-text-muted">Contents</p>
+            <ul className="mt-3 space-y-1 border-l border-border">
+              {contents.map((entry) => (
+                <li key={entry.id}>
+                  <a
+                    href={`#${entry.id}`}
+                    className="-ml-px block rounded-sm border-l-2 border-transparent py-1.5 pl-4 text-body-sm text-text-secondary transition-colors hover:border-primary hover:text-primary focus-ring"
                   >
-                    {operator.code}
-                  </span>
-                  <Badge tone="neutral">{operator.country}</Badge>
-                </div>
+                    {entry.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
 
-                <h2 className="mt-4 text-h3 text-text">
-                  Book {operator.name} rail tickets
-                </h2>
-                <p className="mt-2 text-body text-text-secondary">
-                  {operator.summary}
-                </p>
+          <div className="min-w-0 space-y-5">
+            <section
+              aria-labelledby="rail-guide-heading"
+              className="rounded-2xl bg-surface p-6 shadow-sm ring-1 ring-inset ring-border md:p-8"
+            >
+              <h2 id="rail-guide-heading" className="text-h3 text-text">
+                Rail booking guide
+              </h2>
+              <p className="mt-4 text-body text-text-secondary">
+                {railGuide.guideIntro}
+              </p>
+            </section>
 
-                <div className="mt-5">
-                  <p className="text-overline uppercase text-text-muted">
-                    Popular corridors
-                  </p>
-                  <ul className="mt-2 flex flex-wrap gap-1.5">
-                    {operator.popularCorridors.slice(0, 4).map((corridor) => (
-                      <li key={corridor.label}>
-                        <Badge tone="neutral">{corridor.label}</Badge>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+            <GuideCard id="why-book" title={titleOf("why-book")} icon={ShieldIcon}>
+              <p>{railGuide.whyBook}</p>
+              <ul className="flex flex-wrap gap-2">
+                {railGuide.highlights.map((highlight) => (
+                  <li key={highlight}>
+                    <Badge tone="success">
+                      <CheckIcon className="size-3.5" />
+                      {highlight}
+                    </Badge>
+                  </li>
+                ))}
+              </ul>
+            </GuideCard>
 
-                <div className="mt-auto flex items-center justify-between gap-4 pt-6">
-                  <Link
-                    href={`/trains/${operator.slug}`}
-                    className="text-body font-semibold text-primary underline-offset-4 after:absolute after:inset-0 after:rounded-2xl hover:underline focus-ring"
+            <GuideCard id="how-to-book" title={titleOf("how-to-book")} icon={SearchIcon}>
+              <p>{railGuide.howToBook}</p>
+            </GuideCard>
+
+            <GuideCard id="manage-booking" title={titleOf("manage-booking")} icon={UsersIcon}>
+              <p>{railGuide.manageBooking}</p>
+            </GuideCard>
+
+            <GuideCard id="seating" title={titleOf("seating")} icon={SeatIcon}>
+              <p>{railGuide.seatClassesIntro}</p>
+              <dl className="space-y-3">
+                {railGuide.seatClasses.map((seatClass) => (
+                  <div
+                    key={seatClass.name}
+                    className="border-l-2 border-primary pl-4"
                   >
-                    View guide and request a trip
-                  </Link>
-                  <span
-                    aria-hidden="true"
-                    className="grid size-10 shrink-0 place-items-center rounded-full bg-primary-soft text-primary"
-                  >
-                    <TrainIcon className="size-5" />
-                  </span>
-                </div>
-              </article>
-            </li>
-          ))}
-        </ul>
+                    <dt className="text-h5 text-text">{seatClass.name}</dt>
+                    <dd className="mt-1">{seatClass.description}</dd>
+                  </div>
+                ))}
+              </dl>
+            </GuideCard>
 
-        <div className="grid items-center gap-6 rounded-2xl bg-primary p-7 text-text-inverse md:p-10 lg:grid-cols-[1.5fr_auto]">
-          <div>
-            <h2 className="text-h2 text-text-inverse">
-              Need help planning your rail itinerary?
-            </h2>
-            <p className="mt-2 max-w-2xl text-body text-white/90">
-              Tell us where you are going and when. We will check the options,
-              explain the ticket rules in plain language and confirm the full
-              price with you before anything is booked.
-            </p>
+            <GuideCard id="changes" title={titleOf("changes")} icon={SwapIcon}>
+              <p>{railGuide.changePolicy}</p>
+            </GuideCard>
+
+            <GuideCard id="cancellations" title={titleOf("cancellations")} icon={ReceiptIcon}>
+              <p>{railGuide.cancellationPolicy}</p>
+            </GuideCard>
+
+            <GuideCard id="baggage" title={titleOf("baggage")} icon={SuitcaseIcon}>
+              <p>{railGuide.baggageIntro}</p>
+              <div className="grid gap-3 sm:grid-cols-2">
+                {railGuide.baggage.map((item) => (
+                  <div
+                    key={item.title}
+                    className="rounded-xl bg-surface-2 p-4 ring-1 ring-inset ring-border"
+                  >
+                    <h3 className="text-h5 text-text">{item.title}</h3>
+                    <p className="mt-1 text-body-sm">{item.detail}</p>
+                  </div>
+                ))}
+              </div>
+            </GuideCard>
+
+            <GuideCard id="stations" title={titleOf("stations")} icon={MapPinIcon}>
+              <p>{railGuide.stationCheckIn}</p>
+            </GuideCard>
+
+            <GuideCard id="faq" title={titleOf("faq")} icon={InfoIcon}>
+              <Accordion name="trains-faq" items={railGuide.faqs} className="-mt-2" />
+            </GuideCard>
           </div>
-          {phone ? (
-            <ButtonLink
-              href={phone.href}
-              variant="accent"
-              size="lg"
-              icon={<PhoneIcon className="size-5" />}
-            >
-              Call {phone.display}
-            </ButtonLink>
-          ) : (
-            <ButtonLink
-              href="/contact"
-              variant="accent"
-              size="lg"
-              icon={<ArrowRightIcon className="size-5" />}
-            >
-              Contact us
-            </ButtonLink>
-          )}
+
+          <aside className="space-y-5 lg:col-start-2 xl:sticky xl:top-24 xl:col-start-3 xl:self-start">
+            <div className="rounded-2xl bg-primary p-6 text-text-inverse">
+              <h2 className="text-h4 text-text-inverse">Need help booking?</h2>
+              <p className="mt-2 text-body-sm text-white/90">
+                Talk to a travel agent about your rail trip.
+              </p>
+              {phone ? (
+                <ButtonLink
+                  href={phone.href}
+                  variant="accent"
+                  fullWidth
+                  className="mt-4"
+                  icon={<PhoneIcon className="size-5" />}
+                >
+                  Call {phone.display}
+                </ButtonLink>
+              ) : (
+                <ButtonLink
+                  href="/contact"
+                  variant="accent"
+                  fullWidth
+                  className="mt-4"
+                  icon={<ArrowRightIcon className="size-5" />}
+                >
+                  Contact us
+                </ButtonLink>
+              )}
+            </div>
+
+            <div className="space-y-2 rounded-2xl bg-surface-2 p-5 text-caption text-text-muted ring-1 ring-inset ring-border">
+              <p>Baggage and fare rules vary by ticket and by service.</p>
+              <p>
+                We confirm rail ticket conditions with you before anything is
+                booked.
+              </p>
+              <p>
+                {brand} is a travel agency and does not operate trains. Rail
+                services are run by the operators themselves.
+              </p>
+            </div>
+          </aside>
         </div>
       </Section>
     </>

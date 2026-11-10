@@ -55,7 +55,7 @@ export function LatestArticles({
 
         return (
           <li key={article.slug}>
-            <article className="group relative flex h-full flex-col overflow-hidden rounded-xs bg-surface ring-1 ring-inset ring-border transition-[box-shadow,transform] duration-[var(--duration-normal)] hover:-translate-y-1 hover:shadow-lg motion-reduce:transform-none has-[a:focus-visible]:outline has-[a:focus-visible]:outline-2 has-[a:focus-visible]:outline-offset-2 has-[a:focus-visible]:outline-primary">
+            <article className="group relative flex h-full flex-col overflow-hidden rounded-lg bg-surface ring-1 ring-inset ring-border transition-[box-shadow,transform] duration-[var(--duration-normal)] hover:-translate-y-1 hover:shadow-lg motion-reduce:transform-none has-[a:focus-visible]:outline has-[a:focus-visible]:outline-2 has-[a:focus-visible]:outline-offset-2 has-[a:focus-visible]:outline-primary">
               <div className="relative aspect-[16/10] overflow-hidden bg-gray-100">
                 {image && (
                   <Image

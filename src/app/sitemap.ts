@@ -10,7 +10,6 @@ import { aircraftCategories, jetRoutes } from "@/lib/content/private-jets";
 import { guides } from "@/lib/content/guides";
 import { reviews } from "@/lib/content/reviews";
 import { routes } from "@/lib/content/routes";
-import { trainOperators } from "@/lib/content/trains";
 import { siteConfig } from "@/lib/config/site";
 
 /**
@@ -194,13 +193,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     ...cruiseLines.map((line) => ({
       url: url(`/cruises/${line.slug}`),
-      lastModified,
-      changeFrequency: "monthly" as const,
-      priority: 0.7,
-    })),
-
-    ...trainOperators.map((operator) => ({
-      url: url(`/trains/${operator.slug}`),
       lastModified,
       changeFrequency: "monthly" as const,
       priority: 0.7,

@@ -23,66 +23,67 @@
  */
 @theme {
   /* --- Brand --- */
-  /* Primary is a shade deeper and slightly less violet than the scraped
-     #3364FF. It clears 4.5:1 on white, so unlike its predecessor it is legal
-     on body-size text as well as on buttons and headings. Locked to #2c47e4
-     everywhere — hover/active are that same hue darkened, not a different
-     blue. */
-  --color-primary: #2c47e4;
-  --color-primary-hover: #2137ba;
-  --color-primary-active: #182b98;
-  --color-secondary: #0a1f3d;
-  /* Warm counterweight to all that blue. Emphasis only, never a primary
-     action: on white it measures ~2.4:1 and cannot carry text. */
-  --color-accent: #f08c1e;
-  --color-accent-hover: #d97706;
+  /* Teal and sand palette. Primary is a deep teal that clears 4.5:1 on white,
+     so it is legal on body-size text as well as on buttons and headings;
+     hover/active are the same hue darkened. Secondary is the near-black teal
+     the header, footer and hero sit on. */
+  --color-primary: #0f766e;
+  --color-primary-hover: #0b5f58;
+  --color-primary-active: #094a45;
+  --color-secondary: #0a323d;
+  /* Coral: the warm counterweight, reserved for the one action per screen that
+     matters most (call, get a quote). On white it measures ~2.9:1, so it never
+     carries text — buttons put dark ink on it. `accent-hover` is darker and
+     clears 4.5:1 against white. */
+  --color-accent: #f0734f;
+  --color-accent-hover: #c24a28;
 
   /* --- Neutrals --- */
   /* A cooler, wider ramp than the scrape. 50 and 100 are close enough to white
      to act as surfaces rather than as fills, which is what lets two sections
      sit next to each other without a border drawn between them. */
-  --color-gray-50: #f7f9fc;
-  --color-gray-100: #eef2f7;
-  --color-gray-200: #e0e6ef;
-  --color-gray-300: #c8d1de;
-  --color-gray-400: #9fabbd;
-  --color-gray-500: #7b8798;
-  --color-gray-600: #5f6b7d;
-  --color-gray-700: #445063;
-  --color-gray-800: #29344a;
-  --color-gray-900: #0a1f3d;
+  --color-gray-50: #f8f6f1;
+  --color-gray-100: #f1eee7;
+  --color-gray-200: #e5e1d8;
+  --color-gray-300: #cdc8bc;
+  --color-gray-400: #aaa598;
+  --color-gray-500: #857f73;
+  --color-gray-600: #686358;
+  --color-gray-700: #4c4840;
+  --color-gray-800: #2f2c27;
+  --color-gray-900: #10222b;
 
   /* --- Semantic --- */
-  --color-success: #0f9d58;
-  --color-warning: #e8a207;
-  --color-error: #e5484d;
-  --color-info: #2c47e4;
+  --color-success: #15803d;
+  --color-warning: #d99a06;
+  --color-error: #d6453d;
+  --color-info: #0f766e;
 
   /* Tinted fills for badges, alerts and toasts. */
-  --color-primary-soft: #eaf0ff;
-  --color-primary-softer: #f4f7ff;
-  --color-success-soft: #e7f6ee;
-  --color-warning-soft: #fdf4e3;
-  --color-error-soft: #fdeded;
-  --color-accent-soft: #fdf1e3;
+  --color-primary-soft: #e2f2f0;
+  --color-primary-softer: #f0f8f7;
+  --color-success-soft: #e6f4ea;
+  --color-warning-soft: #fbf1da;
+  --color-error-soft: #fbeceb;
+  --color-accent-soft: #fdece6;
 
   /* --- Surfaces --- */
   /* Three tiers, not two. `background` is the page, `surface` is a raised
      plane on it, `surface-2` is the recessed one inside a card — a summary
      row, a form footer — that used to be drawn as another bordered box. */
-  --color-background: #ffffff;
-  --color-background-alt: #f7f9fc;
+  --color-background: #fbfaf7;
+  --color-background-alt: #f4f0e8;
   --color-surface: #ffffff;
-  --color-surface-2: #f7f9fc;
-  --color-surface-sunken: #eef2f7;
+  --color-surface-2: #f8f5ef;
+  --color-surface-sunken: #efebe2;
   /* Hairline. Two thirds of the way from the old #ebedf0 to the background,
      because the previous value read as a drawn box rather than as an edge. */
-  --color-border: #e8edf4;
-  --color-border-strong: #d5dde8;
-  --color-divider: #e0e6ef;
+  --color-border: #e7e2d8;
+  --color-border-strong: #d6d0c3;
+  --color-divider: #e5e1d8;
 
   /* --- Text --- */
-  --color-text: #0a1f3d;
+  --color-text: #10222b;
   /* These two were #8592a6 and #a1a9b3, taken straight from the scrape. On
      white they measure 3.15:1 and 2.38:1 — both under the 4.5:1 WCAG AA floor
      for body text, and both were being used for real paragraphs (card
@@ -90,13 +91,13 @@
      values below, which clear 4.5:1 on white *and* on the
      --color-background-alt grey that half the sections sit on, while staying
      far enough apart to read as two distinct levels. */
-  --color-text-secondary: #4b5768;
-  --color-text-muted: #626e80;
-  --color-text-disabled: #c8d1de;
+  --color-text-secondary: #3f5159;
+  --color-text-muted: #5a6a71;
+  --color-text-disabled: #c3c7c4;
   --color-text-inverse: #ffffff;
   /* Body copy on the navy band. Measures 8.9:1 on #0a1f3d — readable without
      the shout of pure white. */
-  --color-text-on-dark: #c3cede;
+  --color-text-on-dark: #c9dcdf;
 
   /* --- Typography --- */
   /* Two families. Geist (`font-sans`) carries body copy, UI and the small
@@ -128,25 +129,25 @@
      made different sections read as different typefaces even though every
      one of them is Geist. */
 
-  --text-display-lg: 2.75rem;
-  --text-display-lg--line-height: 1.08;
-  --text-display-lg--letter-spacing: -0.02em;
-  --text-display-lg--font-weight: 600;
+  --text-display-lg: 3.25rem;
+  --text-display-lg--line-height: 1.05;
+  --text-display-lg--letter-spacing: -0.028em;
+  --text-display-lg--font-weight: 500;
 
-  --text-display: 2.25rem;
-  --text-display--line-height: 1.12;
-  --text-display--letter-spacing: -0.015em;
-  --text-display--font-weight: 600;
+  --text-display: 2.5rem;
+  --text-display--line-height: 1.1;
+  --text-display--letter-spacing: -0.024em;
+  --text-display--font-weight: 500;
 
-  --text-h1: 1.75rem;
-  --text-h1--line-height: 1.2;
-  --text-h1--letter-spacing: -0.022em;
-  --text-h1--font-weight: 600;
+  --text-h1: 2rem;
+  --text-h1--line-height: 1.15;
+  --text-h1--letter-spacing: -0.024em;
+  --text-h1--font-weight: 500;
 
-  --text-h2: 1.5rem;
-  --text-h2--line-height: 1.25;
-  --text-h2--letter-spacing: -0.02em;
-  --text-h2--font-weight: 600;
+  --text-h2: 1.75rem;
+  --text-h2--line-height: 1.2;
+  --text-h2--letter-spacing: -0.022em;
+  --text-h2--font-weight: 500;
 
   --text-h3: 1.1875rem;
   --text-h3--line-height: 1.35;
@@ -209,36 +210,34 @@
   /* --- Radius --- */
   /* The single biggest contributor to "boxy". The old ramp topped out at 12px,
      which on a 400px-wide card is a corner you read as square. */
-  --radius-xs: 4px;
-  --radius-sm: 6px;
+  --radius-xs: 8px;
+  --radius-sm: 10px;
   /* Between md and lg: the floating help bubble wants a corner you read as
      soft without it tipping into the pill the old 22px version was. */
   --radius-12: 12px;
-  --radius-md: 10px;
+  --radius-md: 12px;
   --radius-lg: 16px;
-  --radius-xl: 22px;
-  --radius-2xl: 28px;
-  --radius-3xl: 36px;
+  --radius-xl: 20px;
+  --radius-2xl: 24px;
+  --radius-3xl: 32px;
   --radius-full: 9999px;
 
   /* --- Shadows --- */
   /* Two layers each: a tight contact shadow that grounds the element and a
      wide diffuse one that lifts it. One layer reads as a drop shadow; two read
      as depth. */
-  --shadow-xs: 0 1px 2px rgb(10 31 61 / 0.05);
-  --shadow-sm: 0 1px 2px rgb(10 31 61 / 0.05), 0 2px 8px rgb(10 31 61 / 0.05);
-  --shadow-md: 0 2px 4px rgb(10 31 61 / 0.05), 0 8px 24px rgb(10 31 61 / 0.08);
-  --shadow-lg: 0 4px 8px rgb(10 31 61 / 0.06), 0 16px 48px rgb(10 31 61 / 0.12);
-  --shadow-xl: 0 8px 16px rgb(10 31 61 / 0.08), 0 32px 72px rgb(10 31 61 / 0.16);
+  --shadow-xs: 0 1px 2px rgb(16 34 43 / 0.05);
+  --shadow-sm: 0 1px 2px rgb(16 34 43 / 0.05), 0 2px 8px rgb(16 34 43 / 0.05);
+  --shadow-md: 0 2px 4px rgb(16 34 43 / 0.05), 0 8px 24px rgb(16 34 43 / 0.08);
+  --shadow-lg: 0 4px 8px rgb(16 34 43 / 0.06), 0 16px 48px rgb(16 34 43 / 0.12);
+  --shadow-xl: 0 8px 16px rgb(16 34 43 / 0.08), 0 32px 72px rgb(16 34 43 / 0.16);
   /* For the search panel that overhangs the hero: it sits on a dark field, so
      it needs an inset highlight to hold its top edge. */
   --shadow-panel: 0 1px 0 rgb(255 255 255 / 0.6) inset,
-    0 12px 32px rgb(10 31 61 / 0.16), 0 40px 80px rgb(10 31 61 / 0.2);
+    0 12px 32px rgb(16 34 43 / 0.16), 0 40px 80px rgb(16 34 43 / 0.2);
   /* Liquid glass: a bright specular top edge, a faint lower inner rim so the
      pane has thickness, and a soft lift underneath. */
-  --shadow-glass: inset 0 1px 0 rgb(255 255 255 / 0.85),
-    inset 0 -1px 0 rgb(255 255 255 / 0.25),
-    0 8px 32px rgb(10 31 61 / 0.14), 0 2px 6px rgb(10 31 61 / 0.06);
+  --shadow-glass: 0 1px 2px rgb(16 34 43 / 0.06), 0 8px 24px rgb(16 34 43 / 0.1);
 
   /* --- Motion --- */
   --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
@@ -355,7 +354,7 @@
  * values where needed, e.g. `z-[var(--z-modal)]`.
  */
 :root {
-  --overlay: rgb(10 31 61 / 0.6);
+  --overlay: rgb(16 34 43 / 0.6);
 
   --duration-fast: 150ms;
   --duration-normal: 250ms;
@@ -370,17 +369,11 @@
   --z-modal: 1050;
   --z-tooltip: 1060;
 
-  /* Height of the sticky header. Anything that has to clear it — a sticky
+  /* Height of the sticky main bar. Anything that has to clear it — a sticky
      sidebar, `scroll-mt` on an anchor target — reads this rather than
-     hard-coding 64px and drifting when the header changes. */
-  --header-height: 68px;
-}
-
-/* From `xl` the header adds its utility pill above the nav bar. */
-@media (width >= 1200px) {
-  :root {
-    --header-height: 112px;
-  }
+     hard-coding 72px and drifting when the header changes. The utility strip
+     above it (from `xl`) scrolls away and is not counted. */
+  --header-height: 72px;
 }
 
 /*
@@ -427,18 +420,6 @@ body {
   pre {
     font-family: inherit;
   }
-}
-
-/*
- * Every page starts under the header's transparent strip, so the first band's
- * background runs to the top of the viewport. Its padding keeps the content
- * clear of the floating bar. Scripts and dialogs are skipped when finding it.
- */
-main {
-  margin-top: calc(-1 * var(--header-height));
-}
-main > :nth-child(1 of :not(script, style, template, dialog)) {
-  padding-top: var(--header-height);
 }
 
 /* Anchors land below the sticky header rather than under it. */
@@ -530,29 +511,29 @@ html {
   background-image:
     radial-gradient(
       70rem 40rem at 12% -10%,
-      rgb(43 92 230 / 0.5),
+      rgb(20 150 138 / 0.42),
       transparent 60%
     ),
     radial-gradient(
       50rem 34rem at 92% 8%,
-      rgb(240 140 30 / 0.16),
+      rgb(240 115 79 / 0.16),
       transparent 62%
     ),
-    linear-gradient(180deg, #0d2749 0%, #0a1f3d 55%, #081930 100%);
+    linear-gradient(180deg, #0f4c5c 0%, #0a323d 55%, #082a33 100%);
 }
 
 /* The same field, quieter, for interior page headers. */
 @utility bg-brand-wash-soft {
-  background-color: var(--color-primary-softer);
+  background-color: var(--color-background-alt);
   background-image:
     radial-gradient(
       55rem 30rem at 0% 0%,
-      rgb(43 92 230 / 0.1),
+      rgb(15 118 110 / 0.09),
       transparent 60%
     ),
     radial-gradient(
       40rem 26rem at 100% 0%,
-      rgb(240 140 30 / 0.07),
+      rgb(240 115 79 / 0.07),
       transparent 60%
     );
 }
@@ -567,10 +548,10 @@ html {
 @utility bg-photo-scrim {
   background-image: linear-gradient(
     180deg,
-    rgb(10 31 61 / 0) 0%,
-    rgb(10 31 61 / 0.08) 40%,
-    rgb(10 31 61 / 0.62) 78%,
-    rgb(10 31 61 / 0.86) 100%
+    rgb(16 34 43 / 0) 0%,
+    rgb(16 34 43 / 0.08) 40%,
+    rgb(16 34 43 / 0.62) 78%,
+    rgb(16 34 43 / 0.86) 100%
   );
 }
 
@@ -673,7 +654,7 @@ html {
   }
 
   &::backdrop {
-    background-color: rgb(6 18 36 / 0.55);
+    background-color: rgb(8 28 36 / 0.55);
     /* The blur is the premium part, and it is also the expensive part — it
        forces the compositor to re-rasterise everything behind the dialog. It
        is affordable here because the dialog is open rarely and briefly. */
