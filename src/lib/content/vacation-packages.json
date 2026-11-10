@@ -1,0 +1,127 @@
+{
+  "$comment": [
+    "Vacation package ideas, with placeholder imagery from Unsplash.",
+    "",
+    "These are starting points for a conversation, not inventory. No packaging",
+    "supplier is connected to this site, so nothing here carries a price, a",
+    "departure date, a named hotel or an availability claim — every one of",
+    "those would be fabricated. What each entry does carry is the shape of the",
+    "trip: where, how long, what board basis, and what a package for it",
+    "normally includes. All of that is true of the destination rather than of",
+    "a product we are holding.",
+    "",
+    "`bundles` is the honest bit. It says whether a package usually beats",
+    "booking the flight and the room separately for that kind of trip, and two",
+    "of the six say it often does not. A list that recommended itself six",
+    "times out of six would be an advert.",
+    "",
+    "Every alt was written after looking at the frame. Swap the urls for",
+    "licensed files under public/images and nothing else changes."
+  ],
+  "placeholder": true,
+  "source": "Unsplash",
+  "packages": [
+    {
+      "slug": "cancun-all-inclusive",
+      "destination": "Cancún, Mexico",
+      "region": "Caribbean",
+      "title": "A week all-inclusive on the Cancún hotel zone",
+      "nights": 7,
+      "board": "All-inclusive",
+      "bestTime": "December to April, outside hurricane season",
+      "summary": "The strip of beach between the lagoon and the Caribbean, where most of the cost is the board basis rather than the flight — which is what makes it bundle well.",
+      "includes": ["Return flights", "Resort transfers", "Checked bags", "All meals and drinks"],
+      "bundles": "well",
+      "note": "The classic case for a package: board is the bulk of the bill and operators hold contracted rooms along this coast.",
+      "image": {
+        "url": "https://images.unsplash.com/photo-1510097467424-192d713fd8b2?w=1200&q=75",
+        "alt": "An aerial view along a narrow sandy peninsula lined with hotels, lagoon on one side and turquoise sea on the other."
+      }
+    },
+    {
+      "slug": "cozumel-diving",
+      "destination": "Cozumel, Mexico",
+      "region": "Caribbean",
+      "title": "Seven nights diving the Cozumel reefs",
+      "nights": 7,
+      "board": "Room only or half board",
+      "bestTime": "May to September for the clearest water",
+      "summary": "An island built around the reef wall off its western shore. Dive packages are sold by the operator rather than the hotel, so they sit outside the bundle and are worth pricing separately.",
+      "includes": ["Return flights", "Ferry or island transfer", "Checked bags"],
+      "bundles": "well",
+      "note": "Bundle the flights and room; book the diving direct with the operator once you are there.",
+      "image": {
+        "url": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1200&q=75",
+        "alt": "A scuba diver beside a reef wall with a dense school of yellow and silver fish filling the left of the frame."
+      }
+    },
+    {
+      "slug": "palawan-island-hopping",
+      "destination": "Palawan, Philippines",
+      "region": "Southeast Asia",
+      "title": "Nine nights island-hopping in Palawan",
+      "nights": 9,
+      "board": "Breakfast",
+      "bestTime": "November to May, the dry season",
+      "summary": "Limestone karsts, hidden lagoons and a lot of boat time. Long-haul with a domestic connection at the end, which is exactly the kind of routing worth having one organiser responsible for.",
+      "includes": ["Return flights", "Domestic connection", "Airport transfers", "Checked bags"],
+      "bundles": "well",
+      "note": "The domestic leg is the reason to bundle — a missed connection on two separate tickets is your problem, on one it is not.",
+      "image": {
+        "url": "https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?w=1200&q=75",
+        "alt": "Jagged limestone islands rising from clear turquoise water, with a small beach and thatched huts on a spit in the foreground."
+      }
+    },
+    {
+      "slug": "dolomites-lakes",
+      "destination": "The Dolomites, Italy",
+      "region": "Europe",
+      "title": "A week among the Dolomite lakes and passes",
+      "nights": 7,
+      "board": "Half board",
+      "bestTime": "June to September, or December to March for snow",
+      "summary": "Mountain hotels that still quote half board as standard, and a region that genuinely needs a car. The rental is the part most people forget to price.",
+      "includes": ["Return flights", "Half board", "Car rental", "Checked bags"],
+      "bundles": "well",
+      "note": "Ask for the car in the same quote. Adding it afterwards at an Italian airport counter is how this trip gets expensive.",
+      "image": {
+        "url": "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1200&q=75",
+        "alt": "The bow of a wooden rowing boat on a still green alpine lake, bare grey peaks and pine forest behind."
+      }
+    },
+    {
+      "slug": "tokyo-city-break",
+      "destination": "Tokyo, Japan",
+      "region": "Asia",
+      "title": "Six nights in Tokyo",
+      "nights": 6,
+      "board": "Room only",
+      "bestTime": "March to May, or October to November",
+      "summary": "A long flight and a city where the hotel is the smaller half of the cost. Bundling helps less here than the marketing suggests, and we will tell you if it does not.",
+      "includes": ["Return flights", "Checked bags"],
+      "bundles": "sometimes",
+      "note": "Worth pricing both ways. If you hold airline miles or status on this route, booking the flight separately usually wins.",
+      "image": {
+        "url": "https://images.unsplash.com/photo-1536098561742-ca998e48cbcc?w=1200&q=75",
+        "alt": "A red and white lattice tower lit against a dusk sky above a city crossroads, reflected in wet tarmac."
+      }
+    },
+    {
+      "slug": "paris-short-break",
+      "destination": "Paris, France",
+      "region": "Europe",
+      "title": "Four nights in Paris",
+      "nights": 4,
+      "board": "Room only",
+      "bestTime": "April to June, September to October",
+      "summary": "The trip a package is least likely to win. Short stay, short flight, and thousands of hotels — which means choice matters more than bundling does.",
+      "includes": ["Return flights"],
+      "bundles": "sometimes",
+      "note": "We will quote it as a package and as two separate bookings, and tell you which came out lower.",
+      "image": {
+        "url": "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1200&q=75",
+        "alt": "An iron lattice tower on a riverbank at dusk, moored boats along the quay and a bridge in the distance."
+      }
+    }
+  ]
+}

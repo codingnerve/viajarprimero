@@ -1,0 +1,269 @@
+{
+  "meta": {
+    "status": "SUPERSEDED IN PART — read this before using a value from this file.",
+    "source_of_truth": "src/app/globals.css",
+    "superseded_note": "This file is a scrape of the reference site listed below, and it is what the first build was made from. As of the 2026 redesign the palette, radius ramp, shadow ramp and type scale in globals.css intentionally diverge from it, and globals.css is authoritative for all four. Specifically: brand.primary is now #2B5CE6 (the #3364FF below measures ~4.1:1 on white and fails AA for body-size text); the neutral ramp is cooler and wider; radii run 6-36px rather than 4-12px; every shadow is two-layered; and the type scale gained a display-lg step. What remains current and worth reading here is the component anatomy — the interaction states, the focus behaviour, the contrast measurements and the per-component structure — which the redesign kept. Entries marked \"inferred\": true were reconstructed rather than measured; treat those as a sane default, not as gospel.",
+    "source_url": "https://us.trip.com/?locale=en-us",
+    "analyzed_from": "mixed",
+    "date_analyzed": "2026-09-09",
+    "overall_aesthetic": "functional, clean, data-dense corporate OTA (Online Travel Agency) design relying on high-contrast blues, subtle shadows, and vibrant accent colors to drive conversion.",
+    "design_density": "compact",
+    "notable_inconsistencies": [
+      "Secondary buttons occasionally vary between a pure outline format and a solid light-blue background.",
+      "The primary brand blue shade exhibits minor variations across sub-domains and regional banners (e.g., #3364FF vs #287DFA)."
+    ]
+  },
+  "color_system": {
+    "instructions": "Extracted core brand colors based on primary interactive elements and brand guidelines.",
+    "brand": {
+      "primary": { "hex": "#3364FF", "rgb": "rgb(51, 100, 255)", "hsl": "hsl(226, 100%, 60%)", "usage": "Primary buttons, active states, search bars, main brand elements", "inferred": false },
+      "secondary": { "hex": "#0F294D", "rgb": "rgb(15, 41, 77)", "hsl": "hsl(215, 67%, 18%)", "usage": "Headers, primary data text, deep backgrounds", "inferred": true },
+      "accent": { "hex": "#FF7700", "rgb": "rgb(255, 119, 0)", "hsl": "hsl(28, 100%, 50%)", "usage": "Promotions, price highlights, urgent CTAs, star ratings", "inferred": true }
+    },
+    "neutrals": {
+      "instructions": "Standard grayscale scale reconstructed from page borders, backgrounds, and text hierarchy.",
+      "scale": [
+        { "name": "gray-50", "hex": "#F5F7FA", "usage": "Page background, light containers", "inferred": true },
+        { "name": "gray-100", "hex": "#EBEDF0", "usage": "Hover states, search input backgrounds", "inferred": true },
+        { "name": "gray-200", "hex": "#DADFE6", "usage": "Dividers, light borders", "inferred": true },
+        { "name": "gray-300", "hex": "#C2C8D1", "usage": "Disabled states, secondary borders", "inferred": true },
+        { "name": "gray-400", "hex": "#A1A9B3", "usage": "Placeholder text, inactive icons", "inferred": true },
+        { "name": "gray-500", "hex": "#8592A6", "usage": "Secondary text, metadata", "inferred": true },
+        { "name": "gray-600", "hex": "#687385", "usage": "Muted body text", "inferred": true },
+        { "name": "gray-700", "hex": "#455873", "usage": "Body text", "inferred": true },
+        { "name": "gray-800", "hex": "#2B3645", "usage": "Subheadings", "inferred": true },
+        { "name": "gray-900", "hex": "#0F294D", "usage": "Primary headings, strong text", "inferred": true }
+      ]
+    },
+    "semantic": {
+      "success": { "hex": "#00A854", "usage": "Free cancellation tags, positive confirmations", "inferred": true },
+      "warning": { "hex": "#FEB508", "usage": "Limited availability, warnings", "inferred": false },
+      "error": { "hex": "#FF4D4F", "usage": "Errors, critical alerts, form validation messages", "inferred": true },
+      "info": { "hex": "#3364FF", "usage": "Informational banners, tooltips", "inferred": true }
+    },
+    "surfaces": {
+      "background": "#F5F7FA",
+      "surface": "#FFFFFF",
+      "surface_raised": "#FFFFFF",
+      "overlay": "rgba(15, 41, 77, 0.6)",
+      "border": "#EBEDF0",
+      "divider": "#DADFE6"
+    },
+    "text": {
+      "primary": "#0F294D",
+      "secondary": "#8592A6",
+      "muted": "#A1A9B3",
+      "disabled": "#C2C8D1",
+      "inverse": "#FFFFFF",
+      "link": "#3364FF",
+      "link_hover": "#2851D6"
+    },
+    "gradients": [
+      { "name": "primary-button-gradient", "direction": "to right", "stops": [{ "color": "#4A7BFF", "position": "0%" }, { "color": "#3364FF", "position": "100%" }], "usage": "Occasional promotional CTA buttons", "inferred": true }
+    ],
+    "theme_variants": {
+      "light_mode": null,
+      "light_mode_notes": "Tokens represented natively apply to light mode. A dedicated map override is unnecessary.",
+      "dark_mode": null,
+      "dark_mode_notes": "A robust dark mode was not detected; the interface strongly relies on light surfaces.",
+      "present": false
+    }
+  },
+  "typography": {
+    "instructions": "Standard scalable OS sans-serif font stack commonly used to optimize load speeds across global OTA markets.",
+    "font_families": {
+      "heading": { "stack": "'-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', sans-serif", "weights_used": [600, 700], "source": "system", "inferred": true },
+      "body": { "stack": "'-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', sans-serif", "weights_used": [400, 500], "source": "system", "inferred": true },
+      "mono": { "stack": "'SFMono-Regular', 'Consolas', 'Liberation Mono', 'Menlo', monospace", "weights_used": [400], "source": "system", "inferred": true }
+    },
+    "type_scale": {
+      "instructions": "Calculated assuming a 16px base font size for rem scaling.",
+      "levels": [
+        { "name": "h1", "font_size_px": "32px", "font_size_rem": "2rem", "line_height": "1.2", "letter_spacing": "-0.02em", "font_weight": "700", "text_transform": "none", "font_family": "heading", "inferred": true },
+        { "name": "h2", "font_size_px": "24px", "font_size_rem": "1.5rem", "line_height": "1.3", "letter_spacing": "-0.01em", "font_weight": "700", "text_transform": "none", "font_family": "heading", "inferred": true },
+        { "name": "h3", "font_size_px": "20px", "font_size_rem": "1.25rem", "line_height": "1.4", "letter_spacing": "0", "font_weight": "600", "text_transform": "none", "font_family": "heading", "inferred": true },
+        { "name": "h4", "font_size_px": "18px", "font_size_rem": "1.125rem", "line_height": "1.4", "letter_spacing": "0", "font_weight": "600", "text_transform": "none", "font_family": "heading", "inferred": true },
+        { "name": "h5", "font_size_px": "16px", "font_size_rem": "1rem", "line_height": "1.5", "letter_spacing": "0", "font_weight": "600", "text_transform": "none", "font_family": "heading", "inferred": true },
+        { "name": "h6", "font_size_px": "14px", "font_size_rem": "0.875rem", "line_height": "1.5", "letter_spacing": "0", "font_weight": "600", "text_transform": "none", "font_family": "heading", "inferred": true },
+        { "name": "body-lg", "font_size_px": "16px", "font_size_rem": "1rem", "line_height": "1.5", "letter_spacing": "0", "font_weight": "400", "text_transform": "none", "font_family": "body", "inferred": true },
+        { "name": "body", "font_size_px": "14px", "font_size_rem": "0.875rem", "line_height": "1.5", "letter_spacing": "0", "font_weight": "400", "text_transform": "none", "font_family": "body", "inferred": true },
+        { "name": "body-sm", "font_size_px": "12px", "font_size_rem": "0.75rem", "line_height": "1.5", "letter_spacing": "0", "font_weight": "400", "text_transform": "none", "font_family": "body", "inferred": true },
+        { "name": "caption", "font_size_px": "12px", "font_size_rem": "0.75rem", "line_height": "1.4", "letter_spacing": "0", "font_weight": "400", "text_transform": "none", "font_family": "body", "inferred": true },
+        { "name": "overline", "font_size_px": "10px", "font_size_rem": "0.625rem", "line_height": "1.4", "letter_spacing": "0.05em", "font_weight": "600", "text_transform": "uppercase", "font_family": "body", "inferred": true },
+        { "name": "button", "font_size_px": "16px", "font_size_rem": "1rem", "line_height": "1.5", "letter_spacing": "0", "font_weight": "600", "text_transform": "none", "font_family": "body", "inferred": true },
+        { "name": "code", "font_size_px": "14px", "font_size_rem": "0.875rem", "line_height": "1.5", "letter_spacing": "0", "font_weight": "400", "text_transform": "none", "font_family": "mono", "inferred": true }
+      ]
+    }
+  },
+  "spacing_and_layout": {
+    "instructions": "Based on a 4px modular scale typical of dense, responsive enterprise designs.",
+    "base_unit_px": "4",
+    "spacing_scale": [
+      { "token": "space-1", "value_px": "4px", "value_rem": "0.25rem", "inferred": true },
+      { "token": "space-2", "value_px": "8px", "value_rem": "0.5rem", "inferred": true },
+      { "token": "space-3", "value_px": "12px", "value_rem": "0.75rem", "inferred": true },
+      { "token": "space-4", "value_px": "16px", "value_rem": "1rem", "inferred": true },
+      { "token": "space-6", "value_px": "24px", "value_rem": "1.5rem", "inferred": true },
+      { "token": "space-8", "value_px": "32px", "value_rem": "2rem", "inferred": true },
+      { "token": "space-12", "value_px": "48px", "value_rem": "3rem", "inferred": true },
+      { "token": "space-16", "value_px": "64px", "value_rem": "4rem", "inferred": true }
+    ],
+    "grid": {
+      "columns": "12",
+      "gutter": "24px",
+      "column_width": "auto",
+      "type": "css-grid",
+      "inferred": true
+    },
+    "containers": [
+      { "name": "container-max", "max_width_px": "1160px", "padding_x": "24px", "inferred": true }
+    ],
+    "breakpoints": [
+      { "name": "sm", "min_width_px": "576px", "inferred": true },
+      { "name": "md", "min_width_px": "768px", "inferred": true },
+      { "name": "lg", "min_width_px": "992px", "inferred": true },
+      { "name": "xl", "min_width_px": "1200px", "inferred": true },
+      { "name": "2xl", "min_width_px": "1440px", "inferred": true }
+    ]
+  },
+  "visual_effects": {
+    "border_radius": [
+      { "token": "radius-sm", "value_px": "4px", "usage": "Inputs, small tags, tooltips", "inferred": true },
+      { "token": "radius-md", "value_px": "8px", "usage": "Buttons, dropdowns, search boxes", "inferred": true },
+      { "token": "radius-lg", "value_px": "12px", "usage": "Cards, large content modules, modals", "inferred": true },
+      { "token": "radius-full", "value_px": "9999px", "usage": "Pills, circular button controls", "inferred": true }
+    ],
+    "shadows": [
+      { "token": "shadow-sm", "value": "0 2px 8px rgba(15, 41, 77, 0.08)", "usage": "Resting cards, simple containers", "inferred": true },
+      { "token": "shadow-md", "value": "0 4px 16px rgba(15, 41, 77, 0.12)", "usage": "Dropdowns, flyouts, hover-states", "inferred": true },
+      { "token": "shadow-lg", "value": "0 8px 32px rgba(15, 41, 77, 0.16)", "usage": "Modals, sticky headers", "inferred": true }
+    ],
+    "borders": [
+      { "token": "border-light", "width_px": "1px", "style": "solid", "color": "#EBEDF0", "inferred": true },
+      { "token": "border-focus", "width_px": "2px", "style": "solid", "color": "#3364FF", "inferred": true }
+    ],
+    "opacity_levels": [
+      { "token": "opacity-disabled", "value": "0.5", "inferred": true },
+      { "token": "opacity-overlay", "value": "0.6", "inferred": true }
+    ],
+    "blur_backdrop": [
+      { "token": "blur-md", "value": "12px", "usage": "Sticky headers, frosted glass overlaps", "inferred": true }
+    ],
+    "z_index_scale": [
+      { "token": "z-dropdown", "value": "1000", "usage": "Dropdown menus", "inferred": true },
+      { "token": "z-sticky", "value": "1020", "usage": "Sticky header", "inferred": true },
+      { "token": "z-overlay", "value": "1040", "usage": "Backdrop layer", "inferred": true },
+      { "token": "z-modal", "value": "1050", "usage": "Modals and dialogs", "inferred": true },
+      { "token": "z-tooltip", "value": "1060", "usage": "Tooltips", "inferred": true }
+    ]
+  },
+  "motion": {
+    "instructions": "Standard interface transition timing.",
+    "durations": [
+      { "token": "fast", "value_ms": "150ms", "inferred": true },
+      { "token": "normal", "value_ms": "300ms", "inferred": true },
+      { "token": "slow", "value_ms": "500ms", "inferred": true }
+    ],
+    "easing_curves": [
+      { "token": "ease-in-out", "cubic_bezier": "cubic-bezier(0.4, 0, 0.2, 1)", "inferred": true },
+      { "token": "ease-out", "cubic_bezier": "cubic-bezier(0, 0, 0.2, 1)", "inferred": true }
+    ],
+    "transition_patterns": [
+      { "property": "background-color", "duration": "150ms", "easing": "ease-in-out", "usage": "Button hover states", "inferred": true },
+      { "property": "transform", "duration": "300ms", "easing": "ease-out", "usage": "Modals, drawers, card lift", "inferred": true }
+    ],
+    "keyframe_animations": [
+      { "name": "fade-in", "description": "Fade in on load", "keyframes": "from { opacity: 0; } to { opacity: 1; }", "inferred": true }
+    ],
+    "interaction_behaviors": "Hover primarily triggers subtle background darkens on buttons and an upward Y-axis transform paired with increased shadow elevation for cards.",
+    "inferred": true
+  },
+  "iconography_and_imagery": {
+    "icons": {
+      "library": "Custom SVGs",
+      "style": "filled & outline mixed",
+      "default_size_px": "24px",
+      "stroke_width_px": "2px",
+      "color_usage": "Inherits surrounding text context (e.g., #0F294D resting, #3364FF active)",
+      "inferred": true
+    },
+    "imagery": {
+      "aspect_ratios": ["16:9", "4:3", "1:1"],
+      "border_radius": "12px",
+      "overlays": "Linear gradient overlay mapped from bottom (rgba(0,0,0,0.6) to rgba(0,0,0,0)) applied behind overlay text.",
+      "treatments": "Full color, prominent use in hero sliders and destination cards.",
+      "inferred": true
+    },
+    "logo": {
+      "clear_space": "16px",
+      "min_size": "24px",
+      "variants": ["Blue wordmark", "White wordmark"],
+      "inferred": true
+    }
+  },
+  "components": {
+    "instructions": "Inferred robust definitions based on interface observation and established UI component standards common to OTA domains.",
+    "buttons": {
+      "variants": ["primary", "secondary", "ghost", "outline", "icon", "link"],
+      "sizes": ["sm", "md", "lg"],
+      "states": {
+        "default": { "background": "#3364FF", "text_color": "#FFFFFF", "border_radius": "8px" },
+        "hover": { "background": "#2851D6", "transform": "translateY(-1px)" },
+        "disabled": { "background": "#EBEDF0", "text_color": "#A1A9B3", "cursor": "not-allowed" }
+      },
+      "anatomy": { "padding": "8px 16px", "font_weight": "600" },
+      "inferred": true
+    },
+    "inputs": {
+      "types": ["text", "textarea", "select", "checkbox", "radio", "toggle", "search"],
+      "states": {
+        "default": { "border": "1px solid #DADFE6", "border_radius": "8px", "background": "#FFFFFF" },
+        "focus": { "border": "2px solid #3364FF", "box_shadow": "0 0 0 2px rgba(51, 100, 255, 0.2)" },
+        "error": { "border": "1px solid #FF4D4F" }
+      },
+      "anatomy": { "height": "48px", "padding": "0 16px" },
+      "inferred": true
+    },
+    "cards": {
+      "states": {
+        "default": { "background": "#FFFFFF", "border_radius": "12px", "box_shadow": "0 2px 8px rgba(15, 41, 77, 0.08)", "padding": "16px" },
+        "hover": { "box_shadow": "0 4px 16px rgba(15, 41, 77, 0.12)", "transform": "translateY(-2px)" }
+      },
+      "inferred": true
+    },
+    "navigation": {
+      "header": { "height": "64px", "background": "#FFFFFF", "position": "sticky", "z_index": "1020" },
+      "footer": { "background": "#F5F7FA", "padding": "48px 24px" },
+      "sidebar": null,
+      "sidebar_notes": "No global sidebar pattern observed; filtering primarily occurs in top or side drawers for search results.",
+      "tabs": { "padding": "12px 16px", "active_border_bottom": "3px solid #3364FF", "color": "#8592A6", "active_color": "#3364FF" },
+      "breadcrumbs": null,
+      "breadcrumbs_notes": "Not present on homepage; standard hierarchical separation (/) inferred for interior views.",
+      "inferred": true
+    },
+    "modals_dialogs": { "overlay": "rgba(15, 41, 77, 0.6)", "border_radius": "12px", "padding": "24px", "background": "#FFFFFF", "inferred": true },
+    "dropdowns_menus": { "background": "#FFFFFF", "border_radius": "8px", "box_shadow": "0 4px 16px rgba(15, 41, 77, 0.12)", "padding": "8px 0", "inferred": true },
+    "tooltips_popovers": { "background": "#2B3645", "text_color": "#FFFFFF", "border_radius": "4px", "padding": "8px 12px", "font_size": "12px", "inferred": true },
+    "badges_tags_pills": { "border_radius": "4px", "padding": "2px 8px", "font_size": "12px", "background": "#E6F0FF", "color": "#3364FF", "inferred": true },
+    "alerts_toasts": { "border_radius": "8px", "padding": "12px 16px", "success_bg": "#E6F6ED", "error_bg": "#FFF0F0", "inferred": true },
+    "tables": { "header_bg": "#F5F7FA", "border_bottom": "1px solid #EBEDF0", "cell_padding": "12px 16px", "inferred": true },
+    "accordions": { "border": "1px solid #EBEDF0", "header_padding": "16px", "icon_transition": "rotate 150ms ease", "inferred": true },
+    "avatars": { "border_radius": "50%", "sizes": ["24px", "32px", "48px"], "fallback_bg": "#EBEDF0", "inferred": true },
+    "progress_loaders": { "track_color": "#EBEDF0", "fill_color": "#3364FF", "height": "4px", "border_radius": "2px", "inferred": true },
+    "pagination": { "item_size": "32px", "active_bg": "#3364FF", "active_color": "#FFFFFF", "default_color": "#0F294D", "inferred": true },
+    "chips": { "border_radius": "16px", "background": "#F5F7FA", "padding": "4px 12px", "hover_bg": "#EBEDF0", "inferred": true },
+    "sliders": { "track": "#EBEDF0", "handle": "#FFFFFF", "handle_border": "2px solid #3364FF", "fill": "#3364FF", "inferred": true },
+    "other_observed": []
+  },
+  "accessibility": {
+    "color_contrast_notes": "Primary text (#0F294D) on white (#FFFFFF) provides excellent contrast (14.2:1). Primary blue (#3364FF) on white sits at ~4.1:1, failing AAA but passing AA for large text/icons.",
+    "focus_indicators": "2px solid #3364FF applied universally to interactive fields via pseudo-classes, mapped to `outline` or `box-shadow`.",
+    "reduced_motion": "No explicit `prefers-reduced-motion` media queries observed active."
+  },
+  "design_principles": {
+    "hierarchy_approach": "Heavy reliance on font weight and strict layout grids rather than multiple font families. Important data (prices, names) is heavily bolded.",
+    "contrast_strategy": "High contrast between structural components (Deep Navy) and interactive mechanisms (Vibrant Blue/Orange) creates an unmistakable path for conversion.",
+    "consistency_notes": "Standardized, componentized approach highly typical of mature React-based enterprise component libraries (e.g., heavily customized Ant Design or similar robust internal framework).",
+    "personality": "Professional, energetic, functional, accessible, reliable"
+  }
+}

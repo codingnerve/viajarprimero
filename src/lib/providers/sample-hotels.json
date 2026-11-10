@@ -1,0 +1,871 @@
+{
+  "_readme": [
+    "SAMPLE HOTEL DATA — NOTHING IN HERE IS REAL.",
+    "",
+    "Every property, price, rating and review count below is invented. No hotel",
+    "has quoted these rates, none of them can be booked, and the names are not",
+    "real businesses — they are constructed from a street or district plus a",
+    "generic suffix so they cannot be mistaken for a trading property.",
+    "",
+    "This exists so the hotel search, results, filters, sorting, pagination and",
+    "detail pages can be built and demonstrated before a supplier key is added.",
+    "It is off in production unless HOTEL_SAMPLE_DATA=1 is set explicitly, and",
+    "everything it produces is tagged source:'sample' so the UI must say so.",
+    "See src/lib/providers/sample-hotels.ts.",
+    "",
+    "Photographs are local files from public/images. They are stock images of",
+    "buildings and places, deliberately repeated across entries rather than",
+    "matched to a property, because pairing an invented hotel with a real",
+    "building's photograph would be the one genuinely misleading thing here."
+  ],
+  "facilities": [
+    {
+      "id": 1,
+      "name": "Free WiFi"
+    },
+    {
+      "id": 2,
+      "name": "Swimming pool"
+    },
+    {
+      "id": 3,
+      "name": "Fitness centre"
+    },
+    {
+      "id": 4,
+      "name": "Spa"
+    },
+    {
+      "id": 5,
+      "name": "Restaurant"
+    },
+    {
+      "id": 6,
+      "name": "Bar"
+    },
+    {
+      "id": 7,
+      "name": "Free parking"
+    },
+    {
+      "id": 8,
+      "name": "Airport shuttle"
+    },
+    {
+      "id": 9,
+      "name": "Air conditioning"
+    },
+    {
+      "id": 10,
+      "name": "Pet friendly"
+    },
+    {
+      "id": 11,
+      "name": "Family rooms"
+    },
+    {
+      "id": 12,
+      "name": "Room service"
+    },
+    {
+      "id": 13,
+      "name": "24-hour front desk"
+    },
+    {
+      "id": 14,
+      "name": "Breakfast included"
+    },
+    {
+      "id": 15,
+      "name": "Wheelchair accessible"
+    },
+    {
+      "id": 16,
+      "name": "Laundry service"
+    }
+  ],
+  "places": [
+    {
+      "id": "sample-barcelona",
+      "name": "Barcelona",
+      "detail": "Catalonia, Spain",
+      "kind": "city",
+      "aliases": [
+        "barcelona",
+        "barcelone",
+        "bcn"
+      ]
+    },
+    {
+      "id": "sample-london",
+      "name": "London",
+      "detail": "United Kingdom",
+      "kind": "city",
+      "aliases": [
+        "london",
+        "londres",
+        "lon"
+      ]
+    },
+    {
+      "id": "sample-tokyo",
+      "name": "Tokyo",
+      "detail": "Japan",
+      "kind": "city",
+      "aliases": [
+        "tokyo",
+        "tokio",
+        "tyo"
+      ]
+    },
+    {
+      "id": "sample-gothic-quarter",
+      "name": "Gothic Quarter",
+      "detail": "Barcelona, Spain",
+      "kind": "area",
+      "aliases": [
+        "gothic",
+        "gotic",
+        "barri gotic"
+      ]
+    },
+    {
+      "id": "sample-shibuya",
+      "name": "Shibuya",
+      "detail": "Tokyo, Japan",
+      "kind": "area",
+      "aliases": [
+        "shibuya"
+      ]
+    },
+    {
+      "id": "sample-los-angeles",
+      "name": "Los Angeles",
+      "detail": "California, United States",
+      "kind": "city",
+      "aliases": [
+        "los angeles",
+        "la",
+        "lax",
+        "hollywood"
+      ]
+    },
+    {
+      "id": "sample-new-york",
+      "name": "New York",
+      "detail": "New York, United States",
+      "kind": "city",
+      "aliases": [
+        "new york",
+        "nyc",
+        "manhattan",
+        "ny"
+      ]
+    },
+    {
+      "id": "sample-paris",
+      "name": "Paris",
+      "detail": "Île-de-France, France",
+      "kind": "city",
+      "aliases": [
+        "paris",
+        "par"
+      ]
+    },
+    {
+      "id": "sample-rome",
+      "name": "Rome",
+      "detail": "Lazio, Italy",
+      "kind": "city",
+      "aliases": [
+        "rome",
+        "roma"
+      ]
+    },
+    {
+      "id": "sample-madrid",
+      "name": "Madrid",
+      "detail": "Spain",
+      "kind": "city",
+      "aliases": [
+        "madrid",
+        "mad"
+      ]
+    },
+    {
+      "id": "sample-lisbon",
+      "name": "Lisbon",
+      "detail": "Portugal",
+      "kind": "city",
+      "aliases": [
+        "lisbon",
+        "lisboa",
+        "lis"
+      ]
+    },
+    {
+      "id": "sample-amsterdam",
+      "name": "Amsterdam",
+      "detail": "Netherlands",
+      "kind": "city",
+      "aliases": [
+        "amsterdam",
+        "ams"
+      ]
+    },
+    {
+      "id": "sample-berlin",
+      "name": "Berlin",
+      "detail": "Germany",
+      "kind": "city",
+      "aliases": [
+        "berlin",
+        "ber"
+      ]
+    },
+    {
+      "id": "sample-dubai",
+      "name": "Dubai",
+      "detail": "United Arab Emirates",
+      "kind": "city",
+      "aliases": [
+        "dubai",
+        "dxb"
+      ]
+    },
+    {
+      "id": "sample-singapore",
+      "name": "Singapore",
+      "detail": "Singapore",
+      "kind": "city",
+      "aliases": [
+        "singapore",
+        "sin"
+      ]
+    },
+    {
+      "id": "sample-bangkok",
+      "name": "Bangkok",
+      "detail": "Thailand",
+      "kind": "city",
+      "aliases": [
+        "bangkok",
+        "bkk"
+      ]
+    },
+    {
+      "id": "sample-istanbul",
+      "name": "Istanbul",
+      "detail": "Türkiye",
+      "kind": "city",
+      "aliases": [
+        "istanbul",
+        "ist"
+      ]
+    },
+    {
+      "id": "sample-mexico-city",
+      "name": "Mexico City",
+      "detail": "Mexico",
+      "kind": "city",
+      "aliases": [
+        "mexico city",
+        "cdmx",
+        "mex",
+        "mexico"
+      ]
+    },
+    {
+      "id": "sample-miami",
+      "name": "Miami",
+      "detail": "Florida, United States",
+      "kind": "city",
+      "aliases": [
+        "miami",
+        "mia"
+      ]
+    },
+    {
+      "id": "sample-san-francisco",
+      "name": "San Francisco",
+      "detail": "California, United States",
+      "kind": "city",
+      "aliases": [
+        "san francisco",
+        "sfo",
+        "sf"
+      ]
+    },
+    {
+      "id": "sample-chicago",
+      "name": "Chicago",
+      "detail": "Illinois, United States",
+      "kind": "city",
+      "aliases": [
+        "chicago",
+        "chi",
+        "ord"
+      ]
+    },
+    {
+      "id": "sample-sydney",
+      "name": "Sydney",
+      "detail": "New South Wales, Australia",
+      "kind": "city",
+      "aliases": [
+        "sydney",
+        "syd"
+      ]
+    },
+    {
+      "id": "sample-bogota",
+      "name": "Bogotá",
+      "detail": "Colombia",
+      "kind": "city",
+      "aliases": [
+        "bogota",
+        "bogotá",
+        "bog"
+      ]
+    },
+    {
+      "id": "sample-san-juan",
+      "name": "San Juan",
+      "detail": "Puerto Rico",
+      "kind": "city",
+      "aliases": [
+        "san juan",
+        "sju"
+      ]
+    },
+    {
+      "id": "sample-cancun",
+      "name": "Cancún",
+      "detail": "Quintana Roo, Mexico",
+      "kind": "city",
+      "aliases": [
+        "cancun",
+        "cancún",
+        "cun"
+      ]
+    },
+    {
+      "id": "sample-edinburgh",
+      "name": "Edinburgh",
+      "detail": "Scotland, United Kingdom",
+      "kind": "city",
+      "aliases": [
+        "edinburgh",
+        "edi"
+      ]
+    }
+  ],
+  "hotels": [
+    {
+      "id": "sample-bcn-1",
+      "placeIds": [
+        "sample-barcelona",
+        "sample-gothic-quarter"
+      ],
+      "name": "Carrer Ample Boutique Rooms",
+      "address": "Carrer Ample 42",
+      "city": "Barcelona",
+      "country": "Spain",
+      "stars": 4,
+      "rating": 8.9,
+      "reviewCount": 1842,
+      "images": [
+        "/images/home/hotel.jpg",
+        "/images/home/groupimage.jpg"
+      ],
+      "description": "A converted nineteenth-century townhouse a few streets from the harbour, with a courtyard that stays cool through the afternoon. Rooms face either the courtyard or the street; the courtyard side is materially quieter at night.",
+      "facilityIds": [
+        1,
+        5,
+        6,
+        9,
+        12,
+        13,
+        14
+      ],
+      "latitude": 41.3802,
+      "longitude": 2.1798,
+      "nightlyFrom": 14200,
+      "refundable": true
+    },
+    {
+      "id": "sample-bcn-2",
+      "placeIds": [
+        "sample-barcelona"
+      ],
+      "name": "Eixample Garden Hotel",
+      "address": "Carrer de Mallorca 210",
+      "city": "Barcelona",
+      "country": "Spain",
+      "stars": 5,
+      "rating": 9.4,
+      "reviewCount": 2610,
+      "images": [
+        "/images/home/groupimage.jpg",
+        "/images/home/hotel.jpg"
+      ],
+      "description": "A large modernista building on a quiet block of the Eixample grid, with a rooftop pool that is open from May to October. The metro is two minutes on foot and reaches the airport directly.",
+      "facilityIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        9,
+        12,
+        13,
+        14,
+        16
+      ],
+      "latitude": 41.3937,
+      "longitude": 2.1616,
+      "nightlyFrom": 31500,
+      "refundable": true
+    },
+    {
+      "id": "sample-bcn-3",
+      "placeIds": [
+        "sample-barcelona",
+        "sample-gothic-quarter"
+      ],
+      "name": "Plaça Reial Guesthouse",
+      "address": "Plaça Reial 8",
+      "city": "Barcelona",
+      "country": "Spain",
+      "stars": 2,
+      "rating": 7.1,
+      "reviewCount": 486,
+      "images": [
+        "/images/home/hotel.jpg"
+      ],
+      "description": "Simple rooms directly on the square. Central to the point of being unavoidable, and correspondingly loud until the small hours — the interior rooms are the ones to ask for.",
+      "facilityIds": [
+        1,
+        9,
+        13
+      ],
+      "latitude": 41.3795,
+      "longitude": 2.1753,
+      "nightlyFrom": 6800,
+      "refundable": false
+    },
+    {
+      "id": "sample-bcn-4",
+      "placeIds": [
+        "sample-barcelona"
+      ],
+      "name": "Poblenou Beach Apartments",
+      "address": "Carrer de Llull 180",
+      "city": "Barcelona",
+      "country": "Spain",
+      "stars": 3,
+      "rating": 8.2,
+      "reviewCount": 973,
+      "images": [
+        "/images/home/groupimage.jpg"
+      ],
+      "description": "Apartment-style rooms with kitchenettes, ten minutes from the beach and well outside the tourist centre. Better value than the old town and a genuinely residential neighbourhood.",
+      "facilityIds": [
+        1,
+        7,
+        9,
+        10,
+        11,
+        16
+      ],
+      "latitude": 41.3989,
+      "longitude": 2.1996,
+      "nightlyFrom": 9900,
+      "refundable": true
+    },
+    {
+      "id": "sample-bcn-5",
+      "placeIds": [
+        "sample-barcelona"
+      ],
+      "name": "Montjuïc Hillside Residence",
+      "address": "Avinguda de Miramar 31",
+      "city": "Barcelona",
+      "country": "Spain",
+      "stars": 4,
+      "rating": null,
+      "reviewCount": 0,
+      "images": [],
+      "description": "Recently opened on the hill above the port, with the funicular at the door. No guest reviews yet, which is a reason to ask questions rather than a reason to avoid it.",
+      "facilityIds": [
+        1,
+        2,
+        5,
+        7,
+        9,
+        13
+      ],
+      "latitude": 41.3641,
+      "longitude": 2.1631,
+      "nightlyFrom": 18700,
+      "refundable": true
+    },
+    {
+      "id": "sample-bcn-6",
+      "placeIds": [
+        "sample-barcelona",
+        "sample-gothic-quarter"
+      ],
+      "name": "Raval Studio Rooms",
+      "address": "Carrer del Carme 55",
+      "city": "Barcelona",
+      "country": "Spain",
+      "stars": 3,
+      "rating": 6.4,
+      "reviewCount": 1204,
+      "images": [
+        "/images/home/hotel.jpg"
+      ],
+      "description": "Small rooms in a busy part of the Raval. Well placed for the museums and the market; the immediate streets are lively late and that is not to everyone's taste.",
+      "facilityIds": [
+        1,
+        9,
+        13,
+        15
+      ],
+      "latitude": 41.3806,
+      "longitude": 2.1683,
+      "nightlyFrom": 7400,
+      "refundable": false,
+      "soldOut": true
+    },
+    {
+      "id": "sample-lon-1",
+      "placeIds": [
+        "sample-london"
+      ],
+      "name": "Bloomsbury Square Townhouse",
+      "address": "Great Russell Street 71",
+      "city": "London",
+      "country": "United Kingdom",
+      "stars": 4,
+      "rating": 9.1,
+      "reviewCount": 3155,
+      "images": [
+        "/images/home/groupimage.jpg",
+        "/images/home/hotel.jpg"
+      ],
+      "description": "A Georgian terrace opposite the museum, with rooms over four floors and no lift above the second. Quiet for how central it is, and walkable to three Underground lines.",
+      "facilityIds": [
+        1,
+        3,
+        5,
+        6,
+        9,
+        12,
+        13,
+        14
+      ],
+      "latitude": 51.5188,
+      "longitude": -0.1265,
+      "nightlyFrom": 27300,
+      "refundable": true
+    },
+    {
+      "id": "sample-lon-2",
+      "placeIds": [
+        "sample-london"
+      ],
+      "name": "Southwark Riverside Hotel",
+      "address": "Union Street 14",
+      "city": "London",
+      "country": "United Kingdom",
+      "stars": 5,
+      "rating": 9.6,
+      "reviewCount": 1890,
+      "images": [
+        "/images/home/hotel.jpg",
+        "/images/home/groupimage.jpg"
+      ],
+      "description": "South of the river with rooms facing the water on the upper floors. The riverside walk to the city takes twenty minutes and is the best way to arrive anywhere in London.",
+      "facilityIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        9,
+        12,
+        13,
+        14,
+        16
+      ],
+      "latitude": 51.5045,
+      "longitude": -0.0955,
+      "nightlyFrom": 44800,
+      "refundable": true
+    },
+    {
+      "id": "sample-lon-3",
+      "placeIds": [
+        "sample-london"
+      ],
+      "name": "King's Cross Station Inn",
+      "address": "Caledonian Road 9",
+      "city": "London",
+      "country": "United Kingdom",
+      "stars": 3,
+      "rating": 7.8,
+      "reviewCount": 5402,
+      "images": [
+        "/images/home/groupimage.jpg"
+      ],
+      "description": "Functional rooms two minutes from the station, which is the entire argument for it. Good for an early Eurostar and unremarkable for anything else.",
+      "facilityIds": [
+        1,
+        9,
+        11,
+        13,
+        16
+      ],
+      "latitude": 51.5322,
+      "longitude": -0.1225,
+      "nightlyFrom": 11600,
+      "refundable": false
+    },
+    {
+      "id": "sample-lon-4",
+      "placeIds": [
+        "sample-london"
+      ],
+      "name": "Greenwich Park Lodge",
+      "address": "Crooms Hill 22",
+      "city": "London",
+      "country": "United Kingdom",
+      "stars": 4,
+      "rating": 8.7,
+      "reviewCount": 742,
+      "images": [
+        "/images/home/why-us-road.jpg"
+      ],
+      "description": "On the edge of the park, a long way from the centre and much the better for it. The riverbus into town is slower than the train and worth taking anyway.",
+      "facilityIds": [
+        1,
+        5,
+        7,
+        9,
+        10,
+        11,
+        13,
+        14
+      ],
+      "latitude": 51.4781,
+      "longitude": -0.0053,
+      "nightlyFrom": 16400,
+      "refundable": true
+    },
+    {
+      "id": "sample-tyo-1",
+      "placeIds": [
+        "sample-tokyo",
+        "sample-shibuya"
+      ],
+      "name": "Shibuya Crossing Tower Rooms",
+      "address": "Udagawacho 3-15",
+      "city": "Tokyo",
+      "country": "Japan",
+      "stars": 4,
+      "rating": 9,
+      "reviewCount": 2278,
+      "images": [
+        "/images/home/tokyo.jpg",
+        "/images/home/hotel.jpg"
+      ],
+      "description": "High floors above the crossing, with rooms facing either the intersection or away from it. The quiet side exists and is worth requesting; the view side is the reason most people book.",
+      "facilityIds": [
+        1,
+        3,
+        5,
+        6,
+        9,
+        12,
+        13
+      ],
+      "latitude": 35.6612,
+      "longitude": 139.6982,
+      "nightlyFrom": 23100,
+      "refundable": true
+    },
+    {
+      "id": "sample-tyo-2",
+      "placeIds": [
+        "sample-tokyo"
+      ],
+      "name": "Yanaka Machiya Stay",
+      "address": "Yanaka 5-4-1",
+      "city": "Tokyo",
+      "country": "Japan",
+      "stars": 3,
+      "rating": 9.3,
+      "reviewCount": 611,
+      "images": [
+        "/images/home/tokyo.jpg"
+      ],
+      "description": "A restored wooden townhouse in one of the few districts that survived both the earthquake and the war. Tatami rooms, shared bathing, and a neighbourhood that closes early.",
+      "facilityIds": [
+        1,
+        9,
+        13,
+        14
+      ],
+      "latitude": 35.7273,
+      "longitude": 139.7669,
+      "nightlyFrom": 13800,
+      "refundable": true
+    },
+    {
+      "id": "sample-tyo-3",
+      "placeIds": [
+        "sample-tokyo",
+        "sample-shibuya"
+      ],
+      "name": "Shinjuku Business Rooms",
+      "address": "Nishishinjuku 7-2",
+      "city": "Tokyo",
+      "country": "Japan",
+      "stars": 3,
+      "rating": 7.4,
+      "reviewCount": 4106,
+      "images": [
+        "/images/home/tokyo.jpg"
+      ],
+      "description": "Compact business-hotel rooms, efficiently run and priced accordingly. Eleven minutes on foot from the station's west exit, which at Shinjuku is a meaningful distance.",
+      "facilityIds": [
+        1,
+        9,
+        12,
+        13,
+        16
+      ],
+      "latitude": 35.6938,
+      "longitude": 139.6905,
+      "nightlyFrom": 8900,
+      "refundable": false
+    },
+    {
+      "id": "sample-tyo-4",
+      "placeIds": [
+        "sample-tokyo"
+      ],
+      "name": "Marunouchi Palace View Hotel",
+      "address": "Marunouchi 2-7-3",
+      "city": "Tokyo",
+      "country": "Japan",
+      "stars": 5,
+      "rating": 9.5,
+      "reviewCount": 1433,
+      "images": [
+        "/images/home/tokyo.jpg",
+        "/images/home/groupimage.jpg"
+      ],
+      "description": "Above the station, facing the palace gardens. Expensive, and the only hotel on this list from which you can reach the Shinkansen without going outdoors.",
+      "facilityIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        8,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "latitude": 35.6812,
+      "longitude": 139.7671,
+      "nightlyFrom": 52600,
+      "refundable": true
+    }
+  ],
+  "roomTemplates": [
+    {
+      "name": "Standard Double",
+      "board": "Room only",
+      "priceFactor": 1,
+      "maxOccupancy": 2,
+      "amenities": [
+        "Double bed",
+        "Air conditioning",
+        "Free WiFi",
+        "Private bathroom"
+      ]
+    },
+    {
+      "name": "Superior Double, city view",
+      "board": "Breakfast included",
+      "priceFactor": 1.35,
+      "maxOccupancy": 2,
+      "amenities": [
+        "Double bed",
+        "City view",
+        "Air conditioning",
+        "Free WiFi",
+        "Minibar"
+      ]
+    },
+    {
+      "name": "Twin Room",
+      "board": "Room only",
+      "priceFactor": 1.1,
+      "maxOccupancy": 2,
+      "amenities": [
+        "Two single beds",
+        "Air conditioning",
+        "Free WiFi",
+        "Desk"
+      ]
+    },
+    {
+      "name": "Family Room",
+      "board": "Breakfast included",
+      "priceFactor": 1.8,
+      "maxOccupancy": 4,
+      "amenities": [
+        "Double bed",
+        "Two single beds",
+        "Air conditioning",
+        "Free WiFi"
+      ]
+    },
+    {
+      "name": "Junior Suite",
+      "board": "Breakfast included",
+      "priceFactor": 2.4,
+      "maxOccupancy": 3,
+      "amenities": [
+        "King bed",
+        "Separate sitting area",
+        "Air conditioning",
+        "Free WiFi",
+        "Bathrobe"
+      ]
+    }
+  ],
+  "generatedNames": [
+    "Central Rooms",
+    "Riverside Hotel",
+    "Station Inn",
+    "Park Lodge",
+    "Old Town Guesthouse",
+    "Garden Suites",
+    "Harbour View Hotel",
+    "Market Square Rooms",
+    "Cathedral Quarter Hotel",
+    "Airport Plaza Inn"
+  ]
+}

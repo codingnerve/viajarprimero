@@ -1,0 +1,274 @@
+{
+  "version": 1,
+  "projectId": "0ec65ece-c0df-48ac-b974-308ea1d36fdb",
+  "canvas": "https://superdesign.dev/teams/cd2458da-0b1f-407d-b07d-578e369cdbff/projects/0ec65ece-c0df-48ac-b974-308ea1d36fdb",
+  "brandAssets": {
+    "logo": {
+      "assetKey": "public-images-brand-logo.png",
+      "source": "public/images/brand/logo.png",
+      "url": "https://vgbujcuwptvheqijyjbe.supabase.co/storage/v1/object/public/hmac-uploads/projects/858bc7ce-58ff-4c34-a0b6-dde12663ca58/brand-assets/public-images-brand-logo.png/logo.png",
+      "sha256": "f3fe81bb06e4bde01c7bd5de64a604af8d8157cdcfe0d07e0a34ee8520b075e0"
+    },
+    "logoInverse": {
+      "assetKey": "public-images-brand-logo-inverse.png",
+      "source": "public/images/brand/logo-inverse.png",
+      "url": "https://vgbujcuwptvheqijyjbe.supabase.co/storage/v1/object/public/hmac-uploads/projects/858bc7ce-58ff-4c34-a0b6-dde12663ca58/brand-assets/public-images-brand-logo-inverse.png/logo-inverse.png",
+      "sha256": "e32d40db969efecf7aa1a176212300c43a84908e0e6015ec5935a4cb7697abbc"
+    }
+  },
+  "targets": [
+    {
+      "target": "home-hero",
+      "route": "/",
+      "entry": "src/app/page.tsx",
+      "kind": "existing-ui",
+      "baselineDraftId": "4f0b350d-2485-4292-9d34-d6b85b89558b",
+      "activeDraftId": "4f0b350d-2485-4292-9d34-d6b85b89558b",
+      "baselineVerified": {
+        "logoPostcondition": "pass",
+        "paletteCheck": "pass \u2014 all hex values are project tokens",
+        "structure": "pass \u2014 headline, 5 segmented tabs, From/To/Depart/Return cells, 3 proof points"
+      },
+      "contextBundle": [
+        ".superdesign/design-system.md",
+        "src/app/globals.css",
+        "src/app/page.tsx:1:288",
+        "src/components/layout/section.tsx",
+        "src/components/layout/site-header.tsx",
+        "src/components/layout/logo.tsx",
+        "src/components/layout/call-button.tsx",
+        "src/components/layout/nav-link.tsx",
+        "src/components/ui/container.tsx",
+        "src/components/ui/tabs.tsx",
+        "src/components/ui/hero-carousel.tsx",
+        "src/components/ui/plate.tsx",
+        "src/components/ui/icons.tsx",
+        "src/components/ui/search-panel.tsx",
+        "src/components/ui/button.tsx",
+        "src/features/search/components/flight-search-form.tsx",
+        "src/features/enquiries/components/enquiry-quick-form.tsx",
+        "src/lib/config/site.ts",
+        "src/lib/utils/cn.ts"
+      ],
+      "decisions": {
+        "brand": "keep existing tokens, borrow reference layout only",
+        "searchBar": "unified pill bar shape for all five verticals",
+        "spend": "reproduce + 2 variations",
+        "radius": "4px everywhere, no pills (user request 2026-09-13; overrides design-system.md 6-36px ramp)"
+      },
+      "pending": "Awaiting user pick between 4px variations, then implement (retune --radius-* tokens in globals.css, update design-system.md)",
+      "variations": [
+        {
+          "draftId": "042861f0-03a3-45cc-b973-17c8e892cee8",
+          "title": "Crisp 4px \u2014 same layout",
+          "verified": "logo pass, palette pass, radii 4px"
+        },
+        {
+          "draftId": "a8237221-9f84-4fe1-8227-b78cd8a0d0e2",
+          "title": "Structured 4px \u2014 left-aligned editorial hero",
+          "verified": "logo pass, palette pass, radii forced 4px"
+        }
+      ]
+    },
+    {
+      "target": "home-private-aviation",
+      "route": "/",
+      "entry": "src/app/page.tsx",
+      "kind": "existing-ui",
+      "baselineDraftId": "8b86a1fd-0aa5-40ae-931f-da9aede2393b",
+      "activeDraftId": "0c8d82c2-3e59-481f-9e27-dce2f59f8f8a",
+      "contextBundle": [
+        ".superdesign/design-system.md",
+        "src/app/globals.css",
+        "src/app/page.tsx:95:160",
+        "src/app/page.tsx:429:522",
+        "src/components/layout/section.tsx",
+        "src/components/ui/section-heading.tsx",
+        "src/components/ui/button.tsx",
+        "src/components/ui/icons.tsx",
+        "src/lib/content/private-jets.ts:62:180"
+      ],
+      "fingerprints": {
+        ".superdesign/design-system.md": "fd262a9058bfd99dc8d3ab22446f2e6637268047704215170d27b9525b249365",
+        "src/app/globals.css": "476985331e268d8f11a7748606a59edef47b66d5719958f7f746a6ee8c02cd81",
+        "src/app/page.tsx": "5b152202b8d42daeaa5cd8a295a3a8e658466a5a5dd12ea1b583b09906dfcf28",
+        "src/components/layout/section.tsx": "f35f68d5429b2e43b9f72db825a491002710342892db9526c7a81c3c665b8e71",
+        "src/components/ui/section-heading.tsx": "f8f1c6a1e3f3022fff1245c6e89f346eade4132752dd9fce4590de4db930031e",
+        "src/components/ui/button.tsx": "d87f89a2d49ef3f8aff49f48b60246f808aaf100d58754335533427e610a71f9",
+        "src/components/ui/icons.tsx": "0296966d55134deb4ba6de667e4457347fba674234732af2f062eb87f3c179a4",
+        "src/lib/content/private-jets.ts": "adeef19daba3700ed99bd6190b12943d68475add3b777c120308bbe178615fc2"
+      },
+      "referenceIds": [
+        "8b08a85d-b2b2-437e-ba7e-c9bd390dc1f9",
+        "96842053-dc84-4750-9c29-9402b17f955c",
+        "6eb87a69-5eb9-4380-9114-e13274a4ebc0"
+      ],
+      "contentAssets": {
+        "jet-on-the-ramp": "public/images/private-jet/slider/jet-on-the-ramp.jpg",
+        "jet-cabin": "public/images/private-jet/slider/jet-cabin.jpg",
+        "jet-airstair": "public/images/private-jet/slider/jet-airstair.jpg"
+      },
+      "decisions": {
+        "request": "user dislikes text-only band; wants photography + complete redesign",
+        "radius": "4px everywhere, no pills"
+      },
+      "pending": null,
+      "variations": [
+        {
+          "draftId": "c24f1b69-b82b-4eca-a9b0-04d95eb149d4",
+          "title": "Cinematic photo band \u2014 full-bleed ramp photo, overlapping white spec-tile panel",
+          "verified": "photo pass, radii 4px, no invented claims"
+        },
+        {
+          "draftId": "0c8d82c2-3e59-481f-9e27-dce2f59f8f8a",
+          "title": "Editorial split \u2014 light ground, cabin+airstair photo mosaic, navy category strip",
+          "verified": "photos pass, radii 4px, no invented claims"
+        }
+      ],
+      "updatedAt": "2026-09-13T23:59:12.901568",
+      "implemented": "Option B built as src/features/private-jets/components/private-aviation-band.tsx, rendered from src/app/page.tsx; lint, tsc, build pass"
+    },
+    {
+      "target": "home-how-it-works",
+      "route": "/",
+      "entry": "src/app/page.tsx",
+      "kind": "existing-ui",
+      "baselineDraftId": "d52315f3-396f-4906-aff7-6b63c298fb9a",
+      "activeDraftId": "d52315f3-396f-4906-aff7-6b63c298fb9a",
+      "contextBundle": [
+        ".superdesign/design-system.md",
+        "src/app/globals.css",
+        "src/app/page.tsx:372:388",
+        "src/components/ui/stepper.tsx",
+        "src/lib/content/home.ts:15:50",
+        "src/components/ui/section-heading.tsx",
+        "src/components/layout/section.tsx",
+        "src/components/ui/button.tsx",
+        "src/components/ui/icons.tsx",
+        "src/lib/utils/cn.ts"
+      ],
+      "fingerprints": {
+        ".superdesign/design-system.md": "fd262a9058bfd99dc8d3ab22446f2e6637268047704215170d27b9525b249365",
+        "src/app/globals.css": "476985331e268d8f11a7748606a59edef47b66d5719958f7f746a6ee8c02cd81",
+        "src/app/page.tsx": "48b3c4248fdf3b153350e558d3c2d7c4de21cfcdac877e8b96ec2adea0342380",
+        "src/components/ui/stepper.tsx": "17d4d79b9286e9f3c65028cc6bd8b1be377ff0c1b79ee35b270b5925ec31cd88",
+        "src/lib/content/home.ts": "fa771e065cf8822af607f50dc63a9f74e1393875699e3e1706e309f4da47474b",
+        "src/components/ui/section-heading.tsx": "a33051ae5bf5444c91e9b044799248c15d165cc22b9150c4d7601e577d4a91e9",
+        "src/components/layout/section.tsx": "f35f68d5429b2e43b9f72db825a491002710342892db9526c7a81c3c665b8e71",
+        "src/components/ui/button.tsx": "d87f89a2d49ef3f8aff49f48b60246f808aaf100d58754335533427e610a71f9",
+        "src/components/ui/icons.tsx": "0296966d55134deb4ba6de667e4457347fba674234732af2f062eb87f3c179a4",
+        "src/lib/utils/cn.ts": "c55b9c8c14dda3dbdeea3094a0c5155c9ccfcc02f4d49ca14e04c49061040736"
+      },
+      "decisions": {
+        "brand": "keep tokens",
+        "radius": "4px everywhere, no pills",
+        "spend": "reproduce + 2 variations",
+        "request": "user rejected text-heavy A/B; wants less text + photos"
+      },
+      "pending": "Awaiting user pick between C and D, then implement",
+      "variations": [
+        {
+          "draftId": "f5312d58-a598-48ea-a3e9-5da94e0ac794",
+          "title": "C Three tall photo cards"
+        },
+        {
+          "draftId": "06bc9308-74a3-4a26-86b6-76cb367a23ef",
+          "title": "D Split photo + steps"
+        }
+      ],
+      "updatedAt": "2026-09-14T00:32:10.874808",
+      "contentAssets": {
+        "groupimage": {
+          "nodeId": "c5b2b611-90c5-4f04-98b5-3139e31f9d0e",
+          "url": "https://vgbujcuwptvheqijyjbe.supabase.co/storage/v1/object/public/hmac-uploads/projects/0ec65ece-c0df-48ac-b974-308ea1d36fdb/content-assets/public-images-home-groupimage/groupimage.jpg"
+        },
+        "tokyo": {
+          "nodeId": "8cf3830f-35a1-45c3-8231-7d7affcd4796",
+          "url": "https://vgbujcuwptvheqijyjbe.supabase.co/storage/v1/object/public/hmac-uploads/projects/0ec65ece-c0df-48ac-b974-308ea1d36fdb/content-assets/public-images-home-tokyo/tokyo.jpg"
+        },
+        "aeroplane": {
+          "nodeId": "41e984a3-69c5-4523-9890-efe91f9a13b9",
+          "url": "https://vgbujcuwptvheqijyjbe.supabase.co/storage/v1/object/public/hmac-uploads/projects/0ec65ece-c0df-48ac-b974-308ea1d36fdb/content-assets/public-images-home-aeroplane/aeroplane.jpg"
+        },
+        "hotel": {
+          "nodeId": "882974a6-268a-415c-a9ce-5b1a2dcbdfe0",
+          "url": "https://vgbujcuwptvheqijyjbe.supabase.co/storage/v1/object/public/hmac-uploads/projects/0ec65ece-c0df-48ac-b974-308ea1d36fdb/content-assets/public-images-home-hotel/hotel.jpg"
+        }
+      }
+    },
+    {
+      "target": "home-newsletter",
+      "route": "/",
+      "entry": "src/app/page.tsx",
+      "kind": "existing-ui",
+      "baselineDraftId": "6285fb5c-1c55-41a7-8c26-14061501ce12",
+      "activeDraftId": "6285fb5c-1c55-41a7-8c26-14061501ce12",
+      "contextBundle": [
+        ".superdesign/design-system.md",
+        "src/app/globals.css",
+        "src/app/page.tsx:420:438",
+        "src/features/newsletter/components/newsletter-signup.tsx",
+        "src/components/ui/section-heading.tsx",
+        "src/components/ui/button.tsx",
+        "src/components/ui/input.tsx",
+        "src/components/layout/section.tsx",
+        "src/components/ui/icons.tsx",
+        "src/lib/utils/cn.ts"
+      ],
+      "decisions": {
+        "radius": "4px everywhere, no pills",
+        "request": "variation + a few supporting lines below heading like other sections",
+        "request2": "user disliked current CTA band; asked for redesign + variations (C/D, distinct from A/B)"
+      },
+      "pending": "Awaiting user pick between A-F, then implement",
+      "variations": [
+        {
+          "draftId": "6e783d5b-9096-4380-a57c-b2ffa535859e",
+          "title": "A Stacked centered + 3 points"
+        },
+        {
+          "draftId": "fb812319-5083-43d4-aa97-ce75fa44dc05",
+          "title": "B Split + white form card"
+        },
+        {
+          "draftId": "ad82306e-d574-40ee-a61e-0079fa75684e",
+          "title": "C Photo band + fused input/button in white panel"
+        },
+        {
+          "draftId": "4517e679-7c78-4b52-bbcc-612236c0af13",
+          "title": "D Light ground + inbox preview card"
+        },
+        {
+          "draftId": "97f3ed1d-ad9e-42b8-918a-aa2f89aa8021",
+          "title": "E Boarding-pass card on navy"
+        },
+        {
+          "draftId": "01683668-6ee9-4484-bb49-1a449583a1bd",
+          "title": "F Slim inline strip"
+        }
+      ],
+      "updatedAt": "2026-09-14",
+      "fingerprints": {
+        ".superdesign/design-system.md": "fd262a9058bfd99dc8d3ab22446f2e6637268047704215170d27b9525b249365",
+        "src/app/globals.css": "476985331e268d8f11a7748606a59edef47b66d5719958f7f746a6ee8c02cd81",
+        "src/app/page.tsx": "1aa5ef55037d1ebede5643b2f8a0dfdb0190656f3b4948023a3207fa8cf0312e",
+        "src/features/newsletter/components/newsletter-signup.tsx": "15a7c681e857701fb00219f58ace9e1dd5efe9822cd729c0c464aa95fe96d0d3",
+        "src/components/ui/section-heading.tsx": "a33051ae5bf5444c91e9b044799248c15d165cc22b9150c4d7601e577d4a91e9",
+        "src/components/ui/button.tsx": "d87f89a2d49ef3f8aff49f48b60246f808aaf100d58754335533427e610a71f9",
+        "src/components/ui/input.tsx": "ed82df149184f2abd87629efca1fab7b3fcee40db7d6564e70eb7c97a21db336",
+        "src/components/layout/section.tsx": "f35f68d5429b2e43b9f72db825a491002710342892db9526c7a81c3c665b8e71",
+        "src/components/ui/icons.tsx": "0296966d55134deb4ba6de667e4457347fba674234732af2f062eb87f3c179a4",
+        "src/lib/utils/cn.ts": "c55b9c8c14dda3dbdeea3094a0c5155c9ccfcc02f4d49ca14e04c49061040736"
+      },
+      "referenceIds": [
+        "41e984a3-69c5-4523-9890-efe91f9a13b9"
+      ]
+    }
+  ],
+  "extractedComponents": [],
+  "previousProject": {
+    "projectId": "858bc7ce-58ff-4c34-a0b6-dde12663ca58",
+    "canvas": "https://superdesign.dev/teams/dd0c4c0c-89d3-49d0-bef8-58524861c9b7/projects/858bc7ce-58ff-4c34-a0b6-dde12663ca58",
+    "note": "old account, out of credits"
+  }
+}
