@@ -4,7 +4,22 @@ import Link from "next/link";
 import { ArrowRightIcon } from "@/components/ui/icons";
 import { getArticlesByDate } from "@/lib/content/articles";
 import { getBlogImage } from "@/lib/content/blog-images";
+import { esBlog } from "@/lib/content/es/home";
 import { formatLongDate } from "@/lib/utils/format-date";
+import type { Locale } from "@/types/locale";
+
+/** "14 de julio de 2026" — the long form, in Spanish. */
+function formatLongDateEs(isoDate: string): string {
+  const parsed = new Date(`${isoDate}T00:00:00Z`);
+  if (Number.isNaN(parsed.getTime())) return isoDate;
+
+  return new Intl.DateTimeFormat("es-US", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    timeZone: "UTC",
+  }).format(parsed);
+}
 
 /**
  * The most recent pieces, as cards.
@@ -22,7 +37,14 @@ import { formatLongDate } from "@/lib/utils/format-date";
  * lib/content/blog-images — so the aspect box is held whether or not an image
  * exists, and a row of three stays on the same baseline either way.
  */
-export function LatestArticles({ count = 3 }: { count?: number }) {
+export function LatestArticles({
+  count = 3,
+  locale = "en",
+}: {
+  count?: number;
+  locale?: Locale;
+}) {
+  const es = locale === "es";
   const articles = getArticlesByDate().slice(0, count);
   if (articles.length === 0) return null;
 
@@ -48,7 +70,9 @@ export function LatestArticles({ count = 3 }: { count?: number }) {
 
               <div className="flex flex-1 flex-col p-5">
                 <p className="text-caption text-text-muted">
-                  {article.category} · {article.readingMinutes} min read
+                  {es
+                    ? `${esBlog.categories[article.category] ?? article.category} · ${esBlog.minutes(article.readingMinutes)}`
+                    : `${article.category} · ${article.readingMinutes} min read`}
                 </p>
 
                 <h3 className="mt-2 text-h4 text-balance text-text">
@@ -56,23 +80,29 @@ export function LatestArticles({ count = 3 }: { count?: number }) {
                     href={`/travel-blog/${article.slug}`}
                     className="outline-none after:absolute after:inset-0"
                   >
-                    {article.title}
+                    {es
+                      ? (esBlog.articles[article.slug]?.title ?? article.title)
+                      : article.title}
                   </Link>
                 </h3>
 
                 <p className="mt-2 flex-1 text-body-sm text-text-secondary">
-                  {article.summary}
+                  {es
+                    ? (esBlog.articles[article.slug]?.summary ?? article.summary)
+                    : article.summary}
                 </p>
 
                 <p className="mt-4 flex items-center justify-between gap-3 text-caption text-text-muted">
                   <time dateTime={article.publishedAt}>
-                    {formatLongDate(article.publishedAt)}
+                    {es
+                      ? formatLongDateEs(article.publishedAt)
+                      : formatLongDate(article.publishedAt)}
                   </time>
                   <span
                     aria-hidden="true"
                     className="flex items-center gap-1.5 font-semibold text-primary"
                   >
-                    Read
+                    {es ? esBlog.read : "Read"}
                     <ArrowRightIcon className="size-4 transition-transform duration-[var(--duration-normal)] group-hover:translate-x-1 motion-reduce:transition-none" />
                   </span>
                 </p>

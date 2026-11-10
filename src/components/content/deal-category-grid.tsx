@@ -5,6 +5,8 @@ import { PhoneIcon, TagIcon } from "@/components/ui/icons";
 import { configured } from "@/lib/config/placeholders";
 import { contactConfig } from "@/lib/config/site";
 import { dealGroups } from "@/lib/content/deals";
+import { esDeals } from "@/lib/content/es/chrome";
+import type { Locale } from "@/types/locale";
 
 /**
  * Deal categories.
@@ -16,10 +18,13 @@ import { dealGroups } from "@/lib/content/deals";
 export function DealCategoryGrid({
   variant = "full",
   featured,
+  locale = "en",
 }: {
   variant?: "full" | "compact";
   /** Compact only — which slugs to show, in order. */
   featured?: readonly string[];
+  /** Compact only — the Spanish home page shows translated cards. */
+  locale?: Locale;
 }) {
   const phone = configured(contactConfig.phone);
   const phoneDisplay = configured(contactConfig.phoneDisplay);
@@ -41,10 +46,12 @@ export function DealCategoryGrid({
               <TagIcon className="mt-0.5 size-5 shrink-0 text-primary" />
               <span>
                 <span className="block text-h6 text-text group-hover:text-primary">
-                  {item.label}
+                  {locale === "es" ? (esDeals[item.slug]?.label ?? item.label) : item.label}
                 </span>
                 <span className="mt-1 block text-caption text-text-secondary">
-                  {item.description}
+                  {locale === "es"
+                    ? (esDeals[item.slug]?.description ?? item.description)
+                    : item.description}
                 </span>
               </span>
             </Link>

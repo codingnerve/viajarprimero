@@ -27,8 +27,10 @@ import {
   MAX_GUESTS,
   MAX_ROOMS,
 } from "@/features/hotels/lib/hotel-search-params";
+import { hotelSearchCopy } from "@/features/hotels/lib/hotel-search-copy";
 import { bookingConfig } from "@/lib/config/booking";
 import type { PlaceSuggestion } from "@/types/hotel";
+import type { Locale } from "@/types/locale";
 
 interface FieldErrors {
   place?: string;
@@ -62,6 +64,7 @@ export function HotelSearchForm({
   popular = [],
   className,
   tone = "panel",
+  locale = "en",
 }: {
   initial?: Partial<{
     placeId: string;
@@ -82,7 +85,9 @@ export function HotelSearchForm({
   popular?: readonly PlaceSuggestion[];
   className?: string;
   tone?: SearchPanelTone;
+  locale?: Locale;
 }) {
+  const copy = hotelSearchCopy[locale];
   const router = useRouter();
   const id = useId();
 
@@ -247,22 +252,22 @@ export function HotelSearchForm({
     */
     if (!placeId && !(bookingConfig.callToBook && placeQuery.trim())) {
       if (!placeQuery.trim()) {
-        next.place = "Where are you going?";
+        next.place = copy.errors.placeEmpty;
       } else if (suggestions.length === 0) {
-        next.place = `We could not find “${placeQuery.trim()}”. Try the city name.`;
+        next.place = copy.errors.placeNotFound(placeQuery.trim());
       } else {
-        next.place = "Pick a city or area from the list.";
+        next.place = copy.errors.placePick;
       }
     }
     if (!checkIn) {
-      next.checkIn = "Add a check-in date.";
+      next.checkIn = copy.errors.checkInMissing;
     } else if (checkIn < today()) {
-      next.checkIn = "That date has passed.";
+      next.checkIn = copy.errors.datePassed;
     }
     if (!checkOut) {
-      next.checkOut = "Add a check-out date.";
+      next.checkOut = copy.errors.checkOutMissing;
     } else if (checkIn && checkOut <= checkIn) {
-      next.checkOut = "Check-out must be after check-in.";
+      next.checkOut = copy.errors.checkOutOrder;
     }
 
     setErrors(next);
@@ -294,7 +299,7 @@ export function HotelSearchForm({
   return (
     <SearchPanel
       onSubmit={handleSubmit}
-      aria-label="Hotel search"
+      aria-label={copy.ariaLabel}
       tone={tone}
       className={className}
     >
@@ -302,7 +307,7 @@ export function HotelSearchForm({
         <div className="flex flex-wrap items-center gap-x-1 gap-y-2 sm:ms-auto">
           <QuietSelect
             id={`${id}-rooms`}
-            label="Rooms"
+            label={copy.roomsLabel}
             value={rooms}
             onChange={(value) => {
               const next = Number(value);
@@ -315,7 +320,7 @@ export function HotelSearchForm({
             {Array.from({ length: MAX_ROOMS }, (_, index) => index + 1).map(
               (value) => (
                 <option key={value} value={value}>
-                  {value} {value === 1 ? "room" : "rooms"}
+                  {copy.rooms(value)}
                 </option>
               ),
             )}
@@ -323,14 +328,14 @@ export function HotelSearchForm({
 
           <QuietSelect
             id={`${id}-adults`}
-            label="Adults"
+            label={copy.adultsLabel}
             value={adults}
             onChange={(value) => setAdults(Number(value))}
           >
             {Array.from({ length: MAX_GUESTS }, (_, index) => index + 1).map(
               (value) => (
                 <option key={value} value={value}>
-                  {value} {value === 1 ? "adult" : "adults"}
+                  {copy.adults(value)}
                 </option>
               ),
             )}
@@ -338,14 +343,14 @@ export function HotelSearchForm({
 
           <QuietSelect
             id={`${id}-children`}
-            label="Children"
+            label={copy.childrenLabel}
             value={children}
             onChange={(value) => setChildren(Number(value))}
           >
             {Array.from({ length: MAX_GUESTS }, (_, index) => index).map(
               (value) => (
                 <option key={value} value={value}>
-                  {value} {value === 1 ? "child" : "children"}
+                  {copy.children(value)}
                 </option>
               ),
             )}
@@ -366,7 +371,7 @@ export function HotelSearchForm({
       >
         <SearchCell
           htmlFor={`${id}-place`}
-          label="Where to"
+          label={copy.whereTo}
           invalid={Boolean(errors.place)}
           className="relative"
         >
@@ -389,7 +394,7 @@ export function HotelSearchForm({
             onOpenChange={setOpen}
             activeIndex={activeIndex}
             onActiveIndexChange={setActiveIndex}
-            placeholder="City, area or hotel"
+            placeholder={copy.placePlaceholder}
             invalid={Boolean(errors.place)}
             describedBy={errors.place ? `${id}-place-error` : undefined}
             icon={<MapPinIcon className="size-4" />}
@@ -399,7 +404,7 @@ export function HotelSearchForm({
               on an empty field has to explain why it is there, or it reads as
               a stale dropdown.
             */
-            heading={searching ? undefined : "Popular destinations"}
+            heading={searching ? undefined : copy.popularHeading}
             /*
               The empty panel is the point. A combobox that simply shows
               nothing leaves the traveller unable to tell whether it is still
@@ -411,22 +416,21 @@ export function HotelSearchForm({
               showEmptyState ? (
                 <>
                   <p className="text-body-sm font-medium text-text">
-                    No destinations match “{placeQuery.trim()}”
+                    {copy.emptyTitle(placeQuery.trim())}
                   </p>
                   <p className="mt-1 text-caption text-text-muted">
                     {bookingConfig.callToBook ? (
-                      "Press Get a quote and an agent will find it for you by phone."
+                      copy.emptyCallToBook
                     ) : (
                       <>
-                        Try the city rather than the neighbourhood, or check
-                        the spelling. You can also{" "}
+                        {copy.emptyHintBefore}
                         <a
                           href="#request"
                           className="font-medium text-primary underline underline-offset-2"
                         >
-                          ask us to find it
+                          {copy.emptyHintLink}
                         </a>
-                        .
+                        {copy.emptyHintAfter}
                       </>
                     )}
                   </p>
@@ -437,14 +441,14 @@ export function HotelSearchForm({
 
           {loadingPlaces && (
             <span className="sr-only" role="status">
-              Searching destinations
+              {copy.searchingStatus}
             </span>
           )}
         </SearchCell>
 
         <SearchCell
           htmlFor={`${id}-checkIn`}
-          label="Check-in"
+          label={copy.checkIn}
           invalid={Boolean(errors.checkIn)}
         >
           <input
@@ -460,7 +464,7 @@ export function HotelSearchForm({
 
         <SearchCell
           htmlFor={`${id}-checkOut`}
-          label="Check-out"
+          label={copy.checkOut}
           invalid={Boolean(errors.checkOut)}
         >
           <input
@@ -482,7 +486,7 @@ export function HotelSearchForm({
             fullWidth
             className="rounded-xs! lg:h-full lg:min-w-36"
           >
-            {bookingConfig.callToBook ? "Get a quote" : "Search"}
+            {bookingConfig.callToBook ? copy.submitQuote : copy.submitSearch}
           </Button>
         </div>
       </SearchRow>

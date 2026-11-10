@@ -47,6 +47,7 @@ export const metadata = buildMetadata({
   title: `${siteConfig.name} — ${siteConfig.tagline}`,
   description: siteConfig.description,
   path: "/",
+  languages: { en: "/", es: "/es", "x-default": "/" },
 });
 
 /**

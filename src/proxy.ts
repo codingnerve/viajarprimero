@@ -27,7 +27,12 @@ import {
  *                 `/es/hotels`, which is what keeps the prefix on every
  *                 internal link.
  *
- * The prefixed URLs are `noindex`: the HTML they return is the same English
+ * `/es` itself is the exception: it is a real, hand-written Spanish home page
+ * (see `app/es/page.tsx`), so it is served as it is, indexable. It still sets
+ * the translate cookie, so the English pages the visitor follows from it keep
+ * arriving translated.
+ *
+ * The other prefixed URLs are `noindex`: the HTML they return is the same English
  * document as the canonical path — the translation only happens in the browser
  * — so letting Google index twelve copies of it would be twelve duplicates,
  * not twelve translations.
@@ -48,10 +53,13 @@ export function proxy(request: NextRequest) {
       return response;
     }
 
+    // The Spanish home page is a real route. Serve it unrewritten and indexable.
+    const nativePage = prefix === "es" && bare === "/";
+
     const url = request.nextUrl.clone();
     url.pathname = bare;
 
-    const response = NextResponse.rewrite(url);
+    const response = nativePage ? NextResponse.next() : NextResponse.rewrite(url);
     response.cookies.set(TRANSLATE_COOKIE, translateCookieValue(prefix), {
       path: "/",
       // Google Translate's script reads this in the browser, so it cannot be
@@ -59,7 +67,7 @@ export function proxy(request: NextRequest) {
       httpOnly: false,
       sameSite: "lax",
     });
-    response.headers.set("X-Robots-Tag", "noindex, nofollow");
+    if (!nativePage) response.headers.set("X-Robots-Tag", "noindex, nofollow");
     return response;
   }
 

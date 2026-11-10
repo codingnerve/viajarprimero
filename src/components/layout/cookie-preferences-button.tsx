@@ -1,6 +1,8 @@
 "use client";
 
 import { useCookieConsent } from "@/hooks/use-cookie-consent";
+import { useLocale } from "@/hooks/use-locale";
+import { esChrome } from "@/lib/content/es/chrome";
 
 /**
  * Reopens the cookie banner so a visitor can change or withdraw consent.
@@ -12,6 +14,7 @@ import { useCookieConsent } from "@/hooks/use-cookie-consent";
  */
 export function CookiePreferencesButton() {
   const { reopen } = useCookieConsent();
+  const locale = useLocale();
 
   return (
     <button
@@ -19,7 +22,7 @@ export function CookiePreferencesButton() {
       onClick={reopen}
       className="rounded-sm text-body-sm text-gray-400 underline-offset-4 transition-colors hover:text-white hover:underline focus-ring-inverse"
     >
-      Cookie choices
+      {locale === "es" ? esChrome.footer.cookieChoices : "Cookie choices"}
     </button>
   );
 }

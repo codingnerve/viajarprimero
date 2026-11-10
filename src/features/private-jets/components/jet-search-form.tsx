@@ -28,6 +28,8 @@ import {
   jetSearchHref,
   MAX_JET_PASSENGERS,
 } from "@/features/private-jets/lib/jet-search-params";
+import { jetSearchCopy } from "@/features/private-jets/lib/jet-search-copy";
+import type { Locale } from "@/types/locale";
 import type { JetHub } from "@/types/private-jet";
 
 interface FieldErrors {
@@ -68,6 +70,7 @@ export function JetSearchForm({
   initial,
   className,
   tone = "panel",
+  locale = "en",
 }: {
   hubs: readonly JetHub[];
   initial?: Partial<{
@@ -79,7 +82,9 @@ export function JetSearchForm({
   }>;
   className?: string;
   tone?: SearchPanelTone;
+  locale?: Locale;
 }) {
+  const copy = jetSearchCopy[locale];
   const router = useRouter();
   const id = useId();
 
@@ -143,11 +148,11 @@ export function JetSearchForm({
 
     const next: FieldErrors = {};
 
-    if (!origin.trim()) next.from = "Where does the flight depart from?";
+    if (!origin.trim()) next.from = copy.errors.fromMissing;
     if (!departOn) {
-      next.depart = "Add a departure date.";
+      next.depart = copy.errors.departMissing;
     } else if (departOn < today()) {
-      next.depart = "That date has passed.";
+      next.depart = copy.errors.datePassed;
     }
 
     setErrors(next);
@@ -177,7 +182,7 @@ export function JetSearchForm({
   return (
     <SearchPanel
       onSubmit={handleSubmit}
-      aria-label="Private jet search"
+      aria-label={copy.ariaLabel}
       tone={tone}
       className={className}
     >
@@ -197,19 +202,19 @@ export function JetSearchForm({
               onChange={(event) => setFlexible(event.target.checked)}
               className="size-4 rounded border-border text-primary focus-ring"
             />
-            Flexible by {FLEX_WINDOW_DAYS} days
+            {copy.flexible(FLEX_WINDOW_DAYS)}
           </label>
 
           <QuietSelect
             id={`${id}-passengers`}
-            label="Passengers"
+            label={copy.passengersLabel}
             value={passengers}
             onChange={(value) => setPassengers(Number(value))}
           >
             {Array.from({ length: MAX_JET_PASSENGERS }, (_, i) => i + 1).map(
               (value) => (
                 <option key={value} value={value}>
-                  {value} {value === 1 ? "passenger" : "passengers"}
+                  {copy.passengers(value)}
                 </option>
               ),
             )}
@@ -228,7 +233,7 @@ export function JetSearchForm({
       >
         <SearchCell
           htmlFor={`${id}-from`}
-          label="From"
+          label={copy.from}
           invalid={Boolean(errors.from)}
           className="relative"
         >
@@ -248,14 +253,14 @@ export function JetSearchForm({
             onOpenChange={(next) => setOpenField(next ? "origin" : null)}
             activeIndex={openField === "origin" ? activeIndex : -1}
             onActiveIndexChange={setActiveIndex}
-            placeholder="City or airport"
+            placeholder={copy.fromPlaceholder}
             invalid={Boolean(errors.from)}
             describedBy={errors.from ? `${id}-from-error` : undefined}
             icon={<MapPinIcon className="size-4" />}
-            heading={origin.trim() ? undefined : "Private aviation hubs"}
+            heading={origin.trim() ? undefined : copy.hubsHeading}
             emptyState={
               <p className="text-body-sm text-text">
-                No hub matches “{origin.trim()}” — we will search it anyway.
+                {copy.noHub(origin.trim())}
               </p>
             }
           />
@@ -263,7 +268,7 @@ export function JetSearchForm({
 
         <SearchCell
           htmlFor={`${id}-to`}
-          label="To (optional)"
+          label={copy.to}
           className="relative"
         >
           <Combobox
@@ -281,12 +286,12 @@ export function JetSearchForm({
             onOpenChange={(next) => setOpenField(next ? "destination" : null)}
             activeIndex={openField === "destination" ? activeIndex : -1}
             onActiveIndexChange={setActiveIndex}
-            placeholder="Anywhere"
+            placeholder={copy.toPlaceholder}
             icon={<MapPinIcon className="size-4" />}
-            heading={destination.trim() ? undefined : "Popular arrivals"}
+            heading={destination.trim() ? undefined : copy.arrivalsHeading}
             emptyState={
               <p className="text-body-sm text-text">
-                No hub matches “{destination.trim()}” — we will search it anyway.
+                {copy.noHub(destination.trim())}
               </p>
             }
           />
@@ -294,7 +299,7 @@ export function JetSearchForm({
 
         <SearchCell
           htmlFor={`${id}-depart`}
-          label="Departure"
+          label={copy.departure}
           invalid={Boolean(errors.depart)}
         >
           <input
@@ -316,9 +321,7 @@ export function JetSearchForm({
             fullWidth
             className="rounded-xs! lg:h-full lg:min-w-48"
           >
-            {bookingConfig.callToBook
-              ? "Get a charter quote"
-              : "Search private jets"}
+            {bookingConfig.callToBook ? copy.submitQuote : copy.submitSearch}
           </Button>
         </div>
       </SearchRow>

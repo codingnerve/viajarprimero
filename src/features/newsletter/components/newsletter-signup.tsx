@@ -6,6 +6,32 @@ import { useId, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Checkbox, Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils/cn";
+import type { Locale } from "@/types/locale";
+
+const copyByLocale = {
+  en: {
+    tick: "Please tick the box to confirm you want these emails.",
+    failed: "Sign-up failed.",
+    sent: "Thanks — you are on the list. Every email has an unsubscribe link.",
+    email: "Email address",
+    placeholder: "you@example.com",
+    submit: "Sign up",
+    consent:
+      "Send me route news and fare alerts by email. You can unsubscribe from any email, and we handle your details as described in our",
+    privacy: "privacy policy",
+  },
+  es: {
+    tick: "Marque la casilla para confirmar que desea recibir estos correos.",
+    failed: "No se pudo completar la suscripción.",
+    sent: "Gracias: ya está en la lista. Cada correo incluye un enlace para darse de baja.",
+    email: "Correo electrónico",
+    placeholder: "usted@ejemplo.com",
+    submit: "Suscribirse",
+    consent:
+      "Envíenme noticias de rutas y alertas de tarifas por correo electrónico. Puede darse de baja desde cualquier correo, y trataremos sus datos como se describe en nuestra",
+    privacy: "política de privacidad",
+  },
+} as const;
 
 type Status = "idle" | "submitting" | "sent" | "failed";
 
@@ -25,10 +51,13 @@ type Status = "idle" | "submitting" | "sent" | "failed";
 export function NewsletterSignup({
   tone = "default",
   className,
+  locale = "en",
 }: {
   tone?: "default" | "inverse";
   className?: string;
+  locale?: Locale;
 }) {
+  const copy = copyByLocale[locale];
   const id = useId();
   const [email, setEmail] = useState("");
   const [consent, setConsent] = useState(false);
@@ -42,7 +71,7 @@ export function NewsletterSignup({
 
     if (!consent) {
       setStatus("failed");
-      setMessage("Please tick the box to confirm you want these emails.");
+      setMessage(copy.tick);
       return;
     }
 
@@ -61,13 +90,13 @@ export function NewsletterSignup({
         | null;
 
       if (!response.ok) {
-        throw new Error(body?.message ?? "Sign-up failed.");
+        throw new Error(body?.message ?? copy.failed);
       }
 
       setStatus("sent");
     } catch (error) {
       setStatus("failed");
-      setMessage(error instanceof Error ? error.message : "Sign-up failed.");
+      setMessage(error instanceof Error ? error.message : copy.failed);
     }
   };
 
@@ -97,7 +126,7 @@ export function NewsletterSignup({
             <path d="m4 10.5 4 4 8-9" />
           </svg>
         </span>
-        Thanks — you are on the list. Every email has an unsubscribe link.
+        {copy.sent}
       </p>
     );
   }
@@ -117,7 +146,7 @@ export function NewsletterSignup({
           inverse ? "text-text-inverse" : "text-text",
         )}
       >
-        Email address
+        {copy.email}
       </label>
 
       <div className="mt-2 flex flex-col gap-2 sm:flex-row">
@@ -129,7 +158,7 @@ export function NewsletterSignup({
           required
           value={email}
           onChange={(event) => setEmail(event.target.value)}
-          placeholder="you@example.com"
+          placeholder={copy.placeholder}
           invalid={failed}
           aria-describedby={failed ? `${id}-error` : undefined}
         />
@@ -138,7 +167,7 @@ export function NewsletterSignup({
           loading={status === "submitting"}
           className="sm:shrink-0"
         >
-          Sign up
+          {copy.submit}
         </Button>
       </div>
 
@@ -166,8 +195,7 @@ export function NewsletterSignup({
           onChange={(event) => setConsent(event.target.checked)}
         />
         <span>
-          Send me route news and fare alerts by email. You can unsubscribe from
-          any email, and we handle your details as described in our{" "}
+          {copy.consent}{" "}
           <Link
             href="/privacy-policy"
             className={cn(
@@ -175,7 +203,7 @@ export function NewsletterSignup({
               inverse ? "text-white hover:text-gray-300" : "text-primary",
             )}
           >
-            privacy policy
+            {copy.privacy}
           </Link>
           .
         </span>

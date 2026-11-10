@@ -27,6 +27,9 @@ import { siteConfig } from "@/lib/config/site";
 
 const staticPaths = [
   { path: "/", priority: 1, changeFrequency: "daily" as const },
+  // Hand-written Spanish home page. Every other `/es/...` URL is the English
+  // page translated in the browser and is noindexed, so it is not listed.
+  { path: "/es", priority: 0.9, changeFrequency: "daily" as const },
 
   // Verticals.
   { path: "/flights", priority: 0.9, changeFrequency: "weekly" as const },

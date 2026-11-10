@@ -28,13 +28,12 @@ import {
   MAX_PASSENGERS,
   searchHref,
 } from "@/features/search/lib/search-params";
+import { flightSearchCopy } from "@/features/search/lib/flight-search-copy";
 import { CABIN_LABELS } from "@/types/flight";
 import type { Airport, CabinClass, TripType } from "@/types/flight";
+import type { Locale } from "@/types/locale";
 
-const TRIP_OPTIONS: ReadonlyArray<{ value: TripType; label: string }> = [
-  { value: "round-trip", label: "Round trip" },
-  { value: "one-way", label: "One way" },
-];
+const TRIP_VALUES: readonly TripType[] = ["round-trip", "one-way"];
 
 interface FieldErrors {
   origin?: string;
@@ -74,13 +73,16 @@ export function FlightSearchForm({
   defaultDestination,
   className,
   tone = "panel",
+  locale = "en",
 }: {
   airports: readonly Airport[];
   defaultOrigin?: string;
   defaultDestination?: string;
   className?: string;
   tone?: SearchPanelTone;
+  locale?: Locale;
 }) {
+  const copy = flightSearchCopy[locale];
   const router = useRouter();
   const id = useId();
 
@@ -182,24 +184,24 @@ export function FlightSearchForm({
     const next: FieldErrors = {};
 
     if (!originCode) {
-      next.origin = "Choose a departure airport from the list.";
+      next.origin = copy.errors.origin;
     }
     if (!destinationCode) {
-      next.destination = "Choose a destination airport from the list.";
+      next.destination = copy.errors.destination;
     }
     if (originCode && originCode === destinationCode) {
-      next.destination = "Departure and destination must be different.";
+      next.destination = copy.errors.sameAirport;
     }
     if (!departDate) {
-      next.departDate = "Add a departure date.";
+      next.departDate = copy.errors.departMissing;
     } else if (departDate < today()) {
-      next.departDate = "That date has passed.";
+      next.departDate = copy.errors.datePassed;
     }
     if (tripType === "round-trip") {
       if (!returnDate) {
-        next.returnDate = "Add a return date, or switch to one way.";
+        next.returnDate = copy.errors.returnMissing;
       } else if (departDate && returnDate < departDate) {
-        next.returnDate = "The return cannot be before the departure.";
+        next.returnDate = copy.errors.returnBeforeDepart;
       }
     }
 
@@ -235,32 +237,32 @@ export function FlightSearchForm({
   return (
     <SearchPanel
       onSubmit={handleSubmit}
-      aria-label="Flight search"
+      aria-label={copy.formLabel}
       tone={tone}
       className={className}
     >
       <SearchQualifiers>
         <div
           role="radiogroup"
-          aria-label="Trip type"
+          aria-label={copy.tripTypeLabel}
           className="inline-flex rounded-xs bg-gray-100 p-0.5"
         >
-          {TRIP_OPTIONS.map((option) => (
+          {TRIP_VALUES.map((value) => (
             <button
-              key={option.value}
+              key={value}
               type="button"
               role="radio"
-              aria-checked={tripType === option.value}
-              onClick={() => setTripType(option.value)}
+              aria-checked={tripType === value}
+              onClick={() => setTripType(value)}
               className={cn(
                 "min-h-9 rounded-xs px-3.5 text-body-sm font-semibold",
                 "transition-[background-color,color,box-shadow] duration-[var(--duration-fast)] focus-ring",
-                tripType === option.value
+                tripType === value
                   ? "bg-surface text-primary shadow-xs"
                   : "text-gray-600 hover:text-text",
               )}
             >
-              {option.label}
+              {value === "round-trip" ? copy.roundTrip : copy.oneWay}
             </button>
           ))}
         </div>
@@ -291,14 +293,14 @@ export function FlightSearchForm({
         <div className="flex flex-wrap items-center gap-x-1 gap-y-2 sm:ms-auto">
           <QuietSelect
             id={`${id}-adults`}
-            label="Adults"
+            label={copy.adultsLabel}
             value={adults}
             onChange={(value) => setAdults(Number(value))}
           >
             {Array.from({ length: MAX_PASSENGERS }, (_, index) => index + 1).map(
               (count) => (
                 <option key={count} value={count}>
-                  {count} {count === 1 ? "adult" : "adults"}
+                  {copy.adults(count)}
                 </option>
               ),
             )}
@@ -306,14 +308,14 @@ export function FlightSearchForm({
 
           <QuietSelect
             id={`${id}-children`}
-            label="Children"
+            label={copy.childrenLabel}
             value={children}
             onChange={(value) => setChildren(Number(value))}
           >
             {Array.from({ length: MAX_PASSENGERS }, (_, index) => index).map(
               (count) => (
                 <option key={count} value={count}>
-                  {count} {count === 1 ? "child" : "children"}
+                  {copy.children(count)}
                 </option>
               ),
             )}
@@ -321,13 +323,13 @@ export function FlightSearchForm({
 
           <QuietSelect
             id={`${id}-cabin`}
-            label="Cabin"
+            label={copy.cabinLabel}
             value={cabin}
             onChange={(value) => setCabin(value as CabinClass)}
           >
             {(Object.keys(CABIN_LABELS) as CabinClass[]).map((value) => (
               <option key={value} value={value}>
-                {CABIN_LABELS[value]}
+                {copy.cabins[value]}
               </option>
             ))}
           </QuietSelect>
@@ -345,7 +347,7 @@ export function FlightSearchForm({
       >
         <SearchCell
           htmlFor={`${id}-origin`}
-          label="From"
+          label={copy.from}
           invalid={Boolean(errors.origin)}
         >
           <Combobox
@@ -363,14 +365,14 @@ export function FlightSearchForm({
             onOpenChange={(next) => setOpenField(next ? "origin" : null)}
             activeIndex={openField === "origin" ? activeIndex : -1}
             onActiveIndexChange={setActiveIndex}
-            placeholder="City or airport"
+            placeholder={copy.placeholder}
             invalid={Boolean(errors.origin)}
-            heading={origin.trim() ? undefined : "Popular departures"}
+            heading={origin.trim() ? undefined : copy.popularDepartures}
             icon={<MapPinIcon className="size-4" />}
             describedBy={errors.origin ? `${id}-origin-error` : undefined}
             emptyState={
               <p className="text-body-sm text-text">
-                No airport matches “{origin.trim()}”.
+                {copy.noAirportMatch(origin.trim())}
               </p>
             }
           />
@@ -378,7 +380,7 @@ export function FlightSearchForm({
 
         <SearchCell
           htmlFor={`${id}-destination`}
-          label="To"
+          label={copy.to}
           invalid={Boolean(errors.destination)}
           // The swap control overhangs this cell's leading edge by half its
           // width. Without the extra inset it sits on top of the label and the
@@ -400,16 +402,16 @@ export function FlightSearchForm({
             onOpenChange={(next) => setOpenField(next ? "destination" : null)}
             activeIndex={openField === "destination" ? activeIndex : -1}
             onActiveIndexChange={setActiveIndex}
-            placeholder="City or airport"
+            placeholder={copy.placeholder}
             invalid={Boolean(errors.destination)}
-            heading={destination.trim() ? undefined : "Popular arrivals"}
+            heading={destination.trim() ? undefined : copy.popularArrivals}
             icon={<MapPinIcon className="size-4" />}
             describedBy={
               errors.destination ? `${id}-destination-error` : undefined
             }
             emptyState={
               <p className="text-body-sm text-text">
-                No airport matches “{destination.trim()}”.
+                {copy.noAirportMatch(destination.trim())}
               </p>
             }
           />
@@ -423,7 +425,7 @@ export function FlightSearchForm({
           <button
             type="button"
             onClick={swap}
-            aria-label="Swap departure and destination"
+            aria-label={copy.swapLabel}
             className={cn(
               "absolute -top-5 right-4 grid size-10 place-items-center rounded-xs",
               "bg-surface text-gray-600 shadow-sm ring-1 ring-border",
@@ -450,7 +452,7 @@ export function FlightSearchForm({
 
         <SearchCell
           htmlFor={`${id}-departDate`}
-          label="Depart"
+          label={copy.depart}
           invalid={Boolean(errors.departDate)}
         >
           <input
@@ -469,7 +471,7 @@ export function FlightSearchForm({
 
         <SearchCell
           htmlFor={`${id}-returnDate`}
-          label="Return"
+          label={copy.return}
           invalid={Boolean(errors.returnDate)}
           disabled={tripType !== "round-trip"}
         >
@@ -510,7 +512,7 @@ export function FlightSearchForm({
               </svg>
             }
           >
-            {bookingConfig.callToBook ? "Get a quote" : "Search"}
+            {bookingConfig.callToBook ? copy.getQuote : copy.search}
           </Button>
         </div>
       </SearchRow>

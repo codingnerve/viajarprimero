@@ -5,6 +5,8 @@ import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { useCookieConsent } from "@/hooks/use-cookie-consent";
+import { useLocale } from "@/hooks/use-locale";
+import { esChrome } from "@/lib/content/es/chrome";
 
 /**
  * Cookie consent banner.
@@ -21,6 +23,8 @@ import { useCookieConsent } from "@/hooks/use-cookie-consent";
  */
 export function CookieConsent() {
   const { consent, hydrated, decide, gpc } = useCookieConsent();
+  const es = useLocale() === "es";
+  const t = esChrome.cookie;
   const [showDetail, setShowDetail] = useState(false);
   const [analytics, setAnalytics] = useState(false);
   const [marketing, setMarketing] = useState(false);
@@ -41,16 +45,17 @@ export function CookieConsent() {
       ].join(" ")}
     >
       <h2 id="cookie-consent-title" className="text-h5 text-text">
-        Cookies on this site
+        {es ? t.title : "Cookies on this site"}
       </h2>
       <p className="mt-1.5 text-body-sm text-gray-700">
-        We use cookies to run the site and, with your permission, to measure how
-        it is used. Read our{" "}
+        {es
+          ? t.intro
+          : "We use cookies to run the site and, with your permission, to measure how it is used. Read our"}{" "}
         <Link
           href="/cookie-policy"
           className="text-primary underline underline-offset-2"
         >
-          cookie policy
+          {es ? t.policy : "cookie policy"}
         </Link>
         .
       </p>
@@ -62,15 +67,17 @@ export function CookieConsent() {
       */}
       {gpc && (
         <p className="mt-3 rounded-md bg-primary-soft p-2.5 text-caption text-gray-800">
-          Your browser is sending a Global Privacy Control signal. We treat that
-          as an opt-out, so marketing cookies stay off whatever else you choose
-          here.
+          {es
+            ? t.gpc
+            : "Your browser is sending a Global Privacy Control signal. We treat that as an opt-out, so marketing cookies stay off whatever else you choose here."}
         </p>
       )}
 
       {showDetail && (
         <fieldset className="mt-4 space-y-3 border-t border-border pt-4">
-          <legend className="sr-only">Cookie categories</legend>
+          <legend className="sr-only">
+            {es ? t.legend : "Cookie categories"}
+          </legend>
 
           <label className="flex items-start gap-2.5 text-body-sm text-gray-700">
             <input
@@ -80,9 +87,13 @@ export function CookieConsent() {
               className="mt-0.5 size-4 accent-[var(--color-primary)]"
             />
             <span>
-              <span className="font-semibold text-text">Essential</span> —
-              required for the site to function, including remembering this
-              choice. Always on.
+              <span className="font-semibold text-text">
+                {es ? t.essential : "Essential"}
+              </span>{" "}
+              —{" "}
+              {es
+                ? t.essentialBody
+                : "required for the site to function, including remembering this choice. Always on."}
             </span>
           </label>
 
@@ -94,8 +105,13 @@ export function CookieConsent() {
               className="mt-0.5 size-4 accent-[var(--color-primary)]"
             />
             <span>
-              <span className="font-semibold text-text">Analytics</span> —
-              aggregate measurement of how pages are used.
+              <span className="font-semibold text-text">
+                {es ? t.analytics : "Analytics"}
+              </span>{" "}
+              —{" "}
+              {es
+                ? t.analyticsBody
+                : "aggregate measurement of how pages are used."}
             </span>
           </label>
 
@@ -108,12 +124,18 @@ export function CookieConsent() {
               className="mt-0.5 size-4 accent-[var(--color-primary)]"
             />
             <span>
-              <span className="font-semibold text-text">Marketing</span> —
-              measuring which adverts lead to a booking.
+              <span className="font-semibold text-text">
+                {es ? t.marketing : "Marketing"}
+              </span>{" "}
+              —{" "}
+              {es
+                ? t.marketingBody
+                : "measuring which adverts lead to a booking."}
               {gpc && (
                 <span className="block text-caption text-text-secondary">
-                  Off, because your browser sends a Global Privacy Control
-                  signal.
+                  {es
+                    ? t.marketingOff
+                    : "Off, because your browser sends a Global Privacy Control signal."}
                 </span>
               )}
             </span>
@@ -128,7 +150,7 @@ export function CookieConsent() {
             fullWidth
             onClick={() => decide({ analytics, marketing: marketing && !gpc })}
           >
-            Save my choices
+            {es ? t.save : "Save my choices"}
           </Button>
         ) : (
           <Button
@@ -136,7 +158,7 @@ export function CookieConsent() {
             fullWidth
             onClick={() => decide({ analytics: true, marketing: !gpc })}
           >
-            Accept all
+            {es ? t.acceptAll : "Accept all"}
           </Button>
         )}
         <Button
@@ -145,7 +167,7 @@ export function CookieConsent() {
           fullWidth
           onClick={() => decide({ analytics: false, marketing: false })}
         >
-          Reject non-essential
+          {es ? t.reject : "Reject non-essential"}
         </Button>
         {!showDetail && (
           <button
@@ -153,7 +175,7 @@ export function CookieConsent() {
             onClick={() => setShowDetail(true)}
             className="focus-ring mt-0.5 self-center rounded-sm text-caption font-semibold text-text-secondary underline underline-offset-2 hover:text-text"
           >
-            Choose categories
+            {es ? t.choose : "Choose categories"}
           </button>
         )}
       </div>

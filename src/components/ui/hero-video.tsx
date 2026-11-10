@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
+import { useLocale } from "@/hooks/use-locale";
 import { cn } from "@/lib/utils/cn";
 
 /**
@@ -29,6 +30,7 @@ export function HeroVideo({
   poster?: string | null;
   className?: string;
 }) {
+  const es = useLocale() === "es";
   const video = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(true);
   // Read after mount, not during render: the server has no media queries, so
@@ -105,7 +107,13 @@ export function HeroVideo({
             )}
           >
             <span className="sr-only">
-              {playing ? "Pause the backdrop" : "Play the backdrop"}
+              {es
+                ? playing
+                  ? "Pausar el video de fondo"
+                  : "Reproducir el video de fondo"
+                : playing
+                  ? "Pause the backdrop"
+                  : "Play the backdrop"}
             </span>
             <svg
               viewBox="0 0 16 16"

@@ -13,6 +13,13 @@ interface BuildMetadataOptions {
    */
   noIndex?: boolean;
   ogImage?: string;
+  /** Open Graph locale, e.g. `es_US`. Defaults to the site's own. */
+  locale?: string;
+  /**
+   * Language alternates, as `{ hreflang: path }`. Paths are resolved against
+   * the site URL. Both pages in a pair must list each other.
+   */
+  languages?: Record<string, string>;
 }
 
 /**
@@ -28,6 +35,8 @@ export function buildMetadata({
   path,
   noIndex = false,
   ogImage,
+  locale,
+  languages,
 }: BuildMetadataOptions): Metadata {
   const canonical = new URL(path, siteConfig.url).toString();
   const fullTitle =
@@ -39,7 +48,19 @@ export function buildMetadata({
     // carries it - "Privacy policy | Viajarprimero | Viajarprimero".
     title: { absolute: fullTitle },
     description,
-    alternates: { canonical },
+    alternates: {
+      canonical,
+      ...(languages
+        ? {
+            languages: Object.fromEntries(
+              Object.entries(languages).map(([code, href]) => [
+                code,
+                new URL(href, siteConfig.url).toString(),
+              ]),
+            ),
+          }
+        : {}),
+    },
     robots: noIndex
       ? { index: false, follow: false, nocache: true }
       : { index: true, follow: true },
@@ -49,7 +70,7 @@ export function buildMetadata({
       title: fullTitle,
       description,
       url: canonical,
-      locale: siteConfig.locale,
+      locale: locale ?? siteConfig.locale,
       ...(ogImage ? { images: [{ url: ogImage }] } : {}),
     },
     twitter: {

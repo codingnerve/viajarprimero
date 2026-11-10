@@ -11,6 +11,8 @@ import {
   sellerOfTravelRegistrations,
 } from "@/lib/config/legal";
 import { contactConfig, footerNav, siteConfig } from "@/lib/config/site";
+import { esChrome } from "@/lib/content/es/chrome";
+import type { Locale } from "@/types/locale";
 
 /**
  * Book-column links that open their section's link panel on hover. `Deals`
@@ -47,7 +49,9 @@ const columns = [
  * columns are lighter and narrower, and the compliance text sits in its own
  * band at the bottom where it reads as a statement rather than as more links.
  */
-export function SiteFooter() {
+export function SiteFooter({ locale = "en" }: { locale?: Locale }) {
+  const es = locale === "es";
+  const t = esChrome.footer;
   const email = configured(contactConfig.email);
   const phone = configured(contactConfig.phone);
   const phoneDisplay = configured(contactConfig.phoneDisplay);
@@ -129,11 +133,15 @@ export function SiteFooter() {
                     id={`footer-${id}`}
                     className="text-overline uppercase text-gray-500"
                   >
-                    {column.title}
+                    {es ? (t.columns[column.title] ?? column.title) : column.title}
                   </h2>
                   <ul className="mt-4 space-y-3">
                     {column.links.map((link) =>
-                      flyoutSections[link.href] ? (
+                      /*
+                        The hover flyouts list English link labels, so the
+                        Spanish footer uses plain links.
+                      */
+                      !es && flyoutSections[link.href] ? (
                         <li key={link.href} className="group relative">
                           <FooterSectionFlyout
                             href={link.href}
@@ -147,7 +155,7 @@ export function SiteFooter() {
                             href={link.href}
                             className="rounded-sm text-body-sm text-gray-400 underline-offset-4 transition-colors hover:text-white hover:underline focus-ring-inverse"
                           >
-                            {link.label}
+                            {es ? (t.links[link.href] ?? link.label) : link.label}
                           </Link>
                         </li>
                       ),
@@ -170,7 +178,10 @@ export function SiteFooter() {
           navigation nobody will click. */}
       <div className="border-t border-white/10 bg-black/15">
         <div className="mx-auto max-w-page space-y-4 px-gutter py-8 text-caption text-gray-500">
-          {businessModel === "agency" && (
+          {businessModel === "agency" && es && (
+            <p className="max-w-4xl">{t.agency(siteConfig.name)}</p>
+          )}
+          {businessModel === "agency" && !es && (
             <p className="max-w-4xl">
               {siteConfig.name} is a travel agency and charter broker. We arrange
               air travel, accommodation, car rental, cruises and private jet
@@ -191,7 +202,26 @@ export function SiteFooter() {
             publish its registration number in advertising. Nothing renders
             until the numbers are real - see sellerOfTravelRegistrations.
           */}
-          {sellerOfTravelRegistrations.length > 0 && (
+          {sellerOfTravelRegistrations.length > 0 && es && (
+            <p className="max-w-4xl">
+              {sellerOfTravelRegistrations
+                .map((registration) =>
+                  t.sellerOfTravel(
+                    registration.state,
+                    registration.scheme,
+                    registration.registrationNumber,
+                  ),
+                )
+                .join(" · ")}
+              {californiaRestitutionFund !== "not-applicable" &&
+                ` ${t.californiaNotApproval} ${
+                  californiaRestitutionFund === "participant"
+                    ? t.californiaParticipant
+                    : t.californiaNotParticipant
+                }`}
+            </p>
+          )}
+          {sellerOfTravelRegistrations.length > 0 && !es && (
             <p className="max-w-4xl">
               {sellerOfTravelRegistrations.map((registration, index) => (
                 <span key={registration.registrationNumber}>
@@ -222,8 +252,8 @@ export function SiteFooter() {
           )}
 
           <p>
-            &copy; {new Date().getFullYear()} {legalName ?? siteConfig.name}. All
-            rights reserved.
+            &copy; {new Date().getFullYear()} {legalName ?? siteConfig.name}.{" "}
+            {es ? t.rights : "All rights reserved."}
           </p>
         </div>
       </div>

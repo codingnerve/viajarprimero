@@ -5,7 +5,9 @@ import { usePathname } from "next/navigation";
 import { useEffect, useId, useRef, useState } from "react";
 
 import { dealGroups } from "@/lib/content/deals";
+import { esChrome, esDealGroups, esDeals } from "@/lib/content/es/chrome";
 import { cn } from "@/lib/utils/cn";
+import type { Locale } from "@/types/locale";
 
 /**
  * "Deals" in the desktop nav, with a dropdown of every deal category.
@@ -14,7 +16,16 @@ import { cn } from "@/lib/utils/cn";
  * opens the panel. The panel is fixed and centred on the viewport so its four
  * columns never run off the edge, wherever "Deals" sits in the bar.
  */
-export function DealsMenu({ href, label }: { href: string; label: string }) {
+export function DealsMenu({
+  href,
+  label,
+  locale = "en",
+}: {
+  href: string;
+  label: string;
+  locale?: Locale;
+}) {
+  const es = locale === "es";
   const pathname = usePathname();
   const panelId = useId();
   const rootRef = useRef<HTMLDivElement>(null);
@@ -76,7 +87,15 @@ export function DealsMenu({ href, label }: { href: string; label: string }) {
           type="button"
           aria-expanded={open}
           aria-controls={panelId}
-          aria-label={open ? "Close deals menu" : "Open deals menu"}
+          aria-label={
+            es
+              ? open
+                ? esChrome.deals.close
+                : esChrome.deals.open
+              : open
+                ? "Close deals menu"
+                : "Open deals menu"
+          }
           onClick={() => (open ? setOpenedOn(null) : show())}
           className="grid size-6 place-items-center rounded-xs focus-ring"
         >
@@ -110,7 +129,7 @@ export function DealsMenu({ href, label }: { href: string; label: string }) {
           {dealGroups.map((group) => (
             <div key={group.title}>
               <p className="text-overline uppercase text-text-muted">
-                {group.title}
+                {es ? (esDealGroups[group.title] ?? group.title) : group.title}
               </p>
               <ul className="mt-3 space-y-1">
                 {group.items.map((item) => (
@@ -120,7 +139,7 @@ export function DealsMenu({ href, label }: { href: string; label: string }) {
                       onClick={() => setOpenedOn(null)}
                       className="block rounded-xs px-2 py-1.5 text-body-sm font-semibold text-text transition-colors hover:bg-primary-softer hover:text-primary focus-ring"
                     >
-                      {item.label}
+                      {es ? (esDeals[item.slug]?.label ?? item.label) : item.label}
                     </Link>
                   </li>
                 ))}
@@ -135,7 +154,7 @@ export function DealsMenu({ href, label }: { href: string; label: string }) {
             onClick={() => setOpenedOn(null)}
             className="rounded-xs text-body-sm font-semibold text-primary underline-offset-4 hover:underline focus-ring"
           >
-            See all deals →
+            {es ? esChrome.deals.seeAll : "See all deals →"}
           </Link>
         </div>
       </div>

@@ -26,10 +26,13 @@ export function DestinationCard({
   destination,
   headingLevel: Heading = "h3",
   className,
+  readLabel = "Read the guide",
 }: {
   destination: ResolvedDestination;
   headingLevel?: "h2" | "h3";
   className?: string;
+  /** The link text under the summary. Overridden by the Spanish home page. */
+  readLabel?: string;
 }) {
   return (
     <article className={cn("group h-full", className)}>
@@ -69,7 +72,7 @@ export function DestinationCard({
             {destination.summary}
           </p>
           <span className="mt-auto flex items-center gap-1.5 pt-4 text-body-sm font-semibold text-primary">
-            Read the guide
+            {readLabel}
             <ArrowRightIcon className="size-4 transition-transform duration-[var(--duration-normal)] ease-out group-hover:translate-x-1 motion-reduce:transition-none" />
           </span>
         </div>

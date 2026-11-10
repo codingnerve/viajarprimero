@@ -12,7 +12,9 @@ import {
   withLanguagePrefix,
   type LanguageCode,
 } from "@/lib/config/languages";
+import { esChrome } from "@/lib/content/es/chrome";
 import { cn } from "@/lib/utils/cn";
+import type { Locale } from "@/types/locale";
 
 /**
  * Language picker.
@@ -127,11 +129,20 @@ function loadTranslator() {
 export function LanguageSelect({
   variant = "menu",
   className,
+  locale = "en",
 }: {
   /** `menu` is the header dropdown; `list` renders inline, for the mobile drawer. */
   variant?: "menu" | "list";
   className?: string;
+  /**
+   * The language the page itself is hand-written in. When it matches the
+   * language picked, the page is already in that language and the translator
+   * must not run over it.
+   */
+  locale?: Locale;
 }) {
+  const selectLabel =
+    locale === "es" ? esChrome.language.select : "Select your language";
   const current = useSyncExternalStore(subscribe, readLanguage, serverLanguage);
   const [open, setOpen] = useState(false);
   const panelId = useId();
@@ -140,8 +151,8 @@ export function LanguageSelect({
   const active = languages.find((language) => language.code === current) ?? languages[0];
 
   useEffect(() => {
-    if (current !== defaultLanguage) loadTranslator();
-  }, [current]);
+    if (current !== defaultLanguage && current !== locale) loadTranslator();
+  }, [current, locale]);
 
   useEffect(() => {
     if (!open) return;
@@ -213,7 +224,7 @@ export function LanguageSelect({
     return (
       <div translate="no" className={cn("notranslate", className)}>
         <p className="mb-2 text-overline uppercase text-text-muted">
-          Select your language
+          {selectLabel}
         </p>
         {options}
       </div>
@@ -230,7 +241,11 @@ export function LanguageSelect({
         type="button"
         aria-expanded={open}
         aria-controls={panelId}
-        aria-label={`Language: ${active.label}`}
+        aria-label={
+          locale === "es"
+            ? esChrome.language.aria(active.label)
+            : `Language: ${active.label}`
+        }
         onClick={() => setOpen(!open)}
         className={cn(
           "flex h-7 items-center gap-1.5 rounded-full px-2.5 text-caption font-semibold text-gray-700",
@@ -250,7 +265,7 @@ export function LanguageSelect({
         hidden={!open}
         className="absolute right-0 top-full z-[var(--z-dropdown)] mt-2 w-60 rounded-xs bg-surface p-2 shadow-xl ring-1 ring-inset ring-border"
       >
-        <p className="px-2.5 pb-2 pt-1 text-h6 text-text">Select your language</p>
+        <p className="px-2.5 pb-2 pt-1 text-h6 text-text">{selectLabel}</p>
         <div className="max-h-[min(24rem,70vh)] overflow-y-auto">{options}</div>
       </div>
     </div>

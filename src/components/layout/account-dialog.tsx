@@ -22,6 +22,7 @@ import {
   UserIcon,
 } from "@/components/ui/icons";
 import { Input } from "@/components/ui/input";
+import { useLocale } from "@/hooks/use-locale";
 import { accountCookies, PIN_LENGTH } from "@/lib/config/account";
 import { cn } from "@/lib/utils/cn";
 
@@ -50,6 +51,47 @@ const benefits = [
     body: "Track and manage all your trips with ease.",
   },
 ];
+
+/** Spanish copy for the dialog, used on the hand-written `/es` page. */
+const esCopy = {
+  benefits: [
+    { title: "Tarifas y ofertas exclusivas", body: "Disfrute de tarifas y ahorros reservados para miembros." },
+    { title: "Ofertas solo para miembros", body: "Acceda a códigos promocionales y ofertas solo para miembros." },
+    { title: "Acceso anticipado", body: "Sea el primero en enterarse de ventas y promociones." },
+    { title: "Administre su reserva", body: "Siga y administre todos sus viajes con facilidad." },
+  ],
+  titles: {
+    "sign-in": ["Iniciar sesión", "Inicie sesión y obtenga beneficios"],
+    "sign-up": ["Registrarse", "Cree una cuenta gratuita"],
+    forgot: ["¿Olvidó su PIN?", "Le enviaremos por correo un enlace para crear un PIN nuevo"],
+  } as Record<Mode, [string, string]>,
+  manageTrips: "Administrar mis viajes",
+  myTrips: "Mis viajes",
+  viewTrips: "Ver mis viajes",
+  generalError: "Algo salió mal. Inténtelo de nuevo.",
+  forgotSent: "Si existe una cuenta con ese correo, le enviamos un enlace para crear un PIN nuevo.",
+  created: "Cuenta creada. Revise su correo y haga clic en el enlace para confirmarla.",
+  offline: "No se pudo conectar. Revise su conexión a internet e inténtelo de nuevo.",
+  signUp: "Registrarse",
+  signIn: "Iniciar sesión",
+  withProvider: (verb: string, provider: string) => `${verb} con ${provider}`,
+  orEmail: (verbLower: string) => `O ${verbLower} con correo electrónico`,
+  heading: "Inicie sesión o regístrese para ganar recompensas",
+  close: "Cerrar",
+  fullName: "Nombre completo",
+  email: "Correo electrónico",
+  emailPlaceholder: "Ingrese su correo electrónico",
+  pin: "PIN",
+  createPin: "Cree un PIN",
+  digits: (n: number) => `${n} dígitos.`,
+  pinPlaceholder: (n: number) => `Ingrese su PIN de ${n} dígitos`,
+  forgotLink: "¿Olvidó su PIN?",
+  createAccount: "Crear cuenta",
+  sendLink: "Enviar enlace",
+  haveAccount: "¿Ya tiene una cuenta?",
+  noAccount: "¿No tiene una cuenta?",
+  remembered: "¿Lo recordó?",
+};
 
 const subscribe = () => () => {};
 const readSignedIn = () =>
@@ -84,8 +126,9 @@ export function AccountButton({
   const titleId = useId();
   const fieldId = useId();
 
+  const es = useLocale() === "es";
   const signedIn = useSyncExternalStore(subscribe, readSignedIn, signedOutOnServer);
-  const label = children ?? "Manage my trips";
+  const label = children ?? (es ? esCopy.manageTrips : "Manage my trips");
 
   const pillClasses = cn(
     "flex h-7 items-center gap-1.5 rounded-full bg-primary px-3 text-caption font-semibold text-text-inverse",
@@ -112,13 +155,17 @@ export function AccountButton({
     if (variant === "cta") {
       return (
         <ButtonLink href="/my-trips" variant="accent" size="lg" className={className}>
-          View my trips
+          {es ? esCopy.viewTrips : "View my trips"}
         </ButtonLink>
       );
     }
     if (variant === "icon") {
       return (
-        <Link href="/my-trips" aria-label="My trips" className={iconClasses}>
+        <Link
+          href="/my-trips"
+          aria-label={es ? esCopy.myTrips : "My trips"}
+          className={iconClasses}
+        >
           <UserIcon className="size-6" />
         </Link>
       );
@@ -131,7 +178,7 @@ export function AccountButton({
         }
       >
         {variant !== "link" && <UserIcon className={variant === "pill" ? "size-4" : "size-5"} />}
-        My trips
+        {es ? esCopy.myTrips : "My trips"}
       </Link>
     );
   }
@@ -174,30 +221,49 @@ export function AccountButton({
       if (!response.ok) {
         setMessage({
           tone: "error",
-          text: body.message ?? "Something went wrong. Please try again.",
+          text:
+            body.message ??
+            (es ? esCopy.generalError : "Something went wrong. Please try again."),
         });
       } else if (mode === "forgot") {
         setMessage({
           tone: "success",
-          text: "If an account exists for that email, we have sent a link to set a new PIN.",
+          text: es
+            ? esCopy.forgotSent
+            : "If an account exists for that email, we have sent a link to set a new PIN.",
         });
       } else if (mode === "sign-up" && !body.signedIn) {
         setMessage({
           tone: "success",
-          text: "Account created. Check your email and click the link to confirm it.",
+          text: es
+            ? esCopy.created
+            : "Account created. Check your email and click the link to confirm it.",
         });
       } else {
         window.location.replace("/my-trips");
         return;
       }
     } catch {
-      setMessage({ tone: "error", text: "Could not connect. Please check your internet and try again." });
+      setMessage({
+        tone: "error",
+        text: es
+          ? esCopy.offline
+          : "Could not connect. Please check your internet and try again.",
+      });
     }
 
     setBusy(false);
   };
 
-  const verb = mode === "sign-up" ? "Sign up" : "Sign in";
+  const verb =
+    mode === "sign-up"
+      ? es
+        ? esCopy.signUp
+        : "Sign up"
+      : es
+        ? esCopy.signIn
+        : "Sign in";
+  const heading = es ? esCopy.titles[mode] : titles[mode];
 
   return (
     <>
@@ -212,7 +278,7 @@ export function AccountButton({
         <button
           type="button"
           onClick={openDialog}
-          aria-label="Manage my trips"
+          aria-label={es ? esCopy.manageTrips : "Manage my trips"}
           className={iconClasses}
         >
           <UserIcon className="size-6" />
@@ -253,17 +319,19 @@ export function AccountButton({
           {/* Benefits — hidden on phones to keep the form in view. */}
           <div className="hidden bg-brand-wash p-7 sm:block">
             <p className="text-h4 text-text-inverse">
-              Sign in / Sign up to earn rewards
+              {es ? esCopy.heading : "Sign in / Sign up to earn rewards"}
             </p>
             <ul className="mt-6 divide-y divide-white/15">
-              {benefits.map(({ icon: BenefitIcon, title, body }) => (
+              {benefits.map(({ icon: BenefitIcon, title, body }, index) => (
                 <li key={title} className="flex gap-3 py-4 first:pt-0">
                   <BenefitIcon className="mt-0.5 size-5 shrink-0 text-text-inverse" />
                   <div>
                     <p className="text-body-sm font-semibold text-text-inverse">
-                      {title}
+                      {es ? esCopy.benefits[index].title : title}
                     </p>
-                    <p className="mt-0.5 text-caption text-text-on-dark">{body}</p>
+                    <p className="mt-0.5 text-caption text-text-on-dark">
+                      {es ? esCopy.benefits[index].body : body}
+                    </p>
                   </div>
                 </li>
               ))}
@@ -274,17 +342,17 @@ export function AccountButton({
             <button
               type="button"
               onClick={closeDialog}
-              aria-label="Close"
+              aria-label={es ? esCopy.close : "Close"}
               className="absolute right-3 top-3 grid size-10 place-items-center rounded-full text-text-muted transition-colors hover:bg-gray-100 hover:text-text focus-ring"
             >
               <CloseIcon className="size-5" />
             </button>
 
             <h2 id={titleId} className="text-h3 text-text">
-              {titles[mode][0]}
+              {heading[0]}
             </h2>
             <p className="mt-0.5 pr-8 text-body-sm text-text-secondary">
-              {titles[mode][1]}
+              {heading[1]}
             </p>
 
             {message && (
@@ -297,16 +365,18 @@ export function AccountButton({
               <>
                 <div className="mt-5 space-y-2.5">
                   <SocialButton href="/api/auth/oauth?provider=google" icon={<GoogleMark />}>
-                    {verb} with Google
+                    {es ? esCopy.withProvider(verb, "Google") : `${verb} with Google`}
                   </SocialButton>
                   <SocialButton href="/api/auth/oauth?provider=facebook" icon={<FacebookMark />}>
-                    {verb} with Facebook
+                    {es ? esCopy.withProvider(verb, "Facebook") : `${verb} with Facebook`}
                   </SocialButton>
                 </div>
 
                 <div className="my-5 flex items-center gap-3 text-caption text-text-muted">
                   <span aria-hidden="true" className="h-px flex-1 bg-border" />
-                  Or {verb.toLowerCase()} with email
+                  {es
+                    ? esCopy.orEmail(verb.toLowerCase())
+                    : `Or ${verb.toLowerCase()} with email`}
                   <span aria-hidden="true" className="h-px flex-1 bg-border" />
                 </div>
               </>
@@ -314,18 +384,22 @@ export function AccountButton({
 
             <form key={mode} onSubmit={submit} className={cn("space-y-4", mode === "forgot" && "mt-5")}>
               {mode === "sign-up" && (
-                <Field htmlFor={`${fieldId}-name`} label="Full name" required>
+                <Field htmlFor={`${fieldId}-name`} label={es ? esCopy.fullName : "Full name"} required>
                   <Input id={`${fieldId}-name`} name="name" autoComplete="name" required />
                 </Field>
               )}
 
-              <Field htmlFor={`${fieldId}-email`} label="Email" required>
+              <Field
+                htmlFor={`${fieldId}-email`}
+                label={es ? esCopy.email : "Email"}
+                required
+              >
                 <Input
                   id={`${fieldId}-email`}
                   name="email"
                   type="email"
                   autoComplete="email"
-                  placeholder="Enter your email"
+                  placeholder={es ? esCopy.emailPlaceholder : "Enter your email"}
                   required
                 />
               </Field>
@@ -333,8 +407,22 @@ export function AccountButton({
               {mode !== "forgot" && (
                 <Field
                   htmlFor={`${fieldId}-pin`}
-                  label={mode === "sign-in" ? "PIN" : "Create a PIN"}
-                  hint={mode === "sign-up" ? `${PIN_LENGTH} digits.` : undefined}
+                  label={
+                    mode === "sign-in"
+                      ? es
+                        ? esCopy.pin
+                        : "PIN"
+                      : es
+                        ? esCopy.createPin
+                        : "Create a PIN"
+                  }
+                  hint={
+                    mode === "sign-up"
+                      ? es
+                        ? esCopy.digits(PIN_LENGTH)
+                        : `${PIN_LENGTH} digits.`
+                      : undefined
+                  }
                   required
                 >
                   <Input
@@ -345,7 +433,11 @@ export function AccountButton({
                     pattern={`[0-9]{${PIN_LENGTH}}`}
                     maxLength={PIN_LENGTH}
                     autoComplete={mode === "sign-in" ? "current-password" : "new-password"}
-                    placeholder={`Enter your ${PIN_LENGTH}-digit PIN`}
+                    placeholder={
+                      es
+                        ? esCopy.pinPlaceholder(PIN_LENGTH)
+                        : `Enter your ${PIN_LENGTH}-digit PIN`
+                    }
                     required
                   />
                 </Field>
@@ -358,28 +450,50 @@ export function AccountButton({
                     onClick={() => switchMode("forgot")}
                     className="rounded-xs text-caption font-semibold text-primary hover:underline focus-ring"
                   >
-                    Forgot PIN?
+                    {es ? esCopy.forgotLink : "Forgot PIN?"}
                   </button>
                 </div>
               )}
 
               <Button type="submit" variant="accent" fullWidth loading={busy}>
                 {mode === "sign-in"
-                  ? "Sign in"
+                  ? es
+                    ? esCopy.signIn
+                    : "Sign in"
                   : mode === "sign-up"
-                    ? "Create account"
-                    : "Send reset link"}
+                    ? es
+                      ? esCopy.createAccount
+                      : "Create account"
+                    : es
+                      ? esCopy.sendLink
+                      : "Send reset link"}
               </Button>
             </form>
 
             <p className="mt-5 text-center text-body-sm text-text-secondary">
-              {mode === "sign-up" ? "Already have an account?" : mode === "sign-in" ? "Don't have an account?" : "Remembered it?"}{" "}
+              {mode === "sign-up"
+                ? es
+                  ? esCopy.haveAccount
+                  : "Already have an account?"
+                : mode === "sign-in"
+                  ? es
+                    ? esCopy.noAccount
+                    : "Don't have an account?"
+                  : es
+                    ? esCopy.remembered
+                    : "Remembered it?"}{" "}
               <button
                 type="button"
                 onClick={() => switchMode(mode === "sign-in" ? "sign-up" : "sign-in")}
                 className="rounded-xs font-semibold text-primary hover:underline focus-ring"
               >
-                {mode === "sign-in" ? "Sign up" : "Sign in"}
+                {mode === "sign-in"
+                  ? es
+                    ? esCopy.signUp
+                    : "Sign up"
+                  : es
+                    ? esCopy.signIn
+                    : "Sign in"}
               </button>
             </p>
           </div>

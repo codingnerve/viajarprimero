@@ -4,7 +4,7 @@ import { Fraunces, Geist } from "next/font/google";
 import { CookieConsent } from "@/components/layout/cookie-consent";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
-import { FloatingHelp } from "@/components/layout/floating-help";
+import { LocaleChrome } from "@/components/layout/locale-chrome";
 import { JsonLd } from "@/components/seo/json-ld";
 import { siteConfig } from "@/lib/config/site";
 import { organizationSchema, websiteSchema } from "@/lib/seo/schema";
@@ -53,19 +53,16 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="flex min-h-full flex-col">
         <JsonLd schema={[organizationSchema(), websiteSchema()]} />
 
-        <a
-          href="#main"
-          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[var(--z-tooltip)] focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-text-inverse"
+        {/*
+          `/es` is hand-written Spanish with its own header and footer; every
+          other URL is the English site. See LocaleChrome.
+        */}
+        <LocaleChrome
+          headers={{ en: <SiteHeader />, es: <SiteHeader locale="es" /> }}
+          footers={{ en: <SiteFooter />, es: <SiteFooter locale="es" /> }}
         >
-          Skip to main content
-        </a>
-
-        <SiteHeader />
-        <main id="main" className="flex-1">
           {children}
-        </main>
-        <SiteFooter />
-        <FloatingHelp />
+        </LocaleChrome>
         <CookieConsent />
       </body>
     </html>

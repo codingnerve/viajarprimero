@@ -1,7 +1,9 @@
 import { PhoneIcon } from "@/components/ui/icons";
 import { configured } from "@/lib/config/placeholders";
 import { contactConfig } from "@/lib/config/site";
+import { esChrome } from "@/lib/content/es/chrome";
 import { cn } from "@/lib/utils/cn";
+import type { Locale } from "@/types/locale";
 
 /**
  * The header's call-to-call CTA.
@@ -21,14 +23,23 @@ import { cn } from "@/lib/utils/cn";
  * the AA threshold — fine at 13px, not fine now the label is 10px. Full white
  * on the same blue is ~5.6:1.
  */
-export function CallButton({ className }: { className?: string }) {
+export function CallButton({
+  className,
+  locale = "en",
+}: {
+  className?: string;
+  locale?: Locale;
+}) {
   const phone = configured(contactConfig.phone);
   const phoneDisplay = configured(contactConfig.phoneDisplay);
 
   if (!phone || !phoneDisplay) return null;
 
   const href = `tel:${phone}`;
-  const label = `Call our travel agents: ${phoneDisplay}`;
+  const label =
+    locale === "es"
+      ? esChrome.call.aria(phoneDisplay)
+      : `Call our travel agents: ${phoneDisplay}`;
 
   return (
     <>
@@ -63,7 +74,7 @@ export function CallButton({ className }: { className?: string }) {
 
         <span className="flex flex-col leading-none">
           <span className="text-micro uppercase leading-none">
-            Call our agents
+            {locale === "es" ? esChrome.call.label : "Call our agents"}
           </span>
           <span className="mt-1 text-h6 font-bold leading-none tabular-nums">
             {phoneDisplay}

@@ -23,7 +23,9 @@ import {
   type EnquirySeed,
 } from "@/features/enquiries/lib/enquiry-link";
 import { verticalCopy } from "@/features/enquiries/lib/enquiry";
+import { quickFormCopy } from "@/features/enquiries/lib/quick-form-copy";
 import type { EnquiryVertical } from "@/features/enquiries/types";
+import type { Locale } from "@/types/locale";
 
 type Errors = Partial<Record<keyof EnquirySeed, string>>;
 
@@ -62,17 +64,22 @@ export function EnquiryQuickForm({
   vertical,
   className,
   tone = "panel",
+  locale = "en",
 }: {
   vertical: EnquiryVertical;
   className?: string;
   tone?: SearchPanelTone;
+  locale?: Locale;
 }) {
   const router = useRouter();
   const id = useId();
-  const copy = verticalCopy[vertical];
+  /* `spec` decides which cells exist; `copy` and `text` supply the words. */
+  const spec = verticalCopy[vertical];
+  const copy = quickFormCopy[locale];
+  const text = copy.verticals[vertical];
 
   /* Only the verticals whose copy declares a picklist ask for a second place. */
-  const originPicklist = copy.origin?.options;
+  const originPicklist = spec.origin?.options;
 
   /*
     Built once per render from the copy, not held in state: they are
@@ -81,11 +88,11 @@ export function EnquiryQuickForm({
   const originOptions: ComboboxOption[] = originPicklist
     ? picklistOptions(originPicklist)
     : [];
-  const destinationOptions: ComboboxOption[] = copy.destinationOptions
-    ? picklistOptions(copy.destinationOptions)
+  const destinationOptions: ComboboxOption[] = spec.destinationOptions
+    ? picklistOptions(spec.destinationOptions)
     : [];
-  const vehicleOptions: ComboboxOption[] = copy.vehicle
-    ? picklistOptions(copy.vehicle.options)
+  const vehicleOptions: ComboboxOption[] = spec.vehicle
+    ? picklistOptions(spec.vehicle.options)
     : [];
 
   const [origin, setOrigin] = useState("");
@@ -126,26 +133,26 @@ export function EnquiryQuickForm({
 
     const next: Errors = {};
 
-    if (originPicklist && copy.origin?.required && !origin.trim()) {
-      next.origin = copy.origin.missing;
+    if (originPicklist && spec.origin?.required && !origin.trim()) {
+      next.origin = text.origin?.missing;
     }
-    if (copy.vehicle && !carType.trim()) {
-      next.carType = copy.vehicle.missing;
+    if (spec.vehicle && !carType.trim()) {
+      next.carType = text.vehicle?.missing;
     }
     if (!destination.trim()) {
-      next.destination = copy.destinationMissing;
+      next.destination = text.destinationMissing;
     }
     if (!startDate) {
-      next.startDate = copy.startMissing;
+      next.startDate = text.startMissing;
     } else if (startDate < today()) {
-      next.startDate = "That date has passed.";
+      next.startDate = copy.datePassed;
     }
     // Verticals with no second date have no second date to validate.
-    if (copy.end) {
+    if (spec.end && text.end) {
       if (!endDate) {
-        next.endDate = copy.end.missing;
+        next.endDate = text.end.missing;
       } else if (startDate && endDate < startDate) {
-        next.endDate = `The ${copy.end.label.toLowerCase()} cannot be before the ${copy.startLabel.toLowerCase()}.`;
+        next.endDate = text.end.beforeStart;
       }
     }
 
@@ -178,19 +185,19 @@ export function EnquiryQuickForm({
     gap where a field the vertical does not ask for used to be.
   */
   const columns = originPicklist
-    ? copy.end
+    ? spec.end
       ? "lg:grid-cols-[1.2fr_1.2fr_1fr_1fr_auto]"
       : "lg:grid-cols-[1.4fr_1.4fr_1fr_auto]"
-    : copy.vehicle
+    : spec.vehicle
       ? "lg:grid-cols-[1.3fr_1fr_1fr_1.2fr_auto]"
-      : copy.end
+      : spec.end
         ? "lg:grid-cols-[1.9fr_1fr_1fr_auto]"
         : "lg:grid-cols-[2.2fr_1fr_auto]";
 
   return (
     <SearchPanel
       onSubmit={handleSubmit}
-      aria-label={`${copy.label} quote request`}
+      aria-label={text.ariaLabel}
       tone={tone}
       className={className}
     >
@@ -203,10 +210,10 @@ export function EnquiryQuickForm({
         columns={columns}
         overflow={openField ? "visible" : "clip"}
       >
-        {originPicklist && copy.origin && (
+        {originPicklist && spec.origin && text.origin && (
           <SearchCell
             htmlFor={`${id}-origin`}
-            label={copy.origin.question}
+            label={text.origin.question}
             invalid={Boolean(errors.origin)}
             className="relative"
           >
@@ -225,13 +232,13 @@ export function EnquiryQuickForm({
               onOpenChange={(next) => setOpenField(next ? "origin" : null)}
               activeIndex={openField === "origin" ? activeIndex : -1}
               onActiveIndexChange={setActiveIndex}
-              placeholder={copy.origin.placeholder}
+              placeholder={text.origin.placeholder}
               invalid={Boolean(errors.origin)}
               describedBy={errors.origin ? `${id}-origin-error` : undefined}
               icon={<MapPinIcon className="size-4" />}
               emptyState={
                 <p className="text-body-sm text-text">
-                  No port matches “{origin.trim()}”.
+                  {copy.noPortMatch(origin.trim())}
                 </p>
               }
             />
@@ -240,11 +247,11 @@ export function EnquiryQuickForm({
 
         <SearchCell
           htmlFor={`${id}-destination`}
-          label={copy.destinationLabel}
+          label={text.destinationLabel}
           invalid={Boolean(errors.destination)}
           className="relative"
         >
-          {copy.destinationOptions ? (
+          {spec.destinationOptions ? (
             <Combobox
               id={`${id}-destination`}
               listboxId={`${id}-destination-list`}
@@ -262,7 +269,7 @@ export function EnquiryQuickForm({
               }
               activeIndex={openField === "destination" ? activeIndex : -1}
               onActiveIndexChange={setActiveIndex}
-              placeholder={copy.destinationPlaceholder}
+              placeholder={text.destinationPlaceholder}
               invalid={Boolean(errors.destination)}
               describedBy={
                 errors.destination ? `${id}-destination-error` : undefined
@@ -270,7 +277,7 @@ export function EnquiryQuickForm({
               icon={<MapPinIcon className="size-4" />}
               emptyState={
                 <p className="text-body-sm text-text">
-                  No region matches “{destination.trim()}”.
+                  {copy.noRegionMatch(destination.trim())}
                 </p>
               }
             />
@@ -279,7 +286,7 @@ export function EnquiryQuickForm({
               id={`${id}-destination`}
               value={destination}
               onChange={(event) => setDestination(event.target.value)}
-              placeholder={copy.destinationPlaceholder}
+              placeholder={text.destinationPlaceholder}
               autoComplete="off"
               aria-invalid={Boolean(errors.destination) || undefined}
               aria-describedby={
@@ -292,7 +299,7 @@ export function EnquiryQuickForm({
 
         <SearchCell
           htmlFor={`${id}-startDate`}
-          label={copy.startLabel}
+          label={text.startLabel}
           invalid={Boolean(errors.startDate)}
         >
           <input
@@ -309,10 +316,10 @@ export function EnquiryQuickForm({
           />
         </SearchCell>
 
-        {copy.end && (
+        {spec.end && text.end && (
           <SearchCell
             htmlFor={`${id}-endDate`}
-            label={copy.end.label}
+            label={text.end.label}
             invalid={Boolean(errors.endDate)}
           >
             <input
@@ -330,10 +337,10 @@ export function EnquiryQuickForm({
           </SearchCell>
         )}
 
-        {copy.vehicle && (
+        {spec.vehicle && text.vehicle && (
           <SearchCell
             htmlFor={`${id}-carType`}
-            label={copy.vehicle.label}
+            label={text.vehicle.label}
             invalid={Boolean(errors.carType)}
             className="relative"
           >
@@ -352,7 +359,7 @@ export function EnquiryQuickForm({
               onOpenChange={(next) => setOpenField(next ? "vehicle" : null)}
               activeIndex={openField === "vehicle" ? activeIndex : -1}
               onActiveIndexChange={setActiveIndex}
-              placeholder={copy.vehicle.placeholder}
+              placeholder={text.vehicle.placeholder}
               invalid={Boolean(errors.carType)}
               describedBy={
                 errors.carType ? `${id}-carType-error` : undefined
@@ -360,7 +367,7 @@ export function EnquiryQuickForm({
               icon={<CarIcon className="size-4" />}
               emptyState={
                 <p className="text-body-sm text-text">
-                  No class matches “{carType.trim()}”.
+                  {copy.noClassMatch(carType.trim())}
                 </p>
               }
             />
@@ -375,7 +382,7 @@ export function EnquiryQuickForm({
             fullWidth
             className="rounded-xs! lg:h-full lg:min-w-36"
           >
-            Continue
+            {copy.submit}
           </Button>
         </div>
       </SearchRow>
@@ -383,7 +390,7 @@ export function EnquiryQuickForm({
       <SearchErrors idPrefix={id} errors={errorList} />
 
       <p className="mt-3 px-1 text-caption text-text-muted">
-        A request, not a booking. Nothing is held and nothing is charged.
+        {copy.disclaimer}
       </p>
     </SearchPanel>
   );

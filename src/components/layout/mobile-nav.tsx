@@ -9,6 +9,8 @@ import { LanguageSelect } from "@/components/layout/language-select";
 import { cn } from "@/lib/utils/cn";
 import { configured } from "@/lib/config/placeholders";
 import { contactConfig, mainNav, utilityNav } from "@/lib/config/site";
+import { esChrome } from "@/lib/content/es/chrome";
+import type { Locale } from "@/types/locale";
 
 /**
  * Mobile navigation sheet, below `xl`.
@@ -17,7 +19,8 @@ import { contactConfig, mainNav, utilityNav } from "@/lib/config/site";
  * Component and only this toggle ships JavaScript. It carries the full nav,
  * the help links, Manage my trips, the language list and the call button.
  */
-export function MobileNav() {
+export function MobileNav({ locale = "en" }: { locale?: Locale }) {
+  const es = locale === "es";
   const panelId = useId();
   const pathname = usePathname();
 
@@ -60,7 +63,15 @@ export function MobileNav() {
         type="button"
         aria-expanded={open}
         aria-controls={panelId}
-        aria-label={open ? "Close menu" : "Open menu"}
+        aria-label={
+          es
+            ? open
+              ? esChrome.menu.close
+              : esChrome.menu.open
+            : open
+              ? "Close menu"
+              : "Open menu"
+        }
         onClick={() => setOpen(!open)}
         className={cn(
           "inline-flex size-11 items-center justify-center rounded-full text-text",
@@ -94,10 +105,12 @@ export function MobileNav() {
         )}
       >
         <div className="px-5 pt-4">
-          <AccountButton variant="block" />
+          <AccountButton variant="block">
+            {es ? esChrome.manageTrips : undefined}
+          </AccountButton>
         </div>
 
-        <nav aria-label="Site" className="px-5 pt-2">
+        <nav aria-label={es ? esChrome.siteNavLabel : "Site"} className="px-5 pt-2">
           <ul className="divide-y divide-gray-100">
             {[...mainNav, ...utilityNav].map((item) => {
               const active =
@@ -114,7 +127,7 @@ export function MobileNav() {
                       active ? "text-primary" : "text-text hover:text-primary",
                     )}
                   >
-                    {item.label}
+                    {es ? (esChrome.nav[item.href] ?? item.label) : item.label}
                   </Link>
                 </li>
               );
@@ -144,12 +157,16 @@ export function MobileNav() {
               >
                 <path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a1 1 0 01-1 1A16 16 0 014 5a1 1 0 011-1z" />
               </svg>
-              Call {phoneDisplay}
+              {es ? esChrome.call.mobile(phoneDisplay) : `Call ${phoneDisplay}`}
             </a>
           </div>
         )}
 
-        <LanguageSelect variant="list" className="mt-6 border-t border-gray-100 px-5 pt-5" />
+        <LanguageSelect
+          variant="list"
+          locale={locale}
+          className="mt-6 border-t border-gray-100 px-5 pt-5"
+        />
       </div>
     </div>
   );

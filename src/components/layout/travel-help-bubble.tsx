@@ -3,6 +3,8 @@
 import Image from "next/image";
 
 import { CloseIcon, HeadsetIcon, PhoneIcon } from "@/components/ui/icons";
+import { useLocale } from "@/hooks/use-locale";
+import { esChrome } from "@/lib/content/es/chrome";
 import { cn } from "@/lib/utils/cn";
 
 /**
@@ -39,8 +41,11 @@ export function TravelHelpBubble({
   phoneDisplay: string;
   onDismiss: () => void;
 }) {
+  const es = useLocale() === "es";
   const href = `tel:${phone}`;
-  const label = `Call our travel agents: ${phoneDisplay}`;
+  const label = es
+    ? esChrome.bubble.aria(phoneDisplay)
+    : `Call our travel agents: ${phoneDisplay}`;
 
   return (
     <div
@@ -57,13 +62,13 @@ export function TravelHelpBubble({
           className="absolute left-5 top-0 z-10 inline-flex items-center gap-1.5 rounded-12 bg-surface px-3 py-1 text-caption font-semibold text-text shadow-md"
         >
           <HeadsetIcon className="size-3.5 text-primary" />
-          Travel help
+          {es ? esChrome.bubble.tag : "Travel help"}
         </span>
 
         <button
           type="button"
           onClick={onDismiss}
-          aria-label="Dismiss travel help"
+          aria-label={es ? esChrome.bubble.dismiss : "Dismiss travel help"}
           className={cn(
             "absolute -top-1 right-0 z-10 grid size-6 place-items-center rounded-full",
             "bg-secondary text-text-inverse shadow-md ring-2 ring-background",
@@ -100,7 +105,7 @@ export function TravelHelpBubble({
 
           <span className="flex min-w-0 flex-1 flex-col leading-tight">
             <span className="text-body-sm text-white/90">
-              Talk to a travel specialist
+              {es ? esChrome.bubble.talk : "Talk to a travel specialist"}
             </span>
             <span className="text-h6 font-bold tabular-nums text-white">
               {phoneDisplay}
