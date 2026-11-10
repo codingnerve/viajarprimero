@@ -10,6 +10,7 @@ import { aircraftCategories, jetRoutes } from "@/lib/content/private-jets";
 import { guides } from "@/lib/content/guides";
 import { reviews } from "@/lib/content/reviews";
 import { routes } from "@/lib/content/routes";
+import { trainOperators } from "@/lib/content/trains";
 import { siteConfig } from "@/lib/config/site";
 
 /**
@@ -34,6 +35,7 @@ const staticPaths = [
   { path: "/cruises", priority: 0.9, changeFrequency: "weekly" as const },
   { path: "/vacations", priority: 0.9, changeFrequency: "weekly" as const },
   { path: "/private-jets", priority: 0.9, changeFrequency: "weekly" as const },
+  { path: "/trains", priority: 0.8, changeFrequency: "monthly" as const },
 
   // Private aviation. `/private-jets/request-a-quote` is absent on purpose:
   // it is noIndex and disallowed in robots.txt, like every other funnel step.
@@ -189,6 +191,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     ...cruiseLines.map((line) => ({
       url: url(`/cruises/${line.slug}`),
+      lastModified,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    })),
+
+    ...trainOperators.map((operator) => ({
+      url: url(`/trains/${operator.slug}`),
       lastModified,
       changeFrequency: "monthly" as const,
       priority: 0.7,

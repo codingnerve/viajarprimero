@@ -272,6 +272,49 @@ export function MailIcon(props: IconProps) {
   );
 }
 
+export function TrainIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <rect x="5" y="3.5" width="14" height="13" rx="3" />
+      <path d="M5 11h14M9 20.5l1.5-4M15 20.5l-1.5-4M9 14h.01M15 14h.01" />
+    </Icon>
+  );
+}
+
+export function SwapIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <path d="M7 4 3.5 7.5 7 11M3.5 7.5h14M17 13l3.5 3.5L17 20M20.5 16.5h-14" />
+    </Icon>
+  );
+}
+
+export function SeatIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <path d="M7 4.5h6a2 2 0 0 1 2 2V13H8.5a1.5 1.5 0 0 1-1.5-1.5V4.5ZM15 13h3.5a1 1 0 0 1 1 1v2.5H7.5V13M9 16.5v4M17 16.5v4" />
+    </Icon>
+  );
+}
+
+export function InfoIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 11v5M12 8h.01" />
+    </Icon>
+  );
+}
+
+export function SearchIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <circle cx="11" cy="11" r="6.5" />
+      <path d="m16 16 4.5 4.5" />
+    </Icon>
+  );
+}
+
 /** Keyed by the `verticalCatalogue` entry, so a vertical cannot gain a page
     without someone deciding what it looks like. */
 export const verticalIcons = {

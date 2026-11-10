@@ -10,6 +10,7 @@ import { destinations } from "@/lib/content/destinations";
 import { guides } from "@/lib/content/guides";
 import { aircraftCategories, jetRoutes } from "@/lib/content/private-jets";
 import { getResolvedRoutes } from "@/lib/content/routes";
+import { trainOperators } from "@/lib/content/trains";
 import { footerNav } from "@/lib/config/site";
 import { buildMetadata } from "@/lib/seo/metadata";
 
@@ -150,6 +151,14 @@ export default function SiteMapPage() {
             links={cruiseLines.map((line) => ({
               href: `/cruises/${line.slug}`,
               label: line.name,
+            }))}
+          />
+
+          <LinkSection
+            title="Train operators"
+            links={trainOperators.map((operator) => ({
+              href: `/trains/${operator.slug}`,
+              label: operator.name,
             }))}
           />
 
