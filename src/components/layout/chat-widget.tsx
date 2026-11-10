@@ -5,7 +5,8 @@ import { useEffect, useId, useState, type FormEvent, type ReactNode } from "reac
 import { ChatIcon, CloseIcon, HeadsetIcon, PhoneIcon } from "@/components/ui/icons";
 import { configured } from "@/lib/config/placeholders";
 import { openTawkChat } from "@/lib/providers/tawk";
-import { contactConfig } from "@/lib/config/site";
+import { useLocale } from "@/hooks/use-locale";
+import { contactConfig, phoneFor } from "@/lib/config/site";
 import { cn } from "@/lib/utils/cn";
 
 const OPEN_CHAT_EVENT = "vp:open-chat";
@@ -71,8 +72,9 @@ export function ChatWidget({
   const panelId = useId();
   const fieldId = useId();
 
-  const phone = configured(contactConfig.phone);
-  const phoneDisplay = configured(contactConfig.phoneDisplay);
+  const line = phoneFor(useLocale());
+  const phone = configured(line.phone);
+  const phoneDisplay = configured(line.phoneDisplay);
 
   useEffect(() => {
     const onOpen = () => {

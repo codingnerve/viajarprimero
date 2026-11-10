@@ -8,7 +8,7 @@ import { AccountButton } from "@/components/layout/account-dialog";
 import { LanguageSelect } from "@/components/layout/language-select";
 import { cn } from "@/lib/utils/cn";
 import { configured } from "@/lib/config/placeholders";
-import { contactConfig, mainNav, utilityNav } from "@/lib/config/site";
+import { mainNav, phoneFor, utilityNav } from "@/lib/config/site";
 import { esChrome } from "@/lib/content/es/chrome";
 import type { Locale } from "@/types/locale";
 
@@ -54,8 +54,9 @@ export function MobileNav({ locale = "en" }: { locale?: Locale }) {
     };
   }, [open]);
 
-  const phone = configured(contactConfig.phone);
-  const phoneDisplay = configured(contactConfig.phoneDisplay);
+  const line = phoneFor(locale);
+  const phone = configured(line.phone);
+  const phoneDisplay = configured(line.phoneDisplay);
 
   return (
     <div className="xl:hidden">

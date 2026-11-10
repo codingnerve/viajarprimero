@@ -5,7 +5,8 @@ import { useState } from "react";
 import { ChatWidget } from "@/components/layout/chat-widget";
 import { TravelHelpBubble } from "@/components/layout/travel-help-bubble";
 import { configured } from "@/lib/config/placeholders";
-import { contactConfig } from "@/lib/config/site";
+import { useLocale } from "@/hooks/use-locale";
+import { phoneFor } from "@/lib/config/site";
 
 /**
  * Owns the one piece of state the two floating corner widgets share: whether
@@ -29,8 +30,9 @@ import { contactConfig } from "@/lib/config/site";
 export function FloatingHelp() {
   const [dismissed, setDismissed] = useState(false);
 
-  const phone = configured(contactConfig.phone);
-  const phoneDisplay = configured(contactConfig.phoneDisplay);
+  const line = phoneFor(useLocale());
+  const phone = configured(line.phone);
+  const phoneDisplay = configured(line.phoneDisplay);
   const bubbleShown = Boolean(phone && phoneDisplay) && !dismissed;
 
   return (

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { OpenChatButton } from "@/components/layout/chat-widget";
 import { PhoneIcon, TagIcon } from "@/components/ui/icons";
 import { configured } from "@/lib/config/placeholders";
-import { contactConfig } from "@/lib/config/site";
+import { phoneFor } from "@/lib/config/site";
 import { dealGroups } from "@/lib/content/deals";
 import { esDeals } from "@/lib/content/es/chrome";
 import type { Locale } from "@/types/locale";
@@ -26,8 +26,9 @@ export function DealCategoryGrid({
   /** Compact only — the Spanish home page shows translated cards. */
   locale?: Locale;
 }) {
-  const phone = configured(contactConfig.phone);
-  const phoneDisplay = configured(contactConfig.phoneDisplay);
+  const line = phoneFor(locale);
+  const phone = configured(line.phone);
+  const phoneDisplay = configured(line.phoneDisplay);
 
   if (variant === "compact") {
     const all = dealGroups.flatMap((group) => group.items);

@@ -1,6 +1,6 @@
 import { PhoneIcon } from "@/components/ui/icons";
 import { configured } from "@/lib/config/placeholders";
-import { contactConfig } from "@/lib/config/site";
+import { phoneFor } from "@/lib/config/site";
 import { esChrome } from "@/lib/content/es/chrome";
 import { cn } from "@/lib/utils/cn";
 import type { Locale } from "@/types/locale";
@@ -30,8 +30,9 @@ export function CallButton({
   className?: string;
   locale?: Locale;
 }) {
-  const phone = configured(contactConfig.phone);
-  const phoneDisplay = configured(contactConfig.phoneDisplay);
+  const line = phoneFor(locale);
+  const phone = configured(line.phone);
+  const phoneDisplay = configured(line.phoneDisplay);
 
   if (!phone || !phoneDisplay) return null;
 

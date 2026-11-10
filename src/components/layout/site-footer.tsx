@@ -12,7 +12,7 @@ import {
   californiaRestitutionFund,
   sellerOfTravelRegistrations,
 } from "@/lib/config/legal";
-import { contactConfig, footerNav, siteConfig } from "@/lib/config/site";
+import { contactConfig, footerNav, phoneFor, siteConfig } from "@/lib/config/site";
 import { esChrome } from "@/lib/content/es/chrome";
 import type { Locale } from "@/types/locale";
 
@@ -55,8 +55,9 @@ export function SiteFooter({ locale = "en" }: { locale?: Locale }) {
   const es = locale === "es";
   const t = esChrome.footer;
   const email = configured(contactConfig.email);
-  const phone = configured(contactConfig.phone);
-  const phoneDisplay = configured(contactConfig.phoneDisplay);
+  const line = phoneFor(locale);
+  const phone = configured(line.phone);
+  const phoneDisplay = configured(line.phoneDisplay);
   const legalName = configured(siteConfig.legalName);
 
   const addressParts = [

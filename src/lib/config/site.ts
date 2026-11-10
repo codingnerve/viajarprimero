@@ -37,6 +37,9 @@ export const contactConfig = {
   // number nobody picks up is a Google Ads Misrepresentation violation.
   phone: "+19152551230",
   phoneDisplay: "+1 (915) 255-1230",
+  /** The line Spanish-language (`/es`) visitors are sent to. */
+  phoneEs: "+18773804007",
+  phoneDisplayEs: "+1 877 380 4007",
   /** Hours must describe when the phone is genuinely answered. */
   supportHours: "24/7",
   address: {
@@ -212,3 +215,13 @@ export const footerNav = {
     { href: "/photo-credits", label: "Photo credits" },
   ],
 } as const;
+
+/**
+ * The phone line for a language: Spanish pages ring the Spanish line, every
+ * other page the main one.
+ */
+export function phoneFor(locale: "en" | "es") {
+  return locale === "es"
+    ? { phone: contactConfig.phoneEs, phoneDisplay: contactConfig.phoneDisplayEs }
+    : { phone: contactConfig.phone, phoneDisplay: contactConfig.phoneDisplay };
+}
