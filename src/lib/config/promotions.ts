@@ -62,9 +62,10 @@ export interface Promotion {
 }
 
 export const earlyBirdPromotion: Promotion = {
-  // On: shown on the home page and every booking section. Confirm the expiry
-  // below is a date the business will honour before this reaches Google Ads.
-  enabled: true,
+  // Off: the popup is removed from the home page and every booking section.
+  // Before turning it back on, confirm the expiry below is a date the business
+  // will honour.
+  enabled: false,
   id: "early-bird-2026-10",
   eyebrow: "Early bird",
   headline: "10% off our service fee",

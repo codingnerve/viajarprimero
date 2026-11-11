@@ -43,7 +43,7 @@ export const contactConfig = {
   /** Hours must describe when the phone is genuinely answered. */
   supportHours: "24/7",
   address: {
-    street: "8832 Parkland Dr, Mailbox A",
+    street: "8832 Parkland Dr",
     city: "El Paso",
     region: "Texas",
     postalCode: "79925",
