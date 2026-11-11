@@ -6,7 +6,7 @@ import { AccountButton } from "@/components/layout/account-dialog";
 import { Section } from "@/components/layout/section";
 import { Accordion, type AccordionItem } from "@/components/ui/accordion";
 import { ButtonLink } from "@/components/ui/button";
-import { HeroVideo } from "@/components/ui/hero-video";
+import { HeroCarousel, type HeroSlide } from "@/components/ui/hero-carousel";
 import { ArrowRightIcon, HeadsetIcon } from "@/components/ui/icons";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Tabs, type TabItem } from "@/components/ui/tabs";
@@ -32,6 +32,7 @@ export function HomeHero({
   tabsLabel,
   tabs,
   poster,
+  slides,
 }: {
   title: string;
   accent: string;
@@ -39,8 +40,16 @@ export function HomeHero({
   proof: ReadonlyArray<{ icon: IconComponent; label: string }>;
   tabsLabel: string;
   tabs: readonly TabItem[];
-  poster: string | null;
+  poster?: string | null;
+  slides?: readonly HeroSlide[];
 }) {
+  const activeSlides: readonly HeroSlide[] =
+    slides && slides.length > 0
+      ? slides
+      : poster
+        ? [{ id: "poster", src: poster, alt: "" }]
+        : [];
+
   return (
     <Section
       tone="brand"
@@ -50,25 +59,31 @@ export function HomeHero({
         out of the search card, and every Section is its own stacking context,
         so without this the band below paints over an open list.
       */
-      className="z-20 flex min-h-[min(40rem,calc(100svh-var(--header-height)))] flex-col justify-center"
+      className="z-20 flex min-h-[min(44rem,calc(100svh-var(--header-height)))] flex-col justify-center"
       containerClassName="pb-0 md:pb-0"
-      backdrop={<HeroVideo src="/videos/hero.mp4" poster={poster} />}
+      backdrop={
+        activeSlides.length > 0 ? (
+          <HeroCarousel slides={activeSlides} />
+        ) : (
+          <div className="absolute inset-0 bg-brand-wash" />
+        )
+      }
     >
-      <div className="max-w-3xl">
+      <div className="mx-auto max-w-4xl pt-6 text-center md:pt-10">
         <h1 className="animate-rise text-balance text-display-lg text-text-inverse [animation-delay:80ms] motion-reduce:animate-none">
           {title}
           <br className="hidden sm:block" />{" "}
           <span className="text-accent">{accent}</span>
         </h1>
-        <p className="animate-rise measure mt-5 text-body-lg text-text-on-dark [animation-delay:160ms] motion-reduce:animate-none">
+        <p className="animate-rise mx-auto mt-5 max-w-2xl text-body-lg text-text-on-dark [animation-delay:160ms] motion-reduce:animate-none">
           {intro}
         </p>
 
-        <ul className="animate-rise mt-7 flex flex-wrap gap-2.5 [animation-delay:240ms] motion-reduce:animate-none">
+        <ul className="animate-rise mt-7 flex flex-wrap justify-center gap-2.5 [animation-delay:240ms] motion-reduce:animate-none">
           {proof.map(({ icon: ProofIcon, label }) => (
             <li
               key={label}
-              className="flex items-center gap-2 rounded-lg bg-white/10 px-3.5 py-2 ring-1 ring-inset ring-white/15 backdrop-blur-[var(--blur-md)]"
+              className="flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 ring-1 ring-inset ring-white/20 backdrop-blur-[var(--blur-md)]"
             >
               <ProofIcon className="size-4.5 shrink-0 text-accent" />
               <span className="text-body-sm font-semibold text-text-inverse">

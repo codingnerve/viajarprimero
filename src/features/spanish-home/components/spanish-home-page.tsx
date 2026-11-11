@@ -146,6 +146,16 @@ export async function SpanishHomePage() {
     return copy ? { ...destination, ...copy } : destination;
   });
 
+  const heroSlides = spanishDestinations
+    .map((d) => ({
+      id: d.slug,
+      src: getPhoto("hero", d.slug) ?? getPhoto("destinations", d.slug),
+      alt: `${d.city}, ${d.country}`,
+      caption: d.city,
+      detail: d.country,
+    }))
+    .filter((s): s is { id: string; src: string; alt: string; caption: string; detail: string } => Boolean(s.src));
+
   const faqItems = esFaq.items;
 
   return (
@@ -165,6 +175,7 @@ export async function SpanishHomePage() {
         ]}
         tabsLabel={esHero.tabsLabel}
         poster={poster}
+        slides={heroSlides}
         tabs={verticalCatalogue.map((vertical) => {
           const VerticalIcon = verticalIcons[vertical.key];
 

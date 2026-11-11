@@ -203,6 +203,16 @@ export default async function HomePage() {
       ? (getPhoto("hero", first.slug) ?? getPhoto("destinations", first.slug))
       : null);
 
+  const heroSlides = destinations
+    .map((d) => ({
+      id: d.slug,
+      src: getPhoto("hero", d.slug) ?? getPhoto("destinations", d.slug),
+      alt: `${d.city}, ${d.country}`,
+      caption: d.city,
+      detail: d.country,
+    }))
+    .filter((s): s is { id: string; src: string; alt: string; caption: string; detail: string } => Boolean(s.src));
+
   return (
     <>
       <JsonLd
@@ -218,6 +228,7 @@ export default async function HomePage() {
         proof={proofPoints}
         tabsLabel="What are you booking?"
         poster={poster}
+        slides={heroSlides}
         tabs={verticalCatalogue.map((vertical) => {
           const VerticalIcon = verticalIcons[vertical.key];
 
