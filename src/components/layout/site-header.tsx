@@ -83,7 +83,7 @@ export function SiteHeader({
         </div>
       </div>
 
-      <header className="sticky top-0 z-[var(--z-sticky)] overflow-x-clip border-b border-border bg-surface/95 backdrop-blur-[var(--blur-md)]">
+      <header className="sticky top-0 z-[var(--z-sticky)] overflow-x-clip border-b border-border bg-surface/95 xl:backdrop-blur-[var(--blur-md)]">
         <div className="relative mx-auto flex h-[var(--header-height)] max-w-page items-center gap-4 px-gutter">
           <Link
             href="/"

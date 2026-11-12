@@ -22,6 +22,7 @@ import {
   StarIcon,
   SuitcaseIcon,
   TagIcon,
+  TrainIcon,
   verticalIcons,
 } from "@/components/ui/icons";
 import { DestinationCard } from "@/features/destinations/components/destination-card";
@@ -29,6 +30,7 @@ import { DestinationsRail } from "@/features/destinations/components/destination
 import { EnquiryQuickForm } from "@/features/enquiries/components/enquiry-quick-form";
 import type { EnquiryVertical } from "@/features/enquiries/types";
 import { HotelSearchForm } from "@/features/hotels/components/hotel-search-form";
+import { RailSearch } from "@/features/trains/components/rail-search";
 import { NewsletterSignup } from "@/features/newsletter/components/newsletter-signup";
 import { JetSearchForm } from "@/features/private-jets/components/jet-search-form";
 import { PrivateAviationBand } from "@/features/private-jets/components/private-aviation-band";
@@ -206,7 +208,7 @@ export default async function HomePage() {
         intro="Search flights, hotels and private jets, or call and a real agent books any trip with you — the full price explained, nothing charged until you say yes."
         proof={proofPoints}
         tabsLabel="What are you booking?"
-        tabs={verticalCatalogue.map((vertical) => {
+        tabs={[...verticalCatalogue.map((vertical) => {
           const VerticalIcon = verticalIcons[vertical.key];
 
           return {
@@ -227,7 +229,14 @@ export default async function HomePage() {
                 />
               ),
           };
-        })}
+        }),
+        {
+          id: "trains",
+          label: "Trains",
+          icon: <TrainIcon />,
+          panel: <RailSearch tone="bare" />,
+        },
+        ]}
       />
 
       <TrustBar points={aboutPoints} />

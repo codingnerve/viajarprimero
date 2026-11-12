@@ -21,6 +21,7 @@ import {
   StarIcon,
   SuitcaseIcon,
   TagIcon,
+  TrainIcon,
   verticalIcons,
 } from "@/components/ui/icons";
 import { DestinationCard } from "@/features/destinations/components/destination-card";
@@ -28,6 +29,7 @@ import { DestinationsRail } from "@/features/destinations/components/destination
 import { EnquiryQuickForm } from "@/features/enquiries/components/enquiry-quick-form";
 import type { EnquiryVertical } from "@/features/enquiries/types";
 import { HotelSearchForm } from "@/features/hotels/components/hotel-search-form";
+import { RailSearch } from "@/features/trains/components/rail-search";
 import { NewsletterSignup } from "@/features/newsletter/components/newsletter-signup";
 import { JetSearchForm } from "@/features/private-jets/components/jet-search-form";
 import { PrivateAviationBand } from "@/features/private-jets/components/private-aviation-band";
@@ -156,7 +158,7 @@ export async function SpanishHomePage() {
           { icon: HeadsetIcon, label: esHero.proof.agents(supportHours) },
         ]}
         tabsLabel={esHero.tabsLabel}
-        tabs={verticalCatalogue.map((vertical) => {
+        tabs={[...verticalCatalogue.map((vertical) => {
           const VerticalIcon = verticalIcons[vertical.key];
 
           return {
@@ -178,7 +180,14 @@ export async function SpanishHomePage() {
                 />
               ),
           };
-        })}
+        }),
+        {
+          id: "trains",
+          label: "Trenes",
+          icon: <TrainIcon />,
+          panel: <RailSearch tone="bare" />,
+        },
+        ]}
       />
 
       <TrustBar

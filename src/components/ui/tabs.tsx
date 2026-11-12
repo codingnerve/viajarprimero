@@ -124,7 +124,7 @@ export function Tabs({
                   : "md:bg-gray-100",
               )
             : panel
-              ? "gap-0.5 border-b border-border sm:gap-2 md:justify-center md:gap-6"
+              ? "gap-0.5 border-b border-border [mask-image:linear-gradient(to_right,black_90%,transparent)] sm:gap-2 md:justify-center md:gap-6 sm:[mask-image:none]"
               : "gap-1",
           listClassName,
         )}

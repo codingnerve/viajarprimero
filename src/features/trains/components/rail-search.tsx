@@ -41,10 +41,14 @@ const serverToday = () => "";
 export function RailSearch({
   title = "Search rail journeys",
   subtitle = "Compare train routes, flexible dates and passenger options for city-to-city travel.",
+  tone = "card",
 }: {
   title?: string;
   subtitle?: string;
+  /** `bare` drops the card and visible heading, for use inside a tab panel. */
+  tone?: "card" | "bare";
 }) {
+  const bare = tone === "bare";
   const id = useId();
   const [tripType, setTripType] = useState<TripType>("return");
   const [from, setFrom] = useState("");
@@ -76,10 +80,10 @@ export function RailSearch({
   return (
     <section
       aria-labelledby={ids.title}
-      className="rounded-2xl bg-surface p-5 shadow-lg ring-1 ring-inset ring-border md:p-7"
+      className={cn(!bare && "rounded-2xl bg-surface p-5 shadow-lg ring-1 ring-inset ring-border md:p-7")}
     >
       <div className="flex flex-wrap items-start justify-between gap-4">
-        <div className="min-w-0">
+        <div className={cn("min-w-0", bare && "sr-only")}>
           <h2 id={ids.title} className="text-h3 text-text">
             {title}
           </h2>
@@ -114,7 +118,7 @@ export function RailSearch({
         </fieldset>
       </div>
 
-      <form onSubmit={handleSubmit} className="mt-6">
+      <form onSubmit={handleSubmit} className={bare ? "mt-4" : "mt-6"}>
         <div className="grid gap-4 md:grid-cols-[1fr_auto_1fr] md:items-end">
           <Field htmlFor={ids.from} label="From" required>
             <Input
