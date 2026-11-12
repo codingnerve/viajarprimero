@@ -49,8 +49,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       className={`h-full antialiased ${geistSans.variable} ${fraunces.variable}`}
+      suppressHydrationWarning
     >
-      <body className="flex min-h-full flex-col">
+      <body className="flex min-h-full flex-col" suppressHydrationWarning>
         <JsonLd schema={[organizationSchema(), websiteSchema()]} />
 
         {/*
