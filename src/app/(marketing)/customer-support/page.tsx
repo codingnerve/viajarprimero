@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { LinePhoneLink, PhoneNumberText } from "@/components/layout/line-phone";
 import { OpenChatButton } from "@/components/layout/chat-widget";
 import { PageIntro } from "@/components/layout/page-intro";
 import { AgencyNotice } from "@/components/layout/agency-notice";
@@ -128,15 +129,15 @@ export default function CustomerSupportPage() {
           </li>
           {phone && phoneDisplay && (
             <li>
-              <a href={`tel:${phone}`} className={contactCard}>
+              <LinePhoneLink className={contactCard}>
                 <PhoneIcon className="size-7 text-primary" />
                 <span className="mt-3 text-h5 text-text">
                   {supportHours ? `${supportHours} helpline` : "Call us"}
                 </span>
                 <span className="mt-1 text-body-sm font-semibold tabular-nums text-text-secondary">
-                  {phoneDisplay}
+                  <PhoneNumberText />
                 </span>
-              </a>
+              </LinePhoneLink>
             </li>
           )}
           {email && (

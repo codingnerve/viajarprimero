@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { LinePhoneLink, PhoneNumberText } from "@/components/layout/line-phone";
 import { PageIntro } from "@/components/layout/page-intro";
 import { Section } from "@/components/layout/section";
 import { ENQUIRY_ANCHOR } from "@/features/enquiries/lib/enquiry-link";
@@ -89,12 +90,9 @@ export default function ContactPage() {
                   Answered {supportHours}.
                 </p>
               )}
-              <a
-                href={`tel:${phone}`}
-                className="mt-3 inline-block text-body font-semibold text-primary underline-offset-2 hover:underline"
-              >
-                {phoneDisplay}
-              </a>
+              <LinePhoneLink className="mt-3 inline-block text-body font-semibold text-primary underline-offset-2 hover:underline">
+                <PhoneNumberText />
+              </LinePhoneLink>
             </div>
           )}
 

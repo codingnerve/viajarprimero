@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { LinePhoneButton, PhoneNumberText } from "@/components/layout/line-phone";
 import { PageIntro } from "@/components/layout/page-intro";
 import { Section } from "@/components/layout/section";
 import { ButtonLink } from "@/components/ui/button";
@@ -109,13 +110,15 @@ export default function HowItWorksPage() {
           </p>
           <div className="mt-5 flex flex-wrap gap-3">
             {phone && phoneDisplay && (
-              <ButtonLink
-                href={`tel:${phone}`}
+              <LinePhoneButton
+                
                 icon={<PhoneIcon className="size-4" />}
-                aria-label={`Call to book: ${phoneDisplay}`}
+                ariaPrefix="Call to book: "
               >
-                <span className="tabular-nums">Call {phoneDisplay}</span>
-              </ButtonLink>
+                <span className="tabular-nums">
+                Call <PhoneNumberText />
+              </span>
+              </LinePhoneButton>
             )}
             <ButtonLink href="/flights" variant="outline">
               Search flights

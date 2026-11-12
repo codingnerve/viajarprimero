@@ -6,8 +6,8 @@ import { contactConfig } from "@/lib/config/site";
  * placeholder — a call button that dials a `TODO_` token is worse than none.
  */
 export function getRailPhone(): { href: string; display: string } | null {
-  const phone = configured(contactConfig.phone);
-  const display = configured(contactConfig.phoneDisplay);
+  const phone = configured(contactConfig.phoneTrains);
+  const display = configured(contactConfig.phoneDisplayTrains);
 
   return phone && display ? { href: `tel:${phone}`, display } : null;
 }

@@ -5,7 +5,7 @@ import { useEffect, useId, useState, type FormEvent, type ReactNode } from "reac
 import { ChatIcon, CloseIcon, HeadsetIcon, PhoneIcon } from "@/components/ui/icons";
 import { configured } from "@/lib/config/placeholders";
 import { openTawkChat } from "@/lib/providers/tawk";
-import { useLocale } from "@/hooks/use-locale";
+import { usePhoneLine } from "@/hooks/use-phone-line";
 import { contactConfig, phoneFor } from "@/lib/config/site";
 import { cn } from "@/lib/utils/cn";
 
@@ -72,7 +72,7 @@ export function ChatWidget({
   const panelId = useId();
   const fieldId = useId();
 
-  const line = phoneFor(useLocale());
+  const line = phoneFor(usePhoneLine());
   const phone = configured(line.phone);
   const phoneDisplay = configured(line.phoneDisplay);
 

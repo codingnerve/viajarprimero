@@ -5,7 +5,7 @@ import { useState } from "react";
 import { ChatWidget } from "@/components/layout/chat-widget";
 import { TravelHelpBubble } from "@/components/layout/travel-help-bubble";
 import { configured } from "@/lib/config/placeholders";
-import { useLocale } from "@/hooks/use-locale";
+import { usePhoneLine } from "@/hooks/use-phone-line";
 import { phoneFor } from "@/lib/config/site";
 
 /**
@@ -30,7 +30,7 @@ import { phoneFor } from "@/lib/config/site";
 export function FloatingHelp() {
   const [dismissed, setDismissed] = useState(false);
 
-  const line = phoneFor(useLocale());
+  const line = phoneFor(usePhoneLine());
   const phone = configured(line.phone);
   const phoneDisplay = configured(line.phoneDisplay);
   const bubbleShown = Boolean(phone && phoneDisplay) && !dismissed;

@@ -5,8 +5,9 @@ import { useRef, useState } from "react";
 
 import { Button, ButtonLink } from "@/components/ui/button";
 import { CloseIcon, PhoneIcon } from "@/components/ui/icons";
+import { usePhoneLine } from "@/hooks/use-phone-line";
 import { configured } from "@/lib/config/placeholders";
-import { contactConfig, siteConfig } from "@/lib/config/site";
+import { contactConfig, phoneFor, siteConfig } from "@/lib/config/site";
 import { cn } from "@/lib/utils/cn";
 
 export interface BookingSummary {
@@ -55,8 +56,9 @@ export function BookingConfirmButton({
 }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const [open, setOpen] = useState(false);
-  const phone = configured(contactConfig.phone);
-  const phoneDisplay = configured(contactConfig.phoneDisplay);
+  const line = phoneFor(usePhoneLine());
+  const phone = configured(line.phone);
+  const phoneDisplay = configured(line.phoneDisplay);
 
   const show = () => {
     const dialog = dialogRef.current;

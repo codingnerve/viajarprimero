@@ -4,8 +4,10 @@ import type { ReactNode } from "react";
 
 import { FloatingHelp } from "@/components/layout/floating-help";
 import { useLocale } from "@/hooks/use-locale";
-import { esChrome } from "@/lib/content/es/chrome";
+import { usePhoneLine } from "@/hooks/use-phone-line";
 import type { Locale } from "@/types/locale";
+
+import { esChrome } from "@/lib/content/es/chrome";
 
 /**
  * The header, `<main>` and footer for whichever language the page is written
@@ -20,16 +22,26 @@ import type { Locale } from "@/types/locale";
  * off the Spanish page: it is already Spanish, and the translator treats the
  * page as English.
  */
+/**
+ * Which header and footer to show: the two languages, the train pages (English
+ * with their own phone line), or a translated `/es/…` page (English chrome with
+ * the Spanish phone line).
+ */
+export type ChromeKey = Locale | "trains" | "es-en";
+
 export function LocaleChrome({
   headers,
   footers,
   children,
 }: {
-  headers: Record<Locale, ReactNode>;
-  footers: Record<Locale, ReactNode>;
+  headers: Record<ChromeKey, ReactNode>;
+  footers: Record<ChromeKey, ReactNode>;
   children: ReactNode;
 }) {
   const locale = useLocale();
+  const line = usePhoneLine();
+  const chrome: ChromeKey =
+    locale === "es" ? "es" : line === "es" ? "es-en" : line;
   const es = locale === "es";
 
   return (
@@ -45,11 +57,11 @@ export function LocaleChrome({
         {es ? esChrome.skipToMain : "Skip to main content"}
       </a>
 
-      {headers[locale]}
+      {headers[chrome]}
       <main id="main" className="flex-1">
         {children}
       </main>
-      {footers[locale]}
+      {footers[chrome]}
       <FloatingHelp />
     </div>
   );

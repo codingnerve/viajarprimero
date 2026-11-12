@@ -12,7 +12,7 @@ import {
   californiaRestitutionFund,
   sellerOfTravelRegistrations,
 } from "@/lib/config/legal";
-import { contactConfig, footerNav, phoneFor, siteConfig } from "@/lib/config/site";
+import { contactConfig, footerNav, phoneFor, siteConfig, type PhoneLine } from "@/lib/config/site";
 import { esChrome } from "@/lib/content/es/chrome";
 import type { Locale } from "@/types/locale";
 
@@ -51,11 +51,17 @@ const columns = [
  * columns are lighter and narrower, and the compliance text sits in its own
  * band at the bottom where it reads as a statement rather than as more links.
  */
-export function SiteFooter({ locale = "en" }: { locale?: Locale }) {
+export function SiteFooter({
+  locale = "en",
+  line: lineKey = locale,
+}: {
+  locale?: Locale;
+  line?: PhoneLine;
+}) {
   const es = locale === "es";
   const t = esChrome.footer;
   const email = configured(contactConfig.email);
-  const line = phoneFor(locale);
+  const line = phoneFor(lineKey);
   const phone = configured(line.phone);
   const phoneDisplay = configured(line.phoneDisplay);
   const legalName = configured(siteConfig.legalName);

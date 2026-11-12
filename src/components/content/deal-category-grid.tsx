@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { LinePhoneLink } from "@/components/layout/line-phone";
 import { OpenChatButton } from "@/components/layout/chat-widget";
 import { PhoneIcon, TagIcon } from "@/components/ui/icons";
 import { configured } from "@/lib/config/placeholders";
@@ -81,14 +82,13 @@ export function DealCategoryGrid({
                 </p>
                 <div className="mt-4 flex flex-wrap gap-2">
                   {phone && phoneDisplay && (
-                    <a
-                      href={`tel:${phone}`}
-                      aria-label={`Call about ${item.label}: ${phoneDisplay}`}
+                    <LinePhoneLink
+                      ariaPrefix={`Call about ${item.label}: `}
                       className="inline-flex h-10 items-center gap-2 rounded-xs bg-primary px-4 text-body-sm font-semibold text-text-inverse transition-colors hover:bg-primary-hover focus-ring"
                     >
                       <PhoneIcon className="size-4" />
                       Call for this deal
-                    </a>
+                    </LinePhoneLink>
                   )}
                   <OpenChatButton className="inline-flex h-10 items-center rounded-xs px-4 text-body-sm font-semibold text-text ring-1 ring-inset ring-border-strong transition-colors hover:bg-gray-50 focus-ring">
                     Ask in chat

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { LinePhoneLink, PhoneNumberText } from "@/components/layout/line-phone";
 import { redirect } from "next/navigation";
 
 import { AccountButton } from "@/components/layout/account-dialog";
@@ -82,9 +83,9 @@ export default async function MyTripsPage({
               {phone && phoneDisplay ? (
                 <>
                   call{" "}
-                  <a href={`tel:${phone}`} className={linkClass}>
-                    {phoneDisplay}
-                  </a>{" "}
+                  <LinePhoneLink className={linkClass}>
+                    <PhoneNumberText />
+                  </LinePhoneLink>{" "}
                   or see{" "}
                 </>
               ) : (
@@ -157,9 +158,9 @@ export default async function MyTripsPage({
               {phone && phoneDisplay && (
                 <>
                   Call{" "}
-                  <a href={`tel:${phone}`} className={linkClass}>
-                    {phoneDisplay}
-                  </a>
+                  <LinePhoneLink className={linkClass}>
+                    <PhoneNumberText />
+                  </LinePhoneLink>
                   ,{" "}
                 </>
               )}

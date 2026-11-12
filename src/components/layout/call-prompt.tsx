@@ -1,4 +1,4 @@
-import { ButtonLink } from "@/components/ui/button";
+import { LinePhoneButton, PhoneNumberText } from "@/components/layout/line-phone";
 import { PhoneIcon } from "@/components/ui/icons";
 import { configured } from "@/lib/config/placeholders";
 import { contactConfig } from "@/lib/config/site";
@@ -31,15 +31,17 @@ export function CallPrompt({ className }: { className?: string }) {
         Call and an agent will price the trip and book it with you. Nothing is
         charged until you agree.
       </p>
-      <ButtonLink
-        href={`tel:${phone}`}
+      <LinePhoneButton
+        
         fullWidth
         className="mt-4"
         icon={<PhoneIcon className="size-4" />}
-        aria-label={`Call to book: ${phoneDisplay}`}
+        ariaPrefix="Call to book: "
       >
-        <span className="tabular-nums">Call {phoneDisplay}</span>
-      </ButtonLink>
+        <span className="tabular-nums">
+        Call <PhoneNumberText />
+      </span>
+      </LinePhoneButton>
       <p className="mt-2 text-center text-caption text-text-muted">
         Agents available {contactConfig.supportHours}
       </p>

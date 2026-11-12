@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { LinePhoneLink, PhoneNumberText } from "@/components/layout/line-phone";
 import { PageIntro } from "@/components/layout/page-intro";
 import { AgencyNotice } from "@/components/layout/agency-notice";
 import { Section } from "@/components/layout/section";
@@ -192,12 +193,9 @@ export default function ManageBookingPage() {
                   {phone && phoneDisplay && (
                     <li>
                       Phone:{" "}
-                      <a
-                        href={`tel:${phone}`}
-                        className="text-primary underline underline-offset-2"
-                      >
-                        {phoneDisplay}
-                      </a>
+                      <LinePhoneLink className="text-primary underline underline-offset-2">
+                        <PhoneNumberText />
+                      </LinePhoneLink>
                       {supportHours && (
                         <span className="block text-caption text-text-secondary">
                           {supportHours}

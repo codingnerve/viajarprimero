@@ -11,6 +11,7 @@ import { HeadsetIcon } from "@/components/ui/icons";
 import { contactConfig, mainNav, siteConfig, utilityNav } from "@/lib/config/site";
 import { esChrome } from "@/lib/content/es/chrome";
 import { cn } from "@/lib/utils/cn";
+import type { PhoneLine } from "@/lib/config/site";
 import type { Locale } from "@/types/locale";
 
 /**
@@ -32,7 +33,14 @@ import type { Locale } from "@/types/locale";
  * we write, and no more. Spanish labels are longer than English ones, which is
  * why the Spanish nav uses the short forms in `esChrome.nav`.
  */
-export function SiteHeader({ locale = "en" }: { locale?: Locale }) {
+export function SiteHeader({
+  locale = "en",
+  line = locale,
+}: {
+  locale?: Locale;
+  /** Which phone line to show; defaults to the language's own. */
+  line?: PhoneLine;
+}) {
   const es = locale === "es";
   const label = (item: { href: string; label: string }) =>
     es ? (esChrome.nav[item.href] ?? item.label) : item.label;
@@ -109,8 +117,8 @@ export function SiteHeader({ locale = "en" }: { locale?: Locale }) {
 
           <div className="ml-auto flex shrink-0 items-center gap-1 sm:gap-2">
             <AccountButton variant="icon" className="xl:hidden" />
-            <CallButton locale={locale} />
-            <MobileNav locale={locale} />
+            <CallButton locale={locale} line={line} />
+            <MobileNav locale={locale} line={line} />
           </div>
         </div>
       </header>

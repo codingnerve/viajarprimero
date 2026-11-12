@@ -8,7 +8,7 @@ import { AccountButton } from "@/components/layout/account-dialog";
 import { LanguageSelect } from "@/components/layout/language-select";
 import { cn } from "@/lib/utils/cn";
 import { configured } from "@/lib/config/placeholders";
-import { mainNav, phoneFor, utilityNav } from "@/lib/config/site";
+import { mainNav, phoneFor, utilityNav, type PhoneLine } from "@/lib/config/site";
 import { esChrome } from "@/lib/content/es/chrome";
 import type { Locale } from "@/types/locale";
 
@@ -19,7 +19,13 @@ import type { Locale } from "@/types/locale";
  * Component and only this toggle ships JavaScript. It carries the full nav,
  * the help links, Manage my trips, the language list and the call button.
  */
-export function MobileNav({ locale = "en" }: { locale?: Locale }) {
+export function MobileNav({
+  locale = "en",
+  line: lineKey = locale,
+}: {
+  locale?: Locale;
+  line?: PhoneLine;
+}) {
   const es = locale === "es";
   const panelId = useId();
   const pathname = usePathname();
@@ -54,7 +60,7 @@ export function MobileNav({ locale = "en" }: { locale?: Locale }) {
     };
   }, [open]);
 
-  const line = phoneFor(locale);
+  const line = phoneFor(lineKey);
   const phone = configured(line.phone);
   const phoneDisplay = configured(line.phoneDisplay);
 

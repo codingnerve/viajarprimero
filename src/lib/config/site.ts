@@ -1,3 +1,5 @@
+import type { Locale } from "@/types/locale";
+
 /**
  * Single source of truth for site identity, contact details and navigation.
  *
@@ -38,8 +40,11 @@ export const contactConfig = {
   phone: "+19152551230",
   phoneDisplay: "+1 (915) 255-1230",
   /** The line Spanish-language (`/es`) visitors are sent to. */
-  phoneEs: "+18773804007",
-  phoneDisplayEs: "+1 877 380 4007",
+  phoneEs: "+18886095151",
+  phoneDisplayEs: "+1 888 609 5151",
+  /** The line shown everywhere on the train pages (`/trains`). */
+  phoneTrains: "+18773804007",
+  phoneDisplayTrains: "+1 877 380 4007",
   /** Hours must describe when the phone is genuinely answered. */
   supportHours: "24/7",
   address: {
@@ -216,12 +221,19 @@ export const footerNav = {
   ],
 } as const;
 
+/** Which phone line a page shows: a language, or the train pages' own line. */
+export type PhoneLine = Locale | "trains";
+
 /**
- * The phone line for a language: Spanish pages ring the Spanish line, every
- * other page the main one.
+ * The phone line for a page: Spanish pages ring the Spanish line, the train
+ * pages their own, every other page the main one.
  */
-export function phoneFor(locale: "en" | "es") {
-  return locale === "es"
-    ? { phone: contactConfig.phoneEs, phoneDisplay: contactConfig.phoneDisplayEs }
-    : { phone: contactConfig.phone, phoneDisplay: contactConfig.phoneDisplay };
+export function phoneFor(line: PhoneLine) {
+  if (line === "es") {
+    return { phone: contactConfig.phoneEs, phoneDisplay: contactConfig.phoneDisplayEs };
+  }
+  if (line === "trains") {
+    return { phone: contactConfig.phoneTrains, phoneDisplay: contactConfig.phoneDisplayTrains };
+  }
+  return { phone: contactConfig.phone, phoneDisplay: contactConfig.phoneDisplay };
 }

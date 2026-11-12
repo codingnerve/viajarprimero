@@ -58,8 +58,18 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           other URL is the English site. See LocaleChrome.
         */}
         <LocaleChrome
-          headers={{ en: <SiteHeader />, es: <SiteHeader locale="es" /> }}
-          footers={{ en: <SiteFooter />, es: <SiteFooter locale="es" /> }}
+          headers={{
+            en: <SiteHeader />,
+            es: <SiteHeader locale="es" />,
+            trains: <SiteHeader line="trains" />,
+            "es-en": <SiteHeader line="es" />,
+          }}
+          footers={{
+            en: <SiteFooter />,
+            es: <SiteFooter locale="es" />,
+            trains: <SiteFooter line="trains" />,
+            "es-en": <SiteFooter line="es" />,
+          }}
         >
           {children}
         </LocaleChrome>

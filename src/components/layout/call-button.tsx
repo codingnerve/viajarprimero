@@ -1,6 +1,6 @@
 import { PhoneIcon } from "@/components/ui/icons";
 import { configured } from "@/lib/config/placeholders";
-import { phoneFor } from "@/lib/config/site";
+import { phoneFor, type PhoneLine } from "@/lib/config/site";
 import { esChrome } from "@/lib/content/es/chrome";
 import { cn } from "@/lib/utils/cn";
 import type { Locale } from "@/types/locale";
@@ -26,11 +26,13 @@ import type { Locale } from "@/types/locale";
 export function CallButton({
   className,
   locale = "en",
+  line: lineKey = locale,
 }: {
   className?: string;
   locale?: Locale;
+  line?: PhoneLine;
 }) {
-  const line = phoneFor(locale);
+  const line = phoneFor(lineKey);
   const phone = configured(line.phone);
   const phoneDisplay = configured(line.phoneDisplay);
 

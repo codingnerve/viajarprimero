@@ -1,4 +1,5 @@
 import type { ComponentType } from "react";
+import { LinePhoneButton, PhoneNumberText } from "@/components/layout/line-phone";
 import Link from "next/link";
 
 import { ButtonLink } from "@/components/ui/button";
@@ -83,15 +84,17 @@ export function CallToBookPanel({
       <div className="p-6 md:p-8">
         {phone && phoneDisplay ? (
           <>
-            <ButtonLink
-              href={`tel:${phone}`}
+            <LinePhoneButton
+              
               size="lg"
               fullWidth
               icon={<PhoneIcon className="size-5" />}
-              aria-label={`Call to book: ${phoneDisplay}`}
+              ariaPrefix="Call to book: "
             >
-              <span className="tabular-nums">Call {phoneDisplay}</span>
-            </ButtonLink>
+              <span className="tabular-nums">
+              Call <PhoneNumberText />
+            </span>
+            </LinePhoneButton>
             <p className="mt-2 text-center text-caption text-text-muted">
               Agents available {contactConfig.supportHours}
             </p>
