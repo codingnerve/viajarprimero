@@ -277,13 +277,13 @@ export async function SpanishHomePage() {
         name="home-faq-es"
       />
 
-      <Section tone="brand" size="sm">
-        <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between">
+      <Section size="sm" containerClassName="pb-0 md:pb-0">
+        <div className="relative -mb-16 flex flex-col gap-8 rounded-2xl bg-primary-soft p-8 shadow-md md:p-10 lg:flex-row lg:items-center lg:justify-between lg:gap-12">
           <div className="measure-tight">
-            <h2 className="text-h2 text-text-inverse">{esNewsletter.title}</h2>
-            <p className="mt-3 text-body-lg text-text-on-dark">{esNewsletter.body}</p>
+            <h2 className="text-h2 text-text">{esNewsletter.title}</h2>
+            <p className="mt-3 text-body-lg text-text-secondary">{esNewsletter.body}</p>
           </div>
-          <NewsletterSignup tone="inverse" locale="es" />
+          <NewsletterSignup locale="es" />
         </div>
       </Section>
     </>

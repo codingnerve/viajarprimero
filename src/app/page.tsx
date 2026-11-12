@@ -318,16 +318,14 @@ export default async function HomePage() {
         name="home-faq"
       />
 
-      <Section tone="brand" size="sm">
-        <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between">
+      <Section size="sm" containerClassName="pb-0 md:pb-0">
+        <div className="relative -mb-16 flex flex-col gap-8 rounded-2xl bg-primary-soft p-8 shadow-md md:p-10 lg:flex-row lg:items-center lg:justify-between lg:gap-12">
           <div className="measure-tight">
-            <h2 className="text-h2 text-text-inverse">Travel news, occasionally</h2>
-            <p className="mt-3 text-body-lg text-text-on-dark">
-              New routes and sailings, seasonal changes in the places we cover, and offers when
-              they are genuinely worth your attention.
-            </p>
+            <h2 className="text-h2 text-text">Travel news, occasionally</h2>
+            <p className="mt-3 text-body-lg text-text-secondary">New routes and sailings, seasonal changes in the places we cover, and offers when
+              they are genuinely worth your attention.</p>
           </div>
-          <NewsletterSignup tone="inverse" />
+          <NewsletterSignup />
         </div>
       </Section>
     </>

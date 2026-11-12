@@ -76,11 +76,8 @@ export function SiteFooter({
 
   return (
     <footer className="mt-auto bg-secondary text-text-on-dark">
-      {/* A thin coral-to-teal rule closes the page and marks where it ends. */}
-      <div aria-hidden="true" className="h-1 bg-gradient-to-r from-accent via-primary to-secondary" />
-
-      <div className="border-b border-white/10">
-        <div className="mx-auto flex max-w-page flex-col gap-6 px-gutter py-12 md:flex-row md:items-center md:justify-between">
+      <div className="mx-auto max-w-page px-gutter pt-20 md:pt-24">
+        <div className="flex flex-col gap-6 rounded-2xl bg-white/8 p-8 ring-1 ring-inset ring-white/12 md:flex-row md:items-center md:justify-between md:p-10">
           <div className="max-w-xl">
             <h2 className="text-h2 text-text-inverse">
               {es ? t.ctaTitle : "Ready to plan your trip?"}
@@ -108,7 +105,7 @@ export function SiteFooter({
           </div>
         </div>
       </div>
-      <div className="mx-auto max-w-page px-gutter py-16 md:py-20">
+      <div className="mx-auto max-w-page px-gutter pb-16 pt-14 md:pb-20">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,20rem)_minmax(0,1fr)] lg:gap-20">
           <div>
             <Logo tone="inverse" />
