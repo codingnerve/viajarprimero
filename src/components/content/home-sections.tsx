@@ -41,20 +41,33 @@ export function HomeHero({
   return (
     <Section
       tone="brand"
-      size="md"
+      size="sm"
       /*
         z-20 and no overflow clipping: the destination and airport lists hang
         out of the search card, and every Section is its own stacking context,
         so without this the band below paints over an open list.
       */
-      className="z-20 flex min-h-[min(44rem,calc(100svh-var(--header-height)))] flex-col justify-center"
+      className="z-20 flex min-h-[min(34rem,calc(100svh-var(--header-height)))] flex-col justify-center"
       containerClassName="pb-0 md:pb-0"
       lightBackdrop
       backdrop={
-        <div className="absolute inset-0 bg-gradient-to-br from-primary-softer via-primary-soft to-background" />
+        <div className="absolute inset-0">
+          <Image
+            src="/images/hero/hero-sky.png"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-[50%_35%]"
+          />
+          {/* A pale veil on the text side keeps the dark copy legible over the
+              sky, and the bottom fades into the page under the search card. */}
+          <div className="absolute inset-0 bg-gradient-to-r from-white/85 via-white/45 to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-background to-transparent" />
+        </div>
       }
     >
-      <div className="mx-auto grid max-w-6xl items-center gap-6 pt-4 md:pt-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:gap-10">
+      <div className="mx-auto grid max-w-6xl items-center gap-6 pt-0 md:pt-2 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:gap-10">
         <div className="text-center lg:text-left">
         <h1 className="animate-rise text-balance text-display-lg text-text [animation-delay:80ms] motion-reduce:animate-none">
           {title}
@@ -80,14 +93,15 @@ export function HomeHero({
         </ul>
         </div>
 
-        <div className="animate-fade relative order-first mx-auto aspect-[5/4] w-64 sm:w-80 lg:order-none lg:w-full lg:max-w-md motion-reduce:animate-none">
+        <div className="animate-fade relative order-first mx-auto aspect-square w-40 sm:w-52 lg:order-none lg:w-full lg:max-w-[17rem] motion-reduce:animate-none">
+          <div aria-hidden="true" className="absolute inset-6 rounded-full bg-white/35 blur-3xl" />
           <Image
-            src="/images/hero/hero-logo.jpg"
+            src="/images/hero/hero-logo.png"
             alt="Viajar Primero — new places, first."
             fill
             priority
-            sizes="(min-width: 1024px) 28rem, 20rem"
-            className="object-cover mix-blend-multiply [mask-image:radial-gradient(closest-side,black_78%,transparent_100%)]"
+            sizes="(min-width: 1024px) 24rem, 18rem"
+            className="object-contain"
           />
         </div>
       </div>
@@ -98,7 +112,7 @@ export function HomeHero({
         front of it. The negative bottom margin is what pulls the band's own
         bottom edge up; the section after the hero opens with matching room.
       */}
-      <div className="animate-rise relative mt-10 -mb-20 rounded-xl bg-surface p-2 shadow-panel [animation-delay:320ms] motion-reduce:animate-none md:mt-12 md:-mb-24 md:p-3">
+      <div className="animate-rise relative mt-8 -mb-20 rounded-xl bg-surface p-2 shadow-panel [animation-delay:320ms] motion-reduce:animate-none md:mt-8 md:-mb-24 md:p-3">
         <Tabs
           tone="light"
           shape="panel"
