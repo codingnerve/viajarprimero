@@ -49,7 +49,6 @@ import {
   esSignUp,
   esVerticals,
 } from "@/lib/content/es/home";
-import { getPhoto, publicFileExists } from "@/lib/content/images";
 import { jetHubs } from "@/lib/content/private-jets";
 import { popularPlaces } from "@/lib/providers/liteapi";
 import { faqSchema } from "@/lib/seo/schema";
@@ -112,13 +111,6 @@ export async function SpanishHomePage() {
   const countWord =
     esNumberWords[verticalCatalogue.length] ?? String(verticalCatalogue.length);
 
-  const first = destinations[0];
-  const poster =
-    (first?.src && publicFileExists(first.src) ? first.src : null) ??
-    (first
-      ? (getPhoto("hero", first.slug) ?? getPhoto("destinations", first.slug))
-      : null);
-
   const services = [
     ...SERVICE_ORDER.flatMap((key) =>
       verticalCatalogue
@@ -146,16 +138,6 @@ export async function SpanishHomePage() {
     return copy ? { ...destination, ...copy } : destination;
   });
 
-  const heroSlides = spanishDestinations
-    .map((d) => ({
-      id: d.slug,
-      src: getPhoto("hero", d.slug) ?? getPhoto("destinations", d.slug),
-      alt: `${d.city}, ${d.country}`,
-      caption: d.city,
-      detail: d.country,
-    }))
-    .filter((s): s is { id: string; src: string; alt: string; caption: string; detail: string } => Boolean(s.src));
-
   const faqItems = esFaq.items;
 
   return (
@@ -174,8 +156,6 @@ export async function SpanishHomePage() {
           { icon: HeadsetIcon, label: esHero.proof.agents(supportHours) },
         ]}
         tabsLabel={esHero.tabsLabel}
-        poster={poster}
-        slides={heroSlides}
         tabs={verticalCatalogue.map((vertical) => {
           const VerticalIcon = verticalIcons[vertical.key];
 

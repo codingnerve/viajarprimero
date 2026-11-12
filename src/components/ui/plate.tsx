@@ -24,10 +24,10 @@ import { cn } from "@/lib/utils/cn";
  */
 const PLATES = [
   "from-[#0f4c5c] via-[#137a82] to-primary",
-  "from-[#0a323d] via-[#0f4c5c] to-[#2b8a8f]",
+  "from-[#1d4f9e] via-[#2f6fcf] to-[#5aa0ec]",
   "from-[#123b52] via-[#1a5b73] to-[#2b8ea6]",
   "from-[#17343f] via-[#2f5d62] to-[#6a9a8b]",
-  "from-[#0a323d] via-[#4a3b3a] to-[#c2562f]",
+  "from-[#1d4f9e] via-[#3b82d6] to-[#7cb8f5]",
   "from-[#10314a] via-[#215a63] to-[#3f8f6b]",
 ] as const;
 

@@ -22,13 +22,13 @@ type Size = "sm" | "md" | "lg";
  */
 const variantClasses: Record<Variant, string> = {
   primary: cn(
-    "bg-primary text-text-inverse shadow-[0_1px_2px_rgb(9_74_69/0.4),0_6px_16px_rgb(15_118_110/0.26)]",
-    "hover:bg-primary-hover hover:shadow-[0_1px_2px_rgb(9_74_69/0.4),0_10px_24px_rgb(15_118_110/0.32)]",
-    "active:bg-primary-active active:shadow-[0_1px_2px_rgb(9_74_69/0.4)]",
+    "bg-primary text-text-inverse shadow-[0_1px_2px_rgb(11_63_142/0.4),0_6px_16px_rgb(21_96_212/0.26)]",
+    "hover:bg-primary-hover hover:shadow-[0_1px_2px_rgb(11_63_142/0.4),0_10px_24px_rgb(21_96_212/0.32)]",
+    "active:bg-primary-active active:shadow-[0_1px_2px_rgb(11_63_142/0.4)]",
   ),
   accent: cn(
-    "bg-accent text-text shadow-[0_1px_2px_rgb(150_50_25/0.35),0_6px_16px_rgb(240_115_79/0.3)]",
-    "hover:bg-accent-hover hover:text-text-inverse",
+    "bg-accent text-text-inverse shadow-[0_1px_2px_rgb(11_63_142/0.4),0_6px_16px_rgb(26_115_232/0.28)]",
+    "hover:bg-accent-hover",
     "active:brightness-95",
   ),
   secondary: "bg-primary-soft text-primary hover:bg-primary/15 active:bg-primary/20",

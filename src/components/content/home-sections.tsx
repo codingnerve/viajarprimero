@@ -6,7 +6,6 @@ import { AccountButton } from "@/components/layout/account-dialog";
 import { Section } from "@/components/layout/section";
 import { Accordion, type AccordionItem } from "@/components/ui/accordion";
 import { ButtonLink } from "@/components/ui/button";
-import { HeroCarousel, type HeroSlide } from "@/components/ui/hero-carousel";
 import { ArrowRightIcon, HeadsetIcon } from "@/components/ui/icons";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Tabs, type TabItem } from "@/components/ui/tabs";
@@ -31,8 +30,6 @@ export function HomeHero({
   proof,
   tabsLabel,
   tabs,
-  poster,
-  slides,
 }: {
   title: string;
   accent: string;
@@ -40,16 +37,7 @@ export function HomeHero({
   proof: ReadonlyArray<{ icon: IconComponent; label: string }>;
   tabsLabel: string;
   tabs: readonly TabItem[];
-  poster?: string | null;
-  slides?: readonly HeroSlide[];
 }) {
-  const activeSlides: readonly HeroSlide[] =
-    slides && slides.length > 0
-      ? slides
-      : poster
-        ? [{ id: "poster", src: poster, alt: "" }]
-        : [];
-
   return (
     <Section
       tone="brand"
@@ -61,37 +49,47 @@ export function HomeHero({
       */
       className="z-20 flex min-h-[min(44rem,calc(100svh-var(--header-height)))] flex-col justify-center"
       containerClassName="pb-0 md:pb-0"
+      lightBackdrop
       backdrop={
-        activeSlides.length > 0 ? (
-          <HeroCarousel slides={activeSlides} />
-        ) : (
-          <div className="absolute inset-0 bg-brand-wash" />
-        )
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-softer via-primary-soft to-background" />
       }
     >
-      <div className="mx-auto max-w-4xl pt-6 text-center md:pt-10">
-        <h1 className="animate-rise text-balance text-display-lg text-text-inverse [animation-delay:80ms] motion-reduce:animate-none">
+      <div className="mx-auto grid max-w-6xl items-center gap-6 pt-4 md:pt-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:gap-10">
+        <div className="text-center lg:text-left">
+        <h1 className="animate-rise text-balance text-display-lg text-text [animation-delay:80ms] motion-reduce:animate-none">
           {title}
           <br className="hidden sm:block" />{" "}
           <span className="text-accent">{accent}</span>
         </h1>
-        <p className="animate-rise mx-auto mt-5 max-w-2xl text-body-lg text-text-on-dark [animation-delay:160ms] motion-reduce:animate-none">
+        <p className="animate-rise mx-auto mt-5 max-w-2xl text-body-lg text-text-secondary lg:mx-0 [animation-delay:160ms] motion-reduce:animate-none">
           {intro}
         </p>
 
-        <ul className="animate-rise mt-7 flex flex-wrap justify-center gap-2.5 [animation-delay:240ms] motion-reduce:animate-none">
+        <ul className="animate-rise mt-7 flex flex-wrap justify-center gap-2.5 lg:justify-start [animation-delay:240ms] motion-reduce:animate-none">
           {proof.map(({ icon: ProofIcon, label }) => (
             <li
               key={label}
-              className="flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 ring-1 ring-inset ring-white/20 backdrop-blur-[var(--blur-md)]"
+              className="flex items-center gap-2 rounded-full bg-surface px-4 py-2 ring-1 ring-inset ring-border backdrop-blur-[var(--blur-md)]"
             >
               <ProofIcon className="size-4.5 shrink-0 text-accent" />
-              <span className="text-body-sm font-semibold text-text-inverse">
+              <span className="text-body-sm font-semibold text-text">
                 {label}
               </span>
             </li>
           ))}
         </ul>
+        </div>
+
+        <div className="animate-fade relative order-first mx-auto aspect-[5/4] w-64 sm:w-80 lg:order-none lg:w-full lg:max-w-md motion-reduce:animate-none">
+          <Image
+            src="/images/hero/hero-logo.jpg"
+            alt="Viajar Primero — new places, first."
+            fill
+            priority
+            sizes="(min-width: 1024px) 28rem, 20rem"
+            className="object-cover mix-blend-multiply [mask-image:radial-gradient(closest-side,black_78%,transparent_100%)]"
+          />
+        </div>
       </div>
 
       {/*
@@ -296,7 +294,7 @@ export function AboutBlock({
             />
           </div>
           <div className="absolute -bottom-5 left-5 flex items-center gap-3 rounded-xl bg-surface px-4 py-3 shadow-lg ring-1 ring-inset ring-border md:left-8">
-            <span className="grid size-10 place-items-center rounded-lg bg-accent text-text">
+            <span className="grid size-10 place-items-center rounded-lg bg-accent text-text-inverse">
               <HeadsetIcon className="size-5" />
             </span>
             <span className="text-h5 text-text">{badge}</span>

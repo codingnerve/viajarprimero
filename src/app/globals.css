@@ -23,67 +23,64 @@
  */
 @theme {
   /* --- Brand --- */
-  /* Teal and sand palette. Primary is a deep teal that clears 4.5:1 on white,
-     so it is legal on body-size text as well as on buttons and headings;
-     hover/active are the same hue darkened. Secondary is the near-black teal
-     the header, footer and hero sit on. */
-  --color-primary: #0f766e;
-  --color-primary-hover: #0b5f58;
-  --color-primary-active: #094a45;
-  --color-secondary: #0a323d;
-  /* Coral: the warm counterweight, reserved for the one action per screen that
-     matters most (call, get a quote). On white it measures ~2.9:1, so it never
-     carries text — buttons put dark ink on it. `accent-hover` is darker and
-     clears 4.5:1 against white. */
-  --color-accent: #f0734f;
-  --color-accent-hover: #c24a28;
+  /* Blue palette. Primary is a strong blue that clears 4.5:1 on white, so it is
+     legal on body-size text as well as on buttons and headings. Secondary is
+     the deep navy the footer and photo scrims use. */
+  --color-primary: #1560d4;
+  --color-primary-hover: #0f4fb0;
+  --color-primary-active: #0b3f8e;
+  --color-secondary: #173b78;
+  /* Accent blue: a brighter blue for call and quote actions and highlights.
+     White text on it clears 4.5:1; `accent-hover` is darker. */
+  --color-accent: #1a73e8;
+  --color-accent-hover: #1558b8;
 
   /* --- Neutrals --- */
   /* A cooler, wider ramp than the scrape. 50 and 100 are close enough to white
      to act as surfaces rather than as fills, which is what lets two sections
      sit next to each other without a border drawn between them. */
-  --color-gray-50: #f8f6f1;
-  --color-gray-100: #f1eee7;
-  --color-gray-200: #e5e1d8;
-  --color-gray-300: #cdc8bc;
-  --color-gray-400: #aaa598;
-  --color-gray-500: #857f73;
-  --color-gray-600: #686358;
-  --color-gray-700: #4c4840;
-  --color-gray-800: #2f2c27;
-  --color-gray-900: #10222b;
+  --color-gray-50: #f5f8fc;
+  --color-gray-100: #edf2f9;
+  --color-gray-200: #dde5f0;
+  --color-gray-300: #c3cedd;
+  --color-gray-400: #98a6bb;
+  --color-gray-500: #6b7c93;
+  --color-gray-600: #52627a;
+  --color-gray-700: #3a4a63;
+  --color-gray-800: #1f2f4a;
+  --color-gray-900: #0f2547;
 
   /* --- Semantic --- */
   --color-success: #15803d;
   --color-warning: #d99a06;
   --color-error: #d6453d;
-  --color-info: #0f766e;
+  --color-info: #1560d4;
 
   /* Tinted fills for badges, alerts and toasts. */
-  --color-primary-soft: #e2f2f0;
-  --color-primary-softer: #f0f8f7;
+  --color-primary-soft: #dce9fb;
+  --color-primary-softer: #eef4fd;
   --color-success-soft: #e6f4ea;
   --color-warning-soft: #fbf1da;
   --color-error-soft: #fbeceb;
-  --color-accent-soft: #fdece6;
+  --color-accent-soft: #e3eefd;
 
   /* --- Surfaces --- */
   /* Three tiers, not two. `background` is the page, `surface` is a raised
      plane on it, `surface-2` is the recessed one inside a card — a summary
      row, a form footer — that used to be drawn as another bordered box. */
-  --color-background: #fbfaf7;
-  --color-background-alt: #f4f0e8;
+  --color-background: #fbfdff;
+  --color-background-alt: #eef4fc;
   --color-surface: #ffffff;
-  --color-surface-2: #f8f5ef;
-  --color-surface-sunken: #efebe2;
+  --color-surface-2: #f5f8fd;
+  --color-surface-sunken: #e6eef9;
   /* Hairline. Two thirds of the way from the old #ebedf0 to the background,
      because the previous value read as a drawn box rather than as an edge. */
-  --color-border: #e7e2d8;
-  --color-border-strong: #d6d0c3;
-  --color-divider: #e5e1d8;
+  --color-border: #e1e8f2;
+  --color-border-strong: #c8d4e6;
+  --color-divider: #e1e8f2;
 
   /* --- Text --- */
-  --color-text: #10222b;
+  --color-text: #0f2547;
   /* These two were #8592a6 and #a1a9b3, taken straight from the scrape. On
      white they measure 3.15:1 and 2.38:1 — both under the 4.5:1 WCAG AA floor
      for body text, and both were being used for real paragraphs (card
@@ -91,13 +88,13 @@
      values below, which clear 4.5:1 on white *and* on the
      --color-background-alt grey that half the sections sit on, while staying
      far enough apart to read as two distinct levels. */
-  --color-text-secondary: #3f5159;
-  --color-text-muted: #5a6a71;
-  --color-text-disabled: #c3c7c4;
+  --color-text-secondary: #3d4f6b;
+  --color-text-muted: #5a6b85;
+  --color-text-disabled: #c3cbd8;
   --color-text-inverse: #ffffff;
   /* Body copy on the navy band. Measures 8.9:1 on #0a1f3d — readable without
      the shout of pure white. */
-  --color-text-on-dark: #c9dcdf;
+  --color-text-on-dark: #e3eefd;
 
   /* --- Typography --- */
   /* Two families. Geist (`font-sans`) carries body copy, UI and the small
@@ -226,18 +223,18 @@
   /* Two layers each: a tight contact shadow that grounds the element and a
      wide diffuse one that lifts it. One layer reads as a drop shadow; two read
      as depth. */
-  --shadow-xs: 0 1px 2px rgb(16 34 43 / 0.05);
-  --shadow-sm: 0 1px 2px rgb(16 34 43 / 0.05), 0 2px 8px rgb(16 34 43 / 0.05);
-  --shadow-md: 0 2px 4px rgb(16 34 43 / 0.05), 0 8px 24px rgb(16 34 43 / 0.08);
-  --shadow-lg: 0 4px 8px rgb(16 34 43 / 0.06), 0 16px 48px rgb(16 34 43 / 0.12);
-  --shadow-xl: 0 8px 16px rgb(16 34 43 / 0.08), 0 32px 72px rgb(16 34 43 / 0.16);
+  --shadow-xs: 0 1px 2px rgb(15 37 71 / 0.05);
+  --shadow-sm: 0 1px 2px rgb(15 37 71 / 0.05), 0 2px 8px rgb(15 37 71 / 0.05);
+  --shadow-md: 0 2px 4px rgb(15 37 71 / 0.05), 0 8px 24px rgb(15 37 71 / 0.08);
+  --shadow-lg: 0 4px 8px rgb(15 37 71 / 0.06), 0 16px 48px rgb(15 37 71 / 0.12);
+  --shadow-xl: 0 8px 16px rgb(15 37 71 / 0.08), 0 32px 72px rgb(15 37 71 / 0.16);
   /* For the search panel that overhangs the hero: it sits on a dark field, so
      it needs an inset highlight to hold its top edge. */
   --shadow-panel: 0 1px 0 rgb(255 255 255 / 0.6) inset,
-    0 12px 32px rgb(16 34 43 / 0.16), 0 40px 80px rgb(16 34 43 / 0.2);
+    0 12px 32px rgb(15 37 71 / 0.16), 0 40px 80px rgb(15 37 71 / 0.2);
   /* Liquid glass: a bright specular top edge, a faint lower inner rim so the
      pane has thickness, and a soft lift underneath. */
-  --shadow-glass: 0 1px 2px rgb(16 34 43 / 0.06), 0 8px 24px rgb(16 34 43 / 0.1);
+  --shadow-glass: 0 1px 2px rgb(15 37 71 / 0.06), 0 8px 24px rgb(15 37 71 / 0.1);
 
   /* --- Motion --- */
   --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
@@ -354,7 +351,7 @@
  * values where needed, e.g. `z-[var(--z-modal)]`.
  */
 :root {
-  --overlay: rgb(16 34 43 / 0.6);
+  --overlay: rgb(15 37 71 / 0.6);
 
   --duration-fast: 150ms;
   --duration-normal: 250ms;
@@ -511,15 +508,15 @@ html {
   background-image:
     radial-gradient(
       70rem 40rem at 12% -10%,
-      rgb(20 150 138 / 0.42),
+      rgb(120 180 255 / 0.45),
       transparent 60%
     ),
     radial-gradient(
       50rem 34rem at 92% 8%,
-      rgb(240 115 79 / 0.16),
+      rgb(21 96 212 / 0.16),
       transparent 62%
     ),
-    linear-gradient(180deg, #0f4c5c 0%, #0a323d 55%, #082a33 100%);
+    linear-gradient(180deg, #2f78e0 0%, #1560d4 55%, #1150b4 100%);
 }
 
 /* The same field, quieter, for interior page headers. */
@@ -528,12 +525,12 @@ html {
   background-image:
     radial-gradient(
       55rem 30rem at 0% 0%,
-      rgb(15 118 110 / 0.09),
+      rgb(21 96 212 / 0.09),
       transparent 60%
     ),
     radial-gradient(
       40rem 26rem at 100% 0%,
-      rgb(240 115 79 / 0.07),
+      rgb(21 96 212 / 0.07),
       transparent 60%
     );
 }
@@ -548,10 +545,10 @@ html {
 @utility bg-photo-scrim {
   background-image: linear-gradient(
     180deg,
-    rgb(16 34 43 / 0) 0%,
-    rgb(16 34 43 / 0.08) 40%,
-    rgb(16 34 43 / 0.62) 78%,
-    rgb(16 34 43 / 0.86) 100%
+    rgb(15 37 71 / 0) 0%,
+    rgb(15 37 71 / 0.08) 40%,
+    rgb(15 37 71 / 0.62) 78%,
+    rgb(15 37 71 / 0.86) 100%
   );
 }
 

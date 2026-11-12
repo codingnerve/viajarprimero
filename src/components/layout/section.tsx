@@ -53,6 +53,7 @@ export function Section({
   as: Tag = "section",
   width,
   backdrop,
+  lightBackdrop = false,
   className,
   containerClassName,
   children,
@@ -67,6 +68,8 @@ export function Section({
    * makes a "full-width" hero image look like a wide banner.
    */
   backdrop?: ReactNode;
+  /** The backdrop is pale, so the band keeps dark text instead of white. */
+  lightBackdrop?: boolean;
   /**
    * Rule along the bottom edge, for two bands that share a background. A tone
    * change is already an edge, so drawing a border across one as well is the
@@ -81,7 +84,7 @@ export function Section({
   containerClassName?: string;
   children: ReactNode;
 }) {
-  const dark = tone === "dark" || tone === "brand";
+  const dark = (tone === "dark" || tone === "brand") && !lightBackdrop;
 
   return (
     <Tag

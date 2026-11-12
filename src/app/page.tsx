@@ -38,7 +38,6 @@ import { contactConfig, siteConfig, verticalCatalogue } from "@/lib/config/site"
 import { airports } from "@/lib/content/airports";
 import { getResolvedDestinations } from "@/lib/content/destinations";
 import { faqs } from "@/lib/content/faqs";
-import { getPhoto, publicFileExists } from "@/lib/content/images";
 import { jetHubs } from "@/lib/content/private-jets";
 import { popularPlaces } from "@/lib/providers/liteapi";
 import { buildMetadata } from "@/lib/seo/metadata";
@@ -193,26 +192,6 @@ export default async function HomePage() {
   // prerendered. See lib/config/promotions.
   const promotion = activePromotion();
 
-  // First frame of the hero while the clip loads. An explicit path is checked
-  // before it is used: `next/image` throws on a src it cannot parse, and in a
-  // Server Component that is a 500 rather than one missing picture.
-  const first = destinations[0];
-  const poster =
-    (first?.src && publicFileExists(first.src) ? first.src : null) ??
-    (first
-      ? (getPhoto("hero", first.slug) ?? getPhoto("destinations", first.slug))
-      : null);
-
-  const heroSlides = destinations
-    .map((d) => ({
-      id: d.slug,
-      src: getPhoto("hero", d.slug) ?? getPhoto("destinations", d.slug),
-      alt: `${d.city}, ${d.country}`,
-      caption: d.city,
-      detail: d.country,
-    }))
-    .filter((s): s is { id: string; src: string; alt: string; caption: string; detail: string } => Boolean(s.src));
-
   return (
     <>
       <JsonLd
@@ -227,8 +206,6 @@ export default async function HomePage() {
         intro="Search flights, hotels and private jets, or call and a real agent books any trip with you — the full price explained, nothing charged until you say yes."
         proof={proofPoints}
         tabsLabel="What are you booking?"
-        poster={poster}
-        slides={heroSlides}
         tabs={verticalCatalogue.map((vertical) => {
           const VerticalIcon = verticalIcons[vertical.key];
 
