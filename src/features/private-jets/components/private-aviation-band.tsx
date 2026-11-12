@@ -83,7 +83,7 @@ export function PrivateAviationBand({ locale = "en" }: { locale?: Locale }) {
           <Photo
             collection="home"
             slug="jet-cabin"
-            src="/images/private-jet/slider/jet-cabin.jpg"
+            src="/images/private-jet/slider/jet-cabin-interior.jpg"
             alt={copy.cabinAlt}
             sizes="(min-width: 1024px) 460px, 70vw"
             className="aspect-[4/5] w-[68%] rounded-lg"
@@ -92,7 +92,7 @@ export function PrivateAviationBand({ locale = "en" }: { locale?: Locale }) {
             <Photo
               collection="home"
               slug="jet-airstair"
-              src="/images/private-jet/slider/jet-airstair.jpg"
+              src="/images/private-jet/slider/jet-airstair-open.jpg"
               alt={copy.airstairAlt}
               sizes="(min-width: 1024px) 340px, 60vw"
               className="aspect-[3/2] rounded-md"

@@ -47,12 +47,12 @@ export const privateJetHeroImages: readonly PrivateJetHeroImage[] = [
     credit: "Unsplash",
   },
   {
-    src: "/images/private-jet/slider/jet-cabin.jpg",
+    src: "/images/private-jet/slider/jet-cabin-interior.jpg",
     alt: "The interior cabin of a luxury business jet with cream leather executive seating.",
     credit: "Unsplash",
   },
   {
-    src: "/images/private-jet/slider/jet-airstair.jpg",
+    src: "/images/private-jet/slider/jet-airstair-open.jpg",
     alt: "An executive jet on the apron with boarding door and airstair open.",
     credit: "Unsplash",
   },
