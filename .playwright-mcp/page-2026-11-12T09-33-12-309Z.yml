@@ -1,0 +1,607 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - link "Skip to main content" [ref=e3] [cursor=pointer]:
+      - /url: "#main"
+    - banner [ref=e4]:
+      - generic [ref=e5]:
+        - link "Viajarprimero — home" [ref=e6] [cursor=pointer]:
+          - /url: /
+          - img "Viajarprimero" [ref=e7]
+        - generic [ref=e8]:
+          - button "Manage my trips" [ref=e9]
+          - 'link "Call our travel agents: +1 (915) 255-1230" [ref=e13] [cursor=pointer]':
+            - /url: tel:+19152551230
+          - button "Open menu" [ref=e17]
+    - main [ref=e20]:
+      - generic [ref=e25]:
+        - generic [ref=e26]:
+          - generic [ref=e27]:
+            - heading "Five ways to travel. One honest price." [level=1] [ref=e28]
+            - paragraph [ref=e29]: Search flights, hotels and private jets, or call and a real agent books any trip with you — the full price explained, nothing charged until you say yes.
+            - list [ref=e30]:
+              - listitem [ref=e31]:
+                - generic [ref=e35]: Itemised before you pay
+              - listitem [ref=e36]:
+                - generic [ref=e40]: Rules up front
+              - listitem [ref=e41]:
+                - generic [ref=e46]: Real agents, 24/7
+          - img "Viajar Primero — new places, first." [ref=e49]
+        - generic [ref=e51]:
+          - tablist "What are you booking?" [ref=e52]:
+            - tab "Flights" [selected] [ref=e53]
+            - tab "Hotels" [ref=e58]
+            - tab "Car rental" [ref=e63]
+            - tab "Cruises" [ref=e69]
+            - tab "Private jets" [ref=e75]
+            - tab "Trains" [ref=e80]
+          - tabpanel "Flights" [ref=e86]:
+            - form "Flight search" [ref=e87]:
+              - generic [ref=e88]:
+                - radiogroup "Trip type" [ref=e89]:
+                  - radio "Round trip" [checked] [ref=e90]
+                  - radio "One way" [ref=e91]
+                - generic [ref=e92]:
+                  - generic [ref=e93]:
+                    - generic [ref=e94]: Adults
+                    - combobox "Adults" [ref=e95] [cursor=pointer]:
+                      - option "1 adult" [selected]
+                      - option "2 adults"
+                      - option "3 adults"
+                      - option "4 adults"
+                      - option "5 adults"
+                      - option "6 adults"
+                      - option "7 adults"
+                      - option "8 adults"
+                      - option "9 adults"
+                  - generic [ref=e96]:
+                    - generic [ref=e97]: Children
+                    - combobox "Children" [ref=e98] [cursor=pointer]:
+                      - option "0 children" [selected]
+                      - option "1 child"
+                      - option "2 children"
+                      - option "3 children"
+                      - option "4 children"
+                      - option "5 children"
+                      - option "6 children"
+                      - option "7 children"
+                      - option "8 children"
+                  - generic [ref=e99]:
+                    - generic [ref=e100]: Cabin
+                    - combobox "Cabin" [ref=e101] [cursor=pointer]:
+                      - option "Economy" [selected]
+                      - option "Premium economy"
+                      - option "Business"
+                      - option "First"
+              - generic [ref=e102]:
+                - generic [ref=e103]:
+                  - generic [ref=e104]: From
+                  - combobox "From" [ref=e111]
+                - generic [ref=e112]:
+                  - generic [ref=e113]: To
+                  - combobox "To" [ref=e120]
+                  - button "Swap departure and destination" [ref=e121]
+                - generic [ref=e124]:
+                  - generic [ref=e125]: Depart
+                  - textbox "Depart" [ref=e126]
+                - generic [ref=e127]:
+                  - generic [ref=e128]: Return
+                  - textbox "Return" [ref=e129]
+                - button "Get a quote" [ref=e131]
+      - list [ref=e137]:
+        - listitem [ref=e138]:
+          - generic [ref=e144]:
+            - generic [ref=e145]: Real agents
+            - generic [ref=e146]: Available 24/7, on the phone and in chat.
+        - listitem [ref=e147]:
+          - generic [ref=e152]:
+            - generic [ref=e153]: Full price first
+            - generic [ref=e154]: Taxes and fees included before you pay.
+        - listitem [ref=e155]:
+          - generic [ref=e160]:
+            - generic [ref=e161]: Rules explained
+            - generic [ref=e162]: Baggage, changes and cancellations up front.
+        - listitem [ref=e163]:
+          - generic [ref=e168]:
+            - generic [ref=e169]: Every kind of trip
+            - generic [ref=e170]: From a single flight to a whole holiday.
+      - generic [ref=e172]:
+        - generic [ref=e174]:
+          - paragraph [ref=e175]: What we book
+          - heading "Every kind of trip, one agency" [level=2] [ref=e178]
+          - paragraph [ref=e179]: Search online or call — a real agent books it with you.
+        - list [ref=e180]:
+          - listitem [ref=e181]:
+            - link "Flights Tell us the route and an agent will price it." [ref=e182] [cursor=pointer]:
+              - /url: /flights
+              - generic [ref=e187]:
+                - generic [ref=e188]: Flights
+                - generic [ref=e189]: Tell us the route and an agent will price it.
+          - listitem [ref=e190]:
+            - link "Private jets Charter priced by the aircraft, not by the seat." [ref=e191] [cursor=pointer]:
+              - /url: /private-jets
+              - generic [ref=e196]:
+                - generic [ref=e197]: Private jets
+                - generic [ref=e198]: Charter priced by the aircraft, not by the seat.
+          - listitem [ref=e199]:
+            - link "Cruises What the fare covers, itemised." [ref=e200] [cursor=pointer]:
+              - /url: /cruises
+              - generic [ref=e205]:
+                - generic [ref=e206]: Cruises
+                - generic [ref=e207]: What the fare covers, itemised.
+          - listitem [ref=e208]:
+            - link "Hotels Rooms priced as a total, not as a nightly headline." [ref=e209] [cursor=pointer]:
+              - /url: /hotels
+              - generic [ref=e214]:
+                - generic [ref=e215]: Hotels
+                - generic [ref=e216]: Rooms priced as a total, not as a nightly headline.
+          - listitem [ref=e217]:
+            - link "Car rental The desk-side surprises settled in advance." [ref=e218] [cursor=pointer]:
+              - /url: /car-rentals
+              - generic [ref=e223]:
+                - generic [ref=e224]: Car rental
+                - generic [ref=e225]: The desk-side surprises settled in advance.
+          - listitem [ref=e226]:
+            - link "Vacation packages Flights, hotel and extras planned as one trip." [ref=e227] [cursor=pointer]:
+              - /url: /vacations
+              - generic [ref=e232]:
+                - generic [ref=e233]: Vacation packages
+                - generic [ref=e234]: Flights, hotel and extras planned as one trip.
+      - generic [ref=e236]:
+        - generic [ref=e238]:
+          - paragraph [ref=e239]: How it works
+          - heading "From first call to confirmed booking" [level=2] [ref=e242]
+        - list [ref=e243]:
+          - listitem [ref=e244]:
+            - text: "01"
+            - heading "Tell us the trip" [level=3] [ref=e245]
+            - paragraph [ref=e246]: Call, chat or send a request with the route, the dates and who is travelling.
+          - listitem [ref=e247]:
+            - text: "02"
+            - heading "We find and price the options" [level=3] [ref=e248]
+            - paragraph [ref=e249]: "An agent checks the suppliers and comes back with the full price: fare, taxes and our fee as separate lines."
+          - listitem [ref=e250]:
+            - text: "03"
+            - heading "You decide" [level=3] [ref=e251]
+            - paragraph [ref=e252]: Nothing is charged until you say yes, and the rules for your fare are explained first.
+        - paragraph [ref=e253]:
+          - link "See how it works" [ref=e254] [cursor=pointer]:
+            - /url: /how-it-works
+      - generic [ref=e258]:
+        - generic [ref=e259]:
+          - generic [ref=e260]:
+            - paragraph [ref=e261]: Deals
+            - heading "Deals for every traveller" [level=2] [ref=e262]
+            - paragraph [ref=e263]: Flights, hotels, cruises and more — plus deals for couples, families, groups and existing customers.
+          - link "See all deals" [ref=e264] [cursor=pointer]:
+            - /url: /deals
+        - list [ref=e266]:
+          - listitem [ref=e267]:
+            - link "Last minute flight deals Leaving soon? We check the seats still open for your dates." [ref=e268] [cursor=pointer]:
+              - /url: /deals#last-minute-flight-deals
+              - generic [ref=e272]:
+                - generic [ref=e273]: Last minute flight deals
+                - generic [ref=e274]: Leaving soon? We check the seats still open for your dates.
+          - listitem [ref=e275]:
+            - link "Coupon and promo code deals We check partner coupons and our own codes against your route and apply whichever is lower." [ref=e276] [cursor=pointer]:
+              - /url: /deals#coupon-deals
+              - generic [ref=e280]:
+                - generic [ref=e281]: Coupon and promo code deals
+                - generic [ref=e282]: We check partner coupons and our own codes against your route and apply whichever is lower.
+          - listitem [ref=e283]:
+            - link "Flight + hotel deals Packaged together the total is often lower than booking separately — the agent checks both ways for your dates." [ref=e284] [cursor=pointer]:
+              - /url: /deals#flight-hotel-deals
+              - generic [ref=e288]:
+                - generic [ref=e289]: Flight + hotel deals
+                - generic [ref=e290]: Packaged together the total is often lower than booking separately — the agent checks both ways for your dates.
+          - listitem [ref=e291]:
+            - link "Cruise deals Sailing offers, cabin upgrades and onboard credit, where the line is running them." [ref=e292] [cursor=pointer]:
+              - /url: /deals#cruise-deals
+              - generic [ref=e296]:
+                - generic [ref=e297]: Cruise deals
+                - generic [ref=e298]: Sailing offers, cabin upgrades and onboard credit, where the line is running them.
+          - listitem [ref=e299]:
+            - link "Family deals Family rooms, child fares and trips that suit kids." [ref=e300] [cursor=pointer]:
+              - /url: /deals#family-deals
+              - generic [ref=e304]:
+                - generic [ref=e305]: Family deals
+                - generic [ref=e306]: Family rooms, child fares and trips that suit kids.
+          - listitem [ref=e307]:
+            - link "Honeymoon deals Honeymoon packages with room upgrades where hotels offer them." [ref=e308] [cursor=pointer]:
+              - /url: /deals#honeymoon-deals
+              - generic [ref=e312]:
+                - generic [ref=e313]: Honeymoon deals
+                - generic [ref=e314]: Honeymoon packages with room upgrades where hotels offer them.
+          - listitem [ref=e315]:
+            - link "Group deals Group fares and room blocks for 10 or more travellers." [ref=e316] [cursor=pointer]:
+              - /url: /deals#group-deals
+              - generic [ref=e320]:
+                - generic [ref=e321]: Group deals
+                - generic [ref=e322]: Group fares and room blocks for 10 or more travellers.
+          - listitem [ref=e323]:
+            - link "Double deals Where a supplier lets two offers apply to the same booking, we apply both. Not every offer combines — the agent tells you which do." [ref=e324] [cursor=pointer]:
+              - /url: /deals#double-deals
+              - generic [ref=e328]:
+                - generic [ref=e329]: Double deals
+                - generic [ref=e330]: Where a supplier lets two offers apply to the same booking, we apply both. Not every offer combines — the agent tells you which do.
+      - generic [ref=e333]:
+        - generic [ref=e334]: Real agents, 24/7
+        - generic [ref=e343]:
+          - generic [ref=e345]:
+            - paragraph [ref=e346]: About us
+            - heading "Why travellers book with Viajarprimero" [level=2] [ref=e349]
+            - paragraph [ref=e350]: We are a travel agency with real agents on the phone day and night. Tell us the trip — we find the options, explain the full price and book it with you.
+          - link "More about us" [ref=e351] [cursor=pointer]:
+            - /url: /about
+      - generic [ref=e353]:
+        - generic [ref=e355]:
+          - paragraph [ref=e356]: Where we go
+          - heading "Destination guides" [level=2] [ref=e359]
+          - paragraph [ref=e360]: Short, practical guides to what changes how you plan — not a list of attractions you could find anywhere.
+        - list [ref=e363]:
+          - listitem [ref=e364]:
+            - article [ref=e365]:
+              - link [ref=e366] [cursor=pointer]:
+                - /url: /destinations/london
+                - generic [ref=e367]:
+                  - img "London, United Kingdom" [ref=e368]
+                  - generic [ref=e370]:
+                    - paragraph [ref=e371]: United Kingdom · LHR
+                    - heading "London" [level=3] [ref=e372]
+                - generic [ref=e373]:
+                  - paragraph [ref=e374]: Six airports, endless neighbourhoods, and a transport system that makes all of it reachable.
+                  - generic [ref=e375]: Read the guide
+          - listitem [ref=e378]:
+            - article [ref=e379]:
+              - link [ref=e380] [cursor=pointer]:
+                - /url: /destinations/madrid
+                - generic [ref=e381]:
+                  - img "Madrid, Spain" [ref=e382]
+                  - generic [ref=e384]:
+                    - paragraph [ref=e385]: Spain · MAD
+                    - heading "Madrid" [level=3] [ref=e386]
+                - generic [ref=e387]:
+                  - paragraph [ref=e388]: A capital that runs late, eats later, and connects onward to the whole Iberian peninsula.
+                  - generic [ref=e389]: Read the guide
+          - listitem [ref=e392]:
+            - article [ref=e393]:
+              - link [ref=e394] [cursor=pointer]:
+                - /url: /destinations/mexico-city
+                - generic [ref=e395]:
+                  - img "Mexico City, Mexico" [ref=e396]
+                  - generic [ref=e398]:
+                    - paragraph [ref=e399]: Mexico · MEX
+                    - heading "Mexico City" [level=3] [ref=e400]
+                - generic [ref=e401]:
+                  - paragraph [ref=e402]: A vast, high-altitude capital best approached one neighbourhood at a time.
+                  - generic [ref=e403]: Read the guide
+          - listitem [ref=e406]:
+            - article [ref=e407]:
+              - link [ref=e408] [cursor=pointer]:
+                - /url: /destinations/lisbon
+                - generic [ref=e409]:
+                  - img "Lisbon, Portugal" [ref=e410]
+                  - generic [ref=e412]:
+                    - paragraph [ref=e413]: Portugal · LIS
+                    - heading "Lisbon" [level=3] [ref=e414]
+                - generic [ref=e415]:
+                  - paragraph [ref=e416]: The shortest transatlantic hop from the US East Coast, and a city built on hills.
+                  - generic [ref=e417]: Read the guide
+          - listitem [ref=e420]:
+            - article [ref=e421]:
+              - link [ref=e422] [cursor=pointer]:
+                - /url: /destinations/bogota
+                - generic [ref=e423]:
+                  - img "Bogotá, Colombia" [ref=e424]
+                  - generic [ref=e426]:
+                    - paragraph [ref=e427]: Colombia · BOG
+                    - heading "Bogotá" [level=3] [ref=e428]
+                - generic [ref=e429]:
+                  - paragraph [ref=e430]: A high-altitude capital and the connecting point for the rest of Colombia.
+                  - generic [ref=e431]: Read the guide
+          - listitem [ref=e434]:
+            - article [ref=e435]:
+              - link [ref=e436] [cursor=pointer]:
+                - /url: /destinations/rome
+                - generic [ref=e437]:
+                  - img "Rome, Italy" [ref=e438]
+                  - generic [ref=e440]:
+                    - paragraph [ref=e441]: Italy · FCO
+                    - heading "Rome" [level=3] [ref=e442]
+                - generic [ref=e443]:
+                  - paragraph [ref=e444]: Dense, layered and best visited outside the height of summer.
+                  - generic [ref=e445]: Read the guide
+          - listitem [ref=e448]:
+            - article [ref=e449]:
+              - link [ref=e450] [cursor=pointer]:
+                - /url: /destinations/san-juan
+                - generic [ref=e451]:
+                  - img "San Juan, Puerto Rico" [ref=e452]
+                  - generic [ref=e454]:
+                    - paragraph [ref=e455]: Puerto Rico · SJU
+                    - heading "San Juan" [level=3] [ref=e456]
+                - generic [ref=e457]:
+                  - paragraph [ref=e458]: Caribbean travel without leaving US jurisdiction, and a hub for the eastern islands.
+                  - generic [ref=e459]: Read the guide
+          - listitem [ref=e462]:
+            - article [ref=e463]:
+              - link [ref=e464] [cursor=pointer]:
+                - /url: /destinations/tokyo
+                - generic [ref=e465]:
+                  - img "Tokyo, Japan" [ref=e466]
+                  - generic [ref=e468]:
+                    - paragraph [ref=e469]: Japan · NRT
+                    - heading "Tokyo" [level=3] [ref=e470]
+                - generic [ref=e471]:
+                  - paragraph [ref=e472]: Two airports, exceptional rail, and a city that rewards planning by district.
+                  - generic [ref=e473]: Read the guide
+      - generic [ref=e478]:
+        - generic [ref=e479]:
+          - img "Cream leather club seats facing each other in a private jet cabin, cockpit visible beyond" [ref=e481]
+          - img "Business jet on the apron with its airstair lowered" [ref=e484]
+        - generic [ref=e485]:
+          - generic [ref=e487]:
+            - paragraph [ref=e488]: Private aviation
+            - paragraph [ref=e491]: Charter is priced per aircraft rather than per seat, which is what makes the schedule yours — several stops in a day, a departure time that is on nobody's timetable, an airfield the airlines do not serve.
+          - list [ref=e492]:
+            - listitem [ref=e493]:
+              - generic [aria-hidden] [ref=e494]: "01"
+              - generic [ref=e495]:
+                - paragraph [ref=e496]: Priced all-in
+                - paragraph [ref=e497]: Positioning, crew, landing and handling are in the number, not added later.
+            - listitem [ref=e498]:
+              - generic [aria-hidden] [ref=e499]: "02"
+              - generic [ref=e500]:
+                - paragraph [ref=e501]: Operator named
+                - paragraph [ref=e502]: You know which licensed carrier is flying you before you pay.
+            - listitem [ref=e503]:
+              - generic [aria-hidden] [ref=e504]: "03"
+              - generic [ref=e505]:
+                - paragraph [ref=e506]: Told when not to
+                - paragraph [ref=e507]: If business class is the better answer on your route, we say so.
+          - generic [ref=e508]:
+            - link "Explore private jets" [ref=e509] [cursor=pointer]:
+              - /url: /private-jets
+            - link "Request a charter quote" [ref=e510] [cursor=pointer]:
+              - /url: /private-jets/request-a-quote
+      - generic [ref=e512]:
+        - generic [ref=e514]:
+          - paragraph [ref=e515]: Blog
+          - heading "From the travel blog" [level=2] [ref=e518]
+          - paragraph [ref=e519]: Fare buckets, connection rules, what a rental excess really is. Explanations rather than promises — nothing here tells you to book on a Tuesday.
+        - list [ref=e521]:
+          - listitem [ref=e522]:
+            - article [ref=e523]:
+              - img "Travel essentials including a passport, notebook, sunglasses, and camera arranged for departure." [ref=e525]
+              - generic [ref=e526]:
+                - paragraph [ref=e527]: Planning · 5 min read
+                - heading [level=3] [ref=e528]:
+                  - link "Passports, visas and the rules that catch people out" [ref=e529] [cursor=pointer]:
+                    - /url: /travel-blog/travel-documents-and-entry-rules
+                - paragraph [ref=e530]: Validity windows, onward-travel proof, and why the airline checks before the border does.
+                - paragraph [ref=e531]:
+                  - time [ref=e532]: July 14, 2026
+                  - generic [aria-hidden] [ref=e533]: Read
+          - listitem [ref=e536]:
+            - article [ref=e537]:
+              - img "A magnificent white cruise ship sailing through turquoise open sea under sunny skies." [ref=e539]
+              - generic [ref=e540]:
+                - paragraph [ref=e541]: Planning · 6 min read
+                - heading [level=3] [ref=e542]:
+                  - link "Choosing a first cruise" [ref=e543] [cursor=pointer]:
+                    - /url: /travel-blog/choosing-a-first-cruise
+                - paragraph [ref=e544]: Ship size, itinerary pace and what the fare does and does not include.
+                - paragraph [ref=e545]:
+                  - time [ref=e546]: June 30, 2026
+                  - generic [aria-hidden] [ref=e547]: Read
+          - listitem [ref=e550]:
+            - article [ref=e551]:
+              - img "A modern car dashboard and steering wheel interior ready for a scenic road journey." [ref=e553]
+              - generic [ref=e554]:
+                - paragraph [ref=e555]: Planning · 6 min read
+                - heading [level=3] [ref=e556]:
+                  - link "Car rental without the surprise at the desk" [ref=e557] [cursor=pointer]:
+                    - /url: /travel-blog/car-hire-without-the-desk-surprise
+                - paragraph [ref=e558]: The excess, the fuel policy and the additional driver — the three things that decide what you actually pay.
+                - paragraph [ref=e559]:
+                  - time [ref=e560]: May 19, 2026
+                  - generic [aria-hidden] [ref=e561]: Read
+      - generic [ref=e566]:
+        - generic [ref=e567]:
+          - heading "Sign up and earn rewards" [level=2] [ref=e568]
+          - paragraph [ref=e569]: Create a free account for member offers and one place to manage your trips.
+          - list [ref=e570]:
+            - listitem [ref=e571]: Exclusive fares & deals
+            - listitem [ref=e575]: Members only offers
+            - listitem [ref=e578]: Early bird access
+            - listitem [ref=e582]: Manage your bookings
+        - button "Sign up free" [ref=e586]
+      - generic [ref=e590]:
+        - generic [ref=e592]:
+          - paragraph [ref=e593]: FAQ
+          - heading "Frequently asked questions" [level=2] [ref=e596]
+          - paragraph [ref=e597]: What we book, what we charge, and what happens if plans change. Straight answers before you commit.
+        - generic [ref=e598]:
+          - group [ref=e599]:
+            - generic "What can you book for me?" [ref=e600] [cursor=pointer]
+          - group [ref=e605]:
+            - generic "Are you an airline, a hotel or a cruise line?" [ref=e606] [cursor=pointer]
+          - group [ref=e611]:
+            - generic "Do you charge a service fee?" [ref=e612] [cursor=pointer]
+          - group [ref=e617]:
+            - generic "Is the price I see the final price?" [ref=e618] [cursor=pointer]
+          - group [ref=e623]:
+            - generic "Can I change or cancel after booking?" [ref=e624] [cursor=pointer]
+      - generic [ref=e631]:
+        - generic [ref=e632]:
+          - heading "Travel news, occasionally" [level=2] [ref=e633]
+          - paragraph [ref=e634]: New routes and sailings, seasonal changes in the places we cover, and offers when they are genuinely worth your attention.
+        - generic [ref=e635]:
+          - generic [ref=e636]: Email address
+          - generic [ref=e637]:
+            - textbox "Email address" [ref=e638]:
+              - /placeholder: you@example.com
+            - button "Sign up" [ref=e639]
+          - generic [ref=e641]:
+            - checkbox "Send me route news and fare alerts by email. You can unsubscribe from any email, and we handle your details as described in our privacy policy." [ref=e642] [cursor=pointer]
+            - generic [ref=e643]:
+              - text: Send me route news and fare alerts by email. You can unsubscribe from any email, and we handle your details as described in our
+              - link "privacy policy" [ref=e644] [cursor=pointer]:
+                - /url: /privacy-policy
+              - text: .
+    - contentinfo [ref=e645]:
+      - generic [ref=e647]:
+        - generic [ref=e648]:
+          - heading "Ready to plan your trip?" [level=2] [ref=e649]
+          - paragraph [ref=e650]: Call a real agent or send us the details — the full price comes before you pay.
+        - generic [ref=e651]:
+          - link "Call +1 (915) 255-1230" [ref=e652] [cursor=pointer]:
+            - /url: tel:+19152551230
+          - link "Request a quote" [ref=e655] [cursor=pointer]:
+            - /url: /contact
+      - generic [ref=e657]:
+        - generic [ref=e658]:
+          - img "Viajarprimero" [ref=e659]
+          - paragraph [ref=e660]: Flights, hotels, car rental, cruises and private jet charter, booked with a real travel agent — the full price broken down before you pay, and the fare rules explained up front.
+          - generic [ref=e661]:
+            - paragraph [ref=e662]: Viajar Primero LLC
+            - paragraph [ref=e663]: 8832 Parkland Dr, El Paso, Texas, 79925, United States
+            - paragraph [ref=e664]:
+              - link "+1 (915) 255-1230" [ref=e665] [cursor=pointer]:
+                - /url: tel:+19152551230
+              - generic [ref=e666]: 24/7
+            - paragraph [ref=e667]:
+              - link "info@viajarprimero.com" [ref=e668] [cursor=pointer]:
+                - /url: mailto:info@viajarprimero.com
+        - generic [ref=e669]:
+          - navigation "Book" [ref=e670]:
+            - heading "Book" [level=2] [ref=e671]
+            - list [ref=e672]:
+              - listitem [ref=e673]:
+                - link "Flights" [ref=e674] [cursor=pointer]:
+                  - /url: /flights
+              - listitem [ref=e675]:
+                - link "Hotels" [ref=e676] [cursor=pointer]:
+                  - /url: /hotels
+              - listitem [ref=e677]:
+                - link "Car rental" [ref=e678] [cursor=pointer]:
+                  - /url: /car-rentals
+              - listitem [ref=e679]:
+                - link "Cruises" [ref=e680] [cursor=pointer]:
+                  - /url: /cruises
+              - listitem [ref=e681]:
+                - link "Trains" [ref=e682] [cursor=pointer]:
+                  - /url: /trains
+              - listitem [ref=e683]:
+                - link "Vacation packages" [ref=e684] [cursor=pointer]:
+                  - /url: /vacations
+              - listitem [ref=e685]:
+                - link "Private jets" [ref=e686] [cursor=pointer]:
+                  - /url: /private-jets
+              - listitem [ref=e687]:
+                - link "Deals" [ref=e688] [cursor=pointer]:
+                  - /url: /deals
+          - navigation "Traveller tools" [ref=e689]:
+            - heading "Traveller tools" [level=2] [ref=e690]
+            - list [ref=e691]:
+              - listitem [ref=e692]:
+                - link "Manage a booking" [ref=e693] [cursor=pointer]:
+                  - /url: /manage-booking
+              - listitem [ref=e694]:
+                - link "Destinations" [ref=e695] [cursor=pointer]:
+                  - /url: /destinations
+              - listitem [ref=e696]:
+                - link "Travel guides" [ref=e697] [cursor=pointer]:
+                  - /url: /guides
+              - listitem [ref=e698]:
+                - link "Blogs" [ref=e699] [cursor=pointer]:
+                  - /url: /travel-blog
+              - listitem [ref=e700]:
+                - link "Airlines" [ref=e701] [cursor=pointer]:
+                  - /url: /airlines
+              - listitem [ref=e702]:
+                - link "Airports" [ref=e703] [cursor=pointer]:
+                  - /url: /airports
+              - listitem [ref=e704]:
+                - link "Online check-in" [ref=e705] [cursor=pointer]:
+                  - /url: /online-check-in
+              - listitem [ref=e706]:
+                - link "Baggage information" [ref=e707] [cursor=pointer]:
+                  - /url: /baggage-information
+          - navigation "Company" [ref=e708]:
+            - heading "Company" [level=2] [ref=e709]
+            - list [ref=e710]:
+              - listitem [ref=e711]:
+                - link "About us" [ref=e712] [cursor=pointer]:
+                  - /url: /about
+              - listitem [ref=e713]:
+                - link "How it works" [ref=e714] [cursor=pointer]:
+                  - /url: /how-it-works
+              - listitem [ref=e715]:
+                - link "Contact us" [ref=e716] [cursor=pointer]:
+                  - /url: /contact
+              - listitem [ref=e717]:
+                - link "Reviews" [ref=e718] [cursor=pointer]:
+                  - /url: /reviews
+              - listitem [ref=e719]:
+                - link "Customer support" [ref=e720] [cursor=pointer]:
+                  - /url: /customer-support
+              - listitem [ref=e721]:
+                - link "Site map" [ref=e722] [cursor=pointer]:
+                  - /url: /site-map
+          - navigation "Legal" [ref=e723]:
+            - heading "Legal" [level=2] [ref=e724]
+            - list [ref=e725]:
+              - listitem [ref=e726]:
+                - link "Privacy policy" [ref=e727] [cursor=pointer]:
+                  - /url: /privacy-policy
+              - listitem [ref=e728]:
+                - link "Your privacy choices" [ref=e729] [cursor=pointer]:
+                  - /url: /your-privacy-choices
+              - listitem [ref=e730]:
+                - link "Cookie policy" [ref=e731] [cursor=pointer]:
+                  - /url: /cookie-policy
+              - listitem [ref=e732]:
+                - link "Terms & conditions" [ref=e733] [cursor=pointer]:
+                  - /url: /terms-and-conditions
+              - listitem [ref=e734]:
+                - link "Refunds & cancellations" [ref=e735] [cursor=pointer]:
+                  - /url: /refund-and-cancellation-policy
+              - listitem [ref=e736]:
+                - link "Fees & charges" [ref=e737] [cursor=pointer]:
+                  - /url: /fees-and-charges
+              - listitem [ref=e738]:
+                - link "Disclaimer" [ref=e739] [cursor=pointer]:
+                  - /url: /disclaimer
+              - listitem [ref=e740]:
+                - link "Accessibility" [ref=e741] [cursor=pointer]:
+                  - /url: /accessibility-statement
+              - listitem [ref=e742]:
+                - link "Photo credits" [ref=e743] [cursor=pointer]:
+                  - /url: /photo-credits
+              - listitem [ref=e744]:
+                - button "Cookie choices" [ref=e745]
+      - generic [ref=e747]:
+        - paragraph [ref=e748]: Viajarprimero is a travel agency and charter broker. We arrange air travel, accommodation, car rental, cruises and private jet charter as an agent for the airlines, hotels, rental companies, cruise lines and licensed air carriers that operate them; we are not an airline, hotel, rental company, cruise line or air carrier, and we do not own, operate or crew any aircraft, ship or vehicle ourselves. Each supplier's own conditions of carriage, booking conditions and fare rules govern what you buy. Prices and availability are supplied by those operators and change until a booking is confirmed and ticketed.
+        - paragraph [ref=e749]: © 2026 Viajar Primero LLC. All rights reserved.
+    - generic [ref=e751]:
+      - generic [aria-hidden] [ref=e752]: Travel help
+      - button "Dismiss travel help" [ref=e757]
+      - 'link "Call our travel agents: +1 (915) 255-1230" [ref=e760] [cursor=pointer]':
+        - /url: tel:+19152551230
+        - generic [ref=e765]:
+          - generic [ref=e766]: Talk to a travel specialist
+          - generic [ref=e767]: +1 (915) 255-1230
+    - button "Chat with us" [ref=e771]
+  - button "Open Next.js Dev Tools" [ref=e779] [cursor=pointer]
+  - alert [ref=e783]
+  - dialog "Cookies on this site" [ref=e784]:
+    - heading "Cookies on this site" [level=2] [ref=e785]
+    - paragraph [ref=e786]:
+      - text: We use cookies to run the site and, with your permission, to measure how it is used. Read our
+      - link "cookie policy" [ref=e787] [cursor=pointer]:
+        - /url: /cookie-policy
+      - text: .
+    - generic [ref=e788]:
+      - button "Accept all" [ref=e789]
+      - button "Reject non-essential" [ref=e791]
+      - button "Choose categories" [ref=e793]
