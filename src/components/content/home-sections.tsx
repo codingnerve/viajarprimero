@@ -53,7 +53,7 @@ export function HomeHero({
       backdrop={
         <div className="absolute inset-0">
           <Image
-            src="/images/hero/hero-sky.png"
+            src="/images/hero/hero-sunset.png"
             alt=""
             fill
             priority
