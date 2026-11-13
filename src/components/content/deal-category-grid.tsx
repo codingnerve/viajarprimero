@@ -7,6 +7,7 @@ import { configured } from "@/lib/config/placeholders";
 import { phoneFor } from "@/lib/config/site";
 import { dealGroups } from "@/lib/content/deals";
 import { esDeals } from "@/lib/content/es/chrome";
+import { cn } from "@/lib/utils/cn";
 import type { Locale } from "@/types/locale";
 
 /**
@@ -20,7 +21,10 @@ export function DealCategoryGrid({
   variant = "full",
   featured,
   locale = "en",
+  large = false,
 }: {
+  /** Compact only — bigger tile text, used on the home page. */
+  large?: boolean;
   variant?: "full" | "compact";
   /** Compact only — which slugs to show, in order. */
   featured?: readonly string[];
@@ -43,14 +47,29 @@ export function DealCategoryGrid({
           <li key={item.slug}>
             <Link
               href={`/deals#${item.slug}`}
-              className="group flex h-full items-start gap-3 rounded-lg bg-surface p-4 ring-1 ring-inset ring-border transition-shadow hover:shadow-md hover:ring-primary/40 focus-ring"
+              className={cn(
+                "group flex h-full items-start gap-3 rounded-lg bg-surface ring-1 ring-inset ring-border transition-shadow hover:shadow-md hover:ring-primary/40 focus-ring",
+                large ? "p-5" : "p-4",
+              )}
             >
-              <TagIcon className="mt-0.5 size-5 shrink-0 text-primary" />
+              <TagIcon
+                className={cn("shrink-0 text-primary", large ? "mt-1 size-6" : "mt-0.5 size-5")}
+              />
               <span>
-                <span className="block text-h6 text-text group-hover:text-primary">
+                <span
+                  className={cn(
+                    "block text-text group-hover:text-primary",
+                    large ? "text-lg font-semibold" : "text-h6",
+                  )}
+                >
                   {locale === "es" ? (esDeals[item.slug]?.label ?? item.label) : item.label}
                 </span>
-                <span className="mt-1 block text-caption text-text-secondary">
+                <span
+                  className={cn(
+                    "block text-text-secondary",
+                    large ? "mt-1.5 text-body" : "mt-1 text-caption",
+                  )}
+                >
                   {locale === "es"
                     ? (esDeals[item.slug]?.description ?? item.description)
                     : item.description}

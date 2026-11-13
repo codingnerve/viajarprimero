@@ -27,7 +27,10 @@ export function DestinationCard({
   headingLevel: Heading = "h3",
   className,
   readLabel = "Read the guide",
+  large = false,
 }: {
+  /** Bigger text, used on the home page. */
+  large?: boolean;
   destination: ResolvedDestination;
   headingLevel?: "h2" | "h3";
   className?: string;
@@ -58,20 +61,32 @@ export function DestinationCard({
           imageClassName="transition-transform duration-[var(--duration-slow)] ease-out group-hover:scale-105 motion-reduce:transform-none"
         >
           <div className="absolute inset-x-0 bottom-0 p-4">
-            <p className="text-overline uppercase text-white/70">
+            <p
+              className={cn(
+                "uppercase text-white/80",
+                large ? "text-body-sm font-semibold tracking-[0.08em]" : "text-overline text-white/70",
+              )}
+            >
               {destination.country} · {destination.airport.code}
             </p>
-            <Heading className="mt-1 text-h3 text-text-inverse">
+            <Heading
+              className={cn("mt-1 text-text-inverse", large ? "text-2xl font-semibold" : "text-h3")}
+            >
               {destination.city}
             </Heading>
           </div>
         </Photo>
 
-        <div className="flex flex-1 flex-col p-4">
-          <p className="text-body-sm text-text-secondary">
+        <div className={cn("flex flex-1 flex-col", large ? "p-5" : "p-4")}>
+          <p className={cn("text-text-secondary", large ? "text-body" : "text-body-sm")}>
             {destination.summary}
           </p>
-          <span className="mt-auto flex items-center gap-1.5 pt-4 text-body-sm font-semibold text-primary">
+          <span
+            className={cn(
+              "mt-auto flex items-center gap-1.5 pt-4 font-semibold text-primary",
+              large ? "text-body" : "text-body-sm",
+            )}
+          >
             {readLabel}
             <ArrowRightIcon className="size-4 transition-transform duration-[var(--duration-normal)] ease-out group-hover:translate-x-1 motion-reduce:transition-none" />
           </span>

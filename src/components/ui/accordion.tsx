@@ -21,7 +21,10 @@ export function Accordion({
   items,
   name,
   className,
+  large = false,
 }: {
+  /** Bigger question and answer text, for the home page. */
+  large?: boolean;
   items: readonly AccordionItem[];
   /**
    * Groups the rows for exclusive open/close. Must be unique per accordion on
@@ -40,8 +43,9 @@ export function Accordion({
         >
           <summary
             className={cn(
-              "flex cursor-pointer list-none items-start justify-between gap-6 py-5",
-              "text-h5 text-text transition-colors duration-[var(--duration-fast)]",
+              "flex cursor-pointer list-none items-start justify-between gap-6",
+              large ? "py-6 text-xl font-semibold" : "py-5 text-h5",
+              "text-text transition-colors duration-[var(--duration-fast)]",
               "hover:text-primary group-open:text-primary",
               "focus-ring [&::-webkit-details-marker]:hidden",
             )}
@@ -72,7 +76,12 @@ export function Accordion({
               />
             </span>
           </summary>
-          <p className="measure pb-5 text-body text-text-secondary">
+          <p
+            className={cn(
+              "measure text-text-secondary",
+              large ? "pb-6 text-lg" : "pb-5 text-body",
+            )}
+          >
             {item.answer}
           </p>
         </details>

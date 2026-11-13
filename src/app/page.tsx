@@ -259,19 +259,19 @@ export default async function HomePage() {
       <Section tone="muted">
         <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
           <div className="max-w-2xl">
-            <p className="text-overline uppercase text-primary">Deals</p>
-            <h2 className="mt-3 text-balance text-h2 text-text">Deals for every traveller</h2>
-            <p className="mt-3 text-body-lg text-text-secondary">
+            <p className="text-body-sm font-semibold uppercase tracking-[0.1em] text-primary">Deals</p>
+            <h2 className="mt-3 text-balance text-h1 text-text md:text-display">Deals for every traveller</h2>
+            <p className="mt-4 text-lg text-text-secondary md:text-xl">
               Flights, hotels, cruises and more — plus deals for couples, families, groups and
               existing customers.
             </p>
           </div>
-          <ButtonLink href="/deals" variant="outline" className="shrink-0">
+          <ButtonLink href="/deals" variant="outline" size="lg" className="shrink-0">
             See all deals
           </ButtonLink>
         </div>
         <div className="mt-10">
-          <DealCategoryGrid variant="compact" featured={featuredDeals} />
+          <DealCategoryGrid variant="compact" featured={featuredDeals} large />
         </div>
       </Section>
 
@@ -295,7 +295,7 @@ export default async function HomePage() {
               key={destination.slug}
               className="w-[16rem] sm:w-[18rem] md:w-[calc((100%-2rem)/3)]"
             >
-              <DestinationCard destination={destination} />
+              <DestinationCard destination={destination} large />
             </li>
           ))}
         </DestinationsRail>
@@ -330,8 +330,8 @@ export default async function HomePage() {
       <Section size="sm" containerClassName="pb-0 md:pb-0">
         <div className="relative -mb-16 flex flex-col gap-8 rounded-2xl bg-primary-soft p-8 shadow-md md:p-10 lg:flex-row lg:items-center lg:justify-between lg:gap-12">
           <div className="measure-tight">
-            <h2 className="text-h2 text-text">Travel news, occasionally</h2>
-            <p className="mt-3 text-body-lg text-text-secondary">New routes and sailings, seasonal changes in the places we cover, and offers when
+            <h2 className="text-h1 text-text md:text-display">Travel news, occasionally</h2>
+            <p className="mt-3 text-lg text-text-secondary md:text-xl">New routes and sailings, seasonal changes in the places we cover, and offers when
               they are genuinely worth your attention.</p>
           </div>
           <NewsletterSignup />

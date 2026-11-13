@@ -105,20 +105,21 @@ export function PrivateAviationBand({ locale = "en" }: { locale?: Locale }) {
             align="start"
             eyebrow={copy.eyebrow}
             description={copy.description}
+            size="xl"
           />
 
-          <ol className="mt-8 space-y-6">
+          <ol className="mt-10 space-y-7">
             {copy.points.map((point, index) => (
               <li key={point.title} className="flex gap-5">
                 <span
                   aria-hidden="true"
-                  className="pt-px text-h6 tabular-nums text-primary"
+                  className="font-display text-3xl tabular-nums text-primary"
                 >
                   {String(index + 1).padStart(2, "0")}
                 </span>
                 <div>
-                  <p className="text-h6 text-text">{point.title}</p>
-                  <p className="mt-1 text-caption text-text-secondary">
+                  <p className="text-xl font-semibold text-text">{point.title}</p>
+                  <p className="mt-1 text-body text-text-secondary md:text-lg">
                     {point.body}
                   </p>
                 </div>

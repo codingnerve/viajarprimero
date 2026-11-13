@@ -36,8 +36,11 @@ export function SectionHeading({
   as?: "h2" | "h3";
   /** `inverse` for the navy band, where the default greys disappear. */
   tone?: "default" | "inverse";
-  /** `lg` opens a page or a major band; `md` is every other section. */
-  size?: "md" | "lg";
+  /**
+   * `lg` opens a page or a major band; `md` is every other section; `xl` is
+   * the larger, easier-to-read heading the home page uses.
+   */
+  size?: "md" | "lg" | "xl";
   className?: string;
   action?: ReactNode;
   id?: string;
@@ -65,7 +68,8 @@ export function SectionHeading({
         {eyebrow && (
           <p
             className={cn(
-              "flex items-center gap-2.5 text-overline uppercase",
+              "flex items-center gap-2.5 uppercase",
+              size === "xl" ? "text-body-sm font-semibold tracking-[0.1em]" : "text-overline",
               align === "center" && "justify-center",
               inverse ? "text-gray-400" : "text-primary",
             )}
@@ -92,9 +96,11 @@ export function SectionHeading({
             id={id}
             className={cn(
               "text-balance",
-              size === "lg"
-                ? "measure-tight text-display"
-                : "measure-tight text-h2",
+              size === "xl"
+                ? "measure-tight text-h1 md:text-display"
+                : size === "lg"
+                  ? "measure-tight text-display"
+                  : "measure-tight text-h2",
               inverse ? "text-text-inverse" : "text-text",
             )}
           >
@@ -104,7 +110,7 @@ export function SectionHeading({
         {description && (
           <p
             className={cn(
-              "measure text-body-lg",
+              size === "xl" ? "measure text-lg md:text-xl" : "measure text-body-lg",
               inverse ? "text-text-on-dark" : "text-text-secondary",
             )}
           >

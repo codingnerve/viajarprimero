@@ -69,12 +69,12 @@ export function HomeHero({
     >
       <div className="mx-auto grid max-w-6xl items-center gap-6 pt-0 md:pt-2 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:gap-10">
         <div className="text-center lg:text-left">
-        <h1 className="animate-rise text-balance text-display-lg text-text [animation-delay:80ms] motion-reduce:animate-none">
+        <h1 className="animate-rise text-balance text-display-lg text-text [animation-delay:80ms] motion-reduce:animate-none lg:text-display-xl">
           {title}
           <br className="hidden sm:block" />{" "}
           <span className="text-accent">{accent}</span>
         </h1>
-        <p className="animate-rise mx-auto mt-5 max-w-2xl text-body-lg text-text-secondary lg:mx-0 [animation-delay:160ms] motion-reduce:animate-none">
+        <p className="animate-rise mx-auto mt-6 max-w-2xl text-lg text-text-secondary md:text-xl lg:mx-0 [animation-delay:160ms] motion-reduce:animate-none">
           {intro}
         </p>
 
@@ -82,10 +82,10 @@ export function HomeHero({
           {proof.map(({ icon: ProofIcon, label }) => (
             <li
               key={label}
-              className="flex items-center gap-2 rounded-full bg-surface px-4 py-2 ring-1 ring-inset ring-border backdrop-blur-[var(--blur-md)]"
+              className="flex items-center gap-2 rounded-full bg-surface px-5 py-2.5 ring-1 ring-inset ring-border backdrop-blur-[var(--blur-md)]"
             >
-              <ProofIcon className="size-4.5 shrink-0 text-accent" />
-              <span className="text-body-sm font-semibold text-text">
+              <ProofIcon className="size-5 shrink-0 text-accent" />
+              <span className="text-body font-semibold text-text">
                 {label}
               </span>
             </li>
@@ -147,8 +147,8 @@ export function TrustBar({
               <PointIcon className="size-5" />
             </span>
             <span>
-              <span className="block text-h5 text-text">{title}</span>
-              <span className="mt-0.5 block text-body-sm text-text-secondary">
+              <span className="block text-lg font-semibold text-text">{title}</span>
+              <span className="mt-1 block text-body text-text-secondary">
                 {body}
               </span>
             </span>
@@ -176,25 +176,25 @@ export function HowItWorks({
 }) {
   return (
     <Section tone="brand">
-      <SectionHeading eyebrow={eyebrow} title={title} tone="inverse" />
+      <SectionHeading eyebrow={eyebrow} title={title} tone="inverse" size="lg" />
       <ol className="mt-14 grid gap-10 md:grid-cols-3 md:gap-8">
         {steps.map((step, index) => (
           <li key={step.title} className="border-t border-white/20 pt-6">
             <span
               aria-hidden="true"
-              className="font-display text-display tabular-nums text-accent"
+              className="font-display text-display-lg tabular-nums text-accent"
             >
               {String(index + 1).padStart(2, "0")}
             </span>
-            <h3 className="mt-4 text-h3 text-text-inverse">{step.title}</h3>
-            <p className="mt-2 text-body text-text-on-dark">{step.body}</p>
+            <h3 className="mt-4 text-2xl font-semibold text-text-inverse">{step.title}</h3>
+            <p className="mt-3 text-lg text-text-on-dark">{step.body}</p>
           </li>
         ))}
       </ol>
       <p className="mt-12 text-center">
         <Link
           href={linkHref}
-          className="inline-flex items-center gap-1.5 rounded-sm text-body font-semibold text-text-inverse underline-offset-4 hover:underline focus-ring-inverse"
+          className="inline-flex items-center gap-1.5 rounded-sm text-lg font-semibold text-text-inverse underline-offset-4 hover:underline focus-ring-inverse"
         >
           {linkLabel}
           <ArrowRightIcon className="size-4" />
@@ -228,8 +228,8 @@ export function ServicesBento({
 }) {
   return (
     <Section tone="muted">
-      <SectionHeading eyebrow={eyebrow} title={title} description={description} />
-      <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <SectionHeading eyebrow={eyebrow} title={title} description={description} size="xl" />
+      <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
         {items.map(({ href, label, blurb, art, featured }) => (
           <li key={href} className={cn(featured && "lg:col-span-2")}>
             <Link
@@ -258,10 +258,15 @@ export function ServicesBento({
                 <ArrowRightIcon className="size-5 text-text-muted transition-transform group-hover:translate-x-0.5 group-hover:text-primary motion-reduce:transition-none" />
               </span>
               <span>
-                <span className="block text-h3 text-text group-hover:text-primary">
+                <span
+                  className={cn(
+                    "block font-semibold text-text group-hover:text-primary",
+                    featured ? "text-2xl" : "text-xl",
+                  )}
+                >
                   {label}
                 </span>
-                <span className="mt-1.5 block text-body-sm text-text-secondary">
+                <span className="mt-2 block text-body text-text-secondary">
                   {blurb}
                 </span>
               </span>
@@ -311,7 +316,7 @@ export function AboutBlock({
             <span className="grid size-10 place-items-center rounded-lg bg-accent text-text-inverse">
               <HeadsetIcon className="size-5" />
             </span>
-            <span className="text-h5 text-text">{badge}</span>
+            <span className="text-lg font-semibold text-text">{badge}</span>
           </div>
         </div>
 
@@ -321,8 +326,9 @@ export function AboutBlock({
             eyebrow={eyebrow}
             title={title}
             description={description}
+            size="xl"
           />
-          <ButtonLink href="/about" variant="outline" className="mt-8">
+          <ButtonLink href="/about" variant="outline" size="lg" className="mt-8">
             {linkLabel}
           </ButtonLink>
         </div>
@@ -348,15 +354,15 @@ export function SignUpBand({
     <Section>
       <div className="grid items-center gap-8 rounded-2xl bg-brand-wash p-8 md:p-12 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-12">
         <div>
-          <h2 className="text-h2 text-text-inverse">{title}</h2>
-          <p className="mt-3 text-body-lg text-text-on-dark">{body}</p>
-          <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+          <h2 className="text-h1 text-text-inverse md:text-display">{title}</h2>
+          <p className="mt-4 text-lg text-text-on-dark md:text-xl">{body}</p>
+          <ul className="mt-7 grid gap-4 sm:grid-cols-2">
             {benefits.map(({ icon: BenefitIcon, title: benefitTitle }) => (
               <li
                 key={benefitTitle}
-                className="flex items-center gap-2.5 text-body-sm font-semibold text-text-inverse"
+                className="flex items-center gap-3 text-body font-semibold text-text-inverse md:text-lg"
               >
-                <BenefitIcon className="size-5 shrink-0 text-accent" />
+                <BenefitIcon className="size-6 shrink-0 text-accent" />
                 {benefitTitle}
               </li>
             ))}
@@ -393,9 +399,11 @@ export function FaqSplit({
           eyebrow={eyebrow}
           title={title}
           description={description}
+          size="xl"
           className="lg:sticky lg:top-28 lg:self-start"
         />
         <Accordion
+          large
           items={items}
           name={name}
           className="border-t border-border"
@@ -421,8 +429,8 @@ export function ContentBand({
 }) {
   return (
     <Section tone={tone}>
-      <SectionHeading eyebrow={eyebrow} title={title} description={description} />
-      <div className="mt-10">{children}</div>
+      <SectionHeading eyebrow={eyebrow} title={title} description={description} size="xl" />
+      <div className="mt-12">{children}</div>
     </Section>
   );
 }

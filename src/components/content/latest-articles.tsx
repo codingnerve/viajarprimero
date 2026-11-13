@@ -69,13 +69,13 @@ export function LatestArticles({
               </div>
 
               <div className="flex flex-1 flex-col p-5">
-                <p className="text-caption text-text-muted">
+                <p className="text-body-sm text-text-muted">
                   {es
                     ? `${esBlog.categories[article.category] ?? article.category} · ${esBlog.minutes(article.readingMinutes)}`
                     : `${article.category} · ${article.readingMinutes} min read`}
                 </p>
 
-                <h3 className="mt-2 text-h4 text-balance text-text">
+                <h3 className="mt-2 text-balance text-xl font-semibold text-text md:text-2xl">
                   <Link
                     href={`/travel-blog/${article.slug}`}
                     className="outline-none after:absolute after:inset-0"
@@ -86,13 +86,13 @@ export function LatestArticles({
                   </Link>
                 </h3>
 
-                <p className="mt-2 flex-1 text-body-sm text-text-secondary">
+                <p className="mt-3 flex-1 text-body text-text-secondary">
                   {es
                     ? (esBlog.articles[article.slug]?.summary ?? article.summary)
                     : article.summary}
                 </p>
 
-                <p className="mt-4 flex items-center justify-between gap-3 text-caption text-text-muted">
+                <p className="mt-4 flex items-center justify-between gap-3 text-body-sm text-text-muted">
                   <time dateTime={article.publishedAt}>
                     {es
                       ? formatLongDateEs(article.publishedAt)
