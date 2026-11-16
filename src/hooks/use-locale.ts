@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation";
 
+import { isHandWrittenSpanish } from "@/lib/config/languages";
 import type { Locale } from "@/types/locale";
 
 /**
@@ -13,5 +14,5 @@ import type { Locale } from "@/types/locale";
  * help) use this to pick their copy.
  */
 export function useLocale(): Locale {
-  return usePathname() === "/es" ? "es" : "en";
+  return isHandWrittenSpanish(usePathname()) ? "es" : "en";
 }

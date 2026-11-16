@@ -4,14 +4,8 @@ import { Section } from "@/components/layout/section";
 import { Breadcrumbs } from "@/components/seo/breadcrumbs";
 import { ButtonLink } from "@/components/ui/button";
 import { PhoneIcon } from "@/components/ui/icons";
+import type { LandingCopy } from "@/features/booking/lib/landing-copy";
 import type { LandingPhone } from "@/features/booking/lib/landing-phone";
-
-const ASK_FOR = [
-  { label: "From", hint: "city or airport" },
-  { label: "To", hint: "city or airport" },
-  { label: "Depart", hint: "date" },
-  { label: "Travellers", hint: "how many" },
-] as const;
 
 /**
  * The landing page's opening band: the promise on the left, and on the right a
@@ -21,11 +15,17 @@ const ASK_FOR = [
  */
 export function LandingHero({
   phone,
+  copy,
+  path,
   image,
 }: {
   phone: LandingPhone;
-  image: { src: string; alt: string };
+  copy: LandingCopy;
+  path: string;
+  image: { src: string };
 }) {
+  const { hero } = copy;
+
   return (
     <Section
       tone="brand"
@@ -51,8 +51,8 @@ export function LandingHero({
       <Breadcrumbs
         tone="inverse"
         items={[
-          { name: "Home", path: "/" },
-          { name: "Book flights", path: "/enflight" },
+          { name: copy.crumbs.home, path: "/" },
+          { name: copy.crumbs.page, path },
         ]}
       />
 
@@ -63,20 +63,20 @@ export function LandingHero({
               <span className="absolute inset-0 animate-live-halo rounded-full bg-white" />
               <span className="relative size-2 rounded-full bg-white" />
             </span>
-            Flight desk open {phone.hours}
+            {hero.badge(phone.hours)}
           </p>
 
           <h1 className="mt-6 text-display-lg text-text-inverse md:text-display-xl">
-            One call.
+            {hero.titleTop}
             <br />
-            Your whole fare,{" "}
-            <em className="font-normal italic text-text-on-dark">itemised.</em>
+            {hero.titleBottom}{" "}
+            <em className="font-normal italic text-text-on-dark">
+              {hero.titleEm}
+            </em>
           </h1>
 
           <p className="mt-6 max-w-xl text-body-lg text-text-on-dark">
-            Tell a travel agent where and when. You hear the airfare, the taxes
-            and carrier charges and our fee — plus the fare rules for that
-            ticket — before you pay anything.
+            {hero.intro}
           </p>
 
           <div className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-4">
@@ -87,13 +87,13 @@ export function LandingHero({
               className="!bg-white !text-primary hover:!bg-primary-softer"
               icon={<PhoneIcon className="size-5" />}
             >
-              Call {phone.display}
+              {hero.call(phone.display)}
             </ButtonLink>
             <a
               href="#how-it-works"
               className="rounded-sm text-body font-semibold text-text-inverse underline decoration-white/40 underline-offset-8 transition-colors hover:decoration-white focus-ring-inverse"
             >
-              How a call goes
+              {hero.how}
             </a>
           </div>
         </div>
@@ -106,12 +106,12 @@ export function LandingHero({
           <div className="relative w-full max-w-md rounded-3xl bg-surface text-text shadow-panel lg:rotate-[1.5deg] motion-reduce:rotate-0">
             <div className="p-6 md:p-7">
               <div className="flex items-center justify-between text-overline uppercase text-text-muted">
-                <span>Boarding pass</span>
-                <span>Seat: yours</span>
+                <span>{hero.passLabel}</span>
+                <span>{hero.seat}</span>
               </div>
 
               <dl className="mt-5 grid grid-cols-2 gap-x-6 gap-y-5">
-                {ASK_FOR.map((item) => (
+                {hero.fields.map((item) => (
                   <div key={item.label}>
                     <dt className="text-overline uppercase text-primary">
                       {item.label}
@@ -122,9 +122,7 @@ export function LandingHero({
                   </div>
                 ))}
               </dl>
-              <p className="mt-5 text-body-sm text-text-secondary">
-                Have these four to hand and we do the rest.
-              </p>
+              <p className="mt-5 text-body-sm text-text-secondary">{hero.ready}</p>
             </div>
 
             {/* Perforation: two bites out of the card and a dashed tear line. */}
@@ -136,11 +134,11 @@ export function LandingHero({
 
             <div className="p-6 md:p-7">
               <p className="text-overline uppercase text-text-muted">
-                Call the flight desk
+                {hero.desk}
               </p>
               <a
                 href={phone.href}
-                aria-label={`Call ${phone.display}`}
+                aria-label={hero.ariaCall(phone.display)}
                 className="mt-1 block rounded-md font-display text-h1 tabular-nums text-primary transition-colors hover:text-primary-hover focus-ring sm:text-display"
               >
                 {phone.display}

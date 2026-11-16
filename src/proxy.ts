@@ -5,6 +5,7 @@ import {
   defaultLanguage,
   languageFromSegment,
   languageFromTranslateCookie,
+  SPANISH_FLIGHTS_PATH,
   stripLanguagePrefix,
   translateCookieValue,
   withLanguagePrefix,
@@ -53,6 +54,11 @@ export function proxy(request: NextRequest) {
       return response;
     }
 
+    // `/es/esflights` is the hand-written page under a redundant prefix.
+    if (prefix === "es" && bare === SPANISH_FLIGHTS_PATH) {
+      return NextResponse.redirect(new URL(`${bare}${search}`, request.url));
+    }
+
     // The Spanish home page is a real route. Serve it unrewritten and indexable.
     const nativePage = prefix === "es" && bare === "/";
 
@@ -68,6 +74,18 @@ export function proxy(request: NextRequest) {
       sameSite: "lax",
     });
     if (!nativePage) response.headers.set("X-Robots-Tag", "noindex, nofollow");
+    return response;
+  }
+
+  // The Spanish flight landing page is already Spanish: serve it as it is,
+  // indexable, and never bounce it through the translated `/es/…` copy.
+  if (pathname === SPANISH_FLIGHTS_PATH) {
+    const response = NextResponse.next();
+    response.cookies.set(TRANSLATE_COOKIE, translateCookieValue("es"), {
+      path: "/",
+      httpOnly: false,
+      sameSite: "lax",
+    });
     return response;
   }
 

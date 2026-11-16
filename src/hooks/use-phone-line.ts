@@ -2,7 +2,11 @@
 
 import { usePathname } from "next/navigation";
 
-import { languageFromSegment, stripLanguagePrefix } from "@/lib/config/languages";
+import {
+  languageFromSegment,
+  SPANISH_FLIGHTS_PATH,
+  stripLanguagePrefix,
+} from "@/lib/config/languages";
 import type { PhoneLine } from "@/lib/config/site";
 
 /**
@@ -16,6 +20,7 @@ export function usePhoneLine(): PhoneLine {
 
   if (bare === "/trains" || bare.startsWith("/trains/")) return "trains";
   if (bare === "/enflight") return "flight-lp";
+  if (bare === SPANISH_FLIGHTS_PATH) return "es";
   if (languageFromSegment(pathname.split("/")[1] ?? "") === "es") return "es";
   return "en";
 }

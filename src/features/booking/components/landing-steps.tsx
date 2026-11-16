@@ -1,40 +1,31 @@
 import { Section } from "@/components/layout/section";
 import { ButtonLink } from "@/components/ui/button";
 import { PhoneIcon } from "@/components/ui/icons";
+import type { LandingCopy } from "@/features/booking/lib/landing-copy";
 import type { LandingPhone } from "@/features/booking/lib/landing-phone";
-
-const STEPS = [
-  {
-    title: "Say where and when",
-    body: "Route, dates, how many are travelling. If your dates can move, say so — it changes what we look at.",
-  },
-  {
-    title: "Hear the full price",
-    body: "The airfare, taxes and carrier-imposed charges, and our service fee, as separate lines. Then the fare rules for that exact ticket: changes, refunds, bags.",
-  },
-  {
-    title: "Decide, then pay",
-    body: "Nothing is booked until you say yes. If the answer is no, you hang up having paid nothing.",
-  },
-] as const;
 
 /**
  * How the call goes, as a vertical flight log. The numerals are set in the
  * display face and hang outside the text column so the eye reads 1-2-3 down
  * the margin before reading any copy.
  */
-export function LandingSteps({ phone }: { phone: LandingPhone }) {
+export function LandingSteps({
+  phone,
+  copy,
+}: {
+  phone: LandingPhone;
+  copy: LandingCopy;
+}) {
+  const { steps } = copy;
+
   return (
     <Section id="how-it-works" size="md">
       <div className="grid gap-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-20">
         <div className="lg:sticky lg:top-28 lg:self-start">
-          <p className="text-overline uppercase text-primary">How a call goes</p>
-          <h2 className="mt-3 text-display text-text">
-            Three things happen, in this order.
-          </h2>
+          <p className="text-overline uppercase text-primary">{steps.eyebrow}</p>
+          <h2 className="mt-3 text-display text-text">{steps.title}</h2>
           <p className="mt-5 max-w-md text-body-lg text-text-secondary">
-            No fare tables to decode and no total that grows at checkout. You
-            talk to a person, and the price arrives in writing-sized pieces.
+            {steps.intro}
           </p>
           <ButtonLink
             href={phone.href}
@@ -42,12 +33,12 @@ export function LandingSteps({ phone }: { phone: LandingPhone }) {
             className="mt-8"
             icon={<PhoneIcon className="size-5" />}
           >
-            Call {phone.display}
+            {copy.hero.call(phone.display)}
           </ButtonLink>
         </div>
 
         <ol className="relative space-y-10 border-l border-dashed border-border-strong pl-10 md:pl-14">
-          {STEPS.map((step, index) => (
+          {steps.items.map((step, index) => (
             <li key={step.title} className="relative">
               <span
                 aria-hidden="true"

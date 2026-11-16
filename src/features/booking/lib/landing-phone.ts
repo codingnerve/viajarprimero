@@ -8,12 +8,19 @@ export interface LandingPhone {
 }
 
 /**
- * The line the flight landing page rings, or `null` while the number is still a
- * placeholder — a call button that dials a `TODO_` token is worse than none.
+ * The line a flight landing page rings — the English page's own line, or the
+ * Spanish line for `/esflights` — or `null` while the number is still a
+ * placeholder: a call button that dials a `TODO_` token is worse than none.
  */
-export function getLandingPhone(): LandingPhone | null {
-  const phone = configured(contactConfig.phoneFlightLanding);
-  const display = configured(contactConfig.phoneDisplayFlightLanding);
+export function getLandingPhone(lang: "en" | "es" = "en"): LandingPhone | null {
+  const phone = configured(
+    lang === "es" ? contactConfig.phoneEs : contactConfig.phoneFlightLanding,
+  );
+  const display = configured(
+    lang === "es"
+      ? contactConfig.phoneDisplayEs
+      : contactConfig.phoneDisplayFlightLanding,
+  );
 
   return phone && display
     ? { href: `tel:${phone}`, display, hours: contactConfig.supportHours }

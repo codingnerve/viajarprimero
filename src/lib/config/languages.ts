@@ -40,6 +40,17 @@ export function languageFromSegment(segment: string): LanguageCode | null {
   return languages.find((language) => language.code.toLowerCase() === lower)?.code ?? null;
 }
 
+/**
+ * Pages written in Spanish by hand rather than translated in the browser: the
+ * Spanish home page and the Spanish flight landing page. They get the Spanish
+ * header, footer and phone line, and Google Translate stays off them.
+ */
+export const SPANISH_FLIGHTS_PATH = "/esflights";
+
+export function isHandWrittenSpanish(pathname: string): boolean {
+  return pathname === "/es" || pathname === SPANISH_FLIGHTS_PATH;
+}
+
 /** `/es/hotels` → `/hotels`. An unprefixed path is returned unchanged. */
 export function stripLanguagePrefix(pathname: string): string {
   const [, first = "", ...rest] = pathname.split("/");
