@@ -43,8 +43,11 @@ export const contactConfig = {
   phoneEs: "+18886095151",
   phoneDisplayEs: "+1 888 609 5151",
   /** The line shown everywhere on the train pages (`/trains`). */
-  phoneTrains: "+18773804007",
-  phoneDisplayTrains: "+1 877 380 4007",
+  phoneTrains: "+18886095151",
+  phoneDisplayTrains: "+1 888 609 5151",
+  /** The line shown everywhere on the flight landing page (`/enflight`). */
+  phoneFlightLanding: "+18773804007",
+  phoneDisplayFlightLanding: "+1 877 380 4007",
   /** Hours must describe when the phone is genuinely answered. */
   supportHours: "24/7",
   address: {
@@ -222,13 +225,19 @@ export const footerNav = {
 } as const;
 
 /** Which phone line a page shows: a language, or the train pages' own line. */
-export type PhoneLine = Locale | "trains";
+export type PhoneLine = Locale | "trains" | "flight-lp";
 
 /**
  * The phone line for a page: Spanish pages ring the Spanish line, the train
- * pages their own, every other page the main one.
+ * pages and the flight landing page their own, every other page the main one.
  */
 export function phoneFor(line: PhoneLine) {
+  if (line === "flight-lp") {
+    return {
+      phone: contactConfig.phoneFlightLanding,
+      phoneDisplay: contactConfig.phoneDisplayFlightLanding,
+    };
+  }
   if (line === "es") {
     return { phone: contactConfig.phoneEs, phoneDisplay: contactConfig.phoneDisplayEs };
   }

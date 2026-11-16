@@ -63,12 +63,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             en: <SiteHeader />,
             es: <SiteHeader locale="es" />,
             trains: <SiteHeader line="trains" />,
+            "flight-lp": <SiteHeader line="flight-lp" />,
             "es-en": <SiteHeader line="es" />,
           }}
           footers={{
             en: <SiteFooter />,
             es: <SiteFooter locale="es" />,
             trains: <SiteFooter line="trains" />,
+            "flight-lp": <SiteFooter line="flight-lp" />,
             "es-en": <SiteFooter line="es" />,
           }}
         >

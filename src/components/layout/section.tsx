@@ -51,6 +51,7 @@ export function Section({
   size = "md",
   bordered = false,
   as: Tag = "section",
+  id,
   width,
   backdrop,
   lightBackdrop = false,
@@ -78,6 +79,8 @@ export function Section({
   bordered?: boolean;
   /** `article` for a single long read, so the band is also the article root. */
   as?: ElementType;
+  /** Anchor target for in-page links. */
+  id?: string;
   /** `narrow` for a single column of prose. */
   width?: "page" | "narrow";
   className?: string;
@@ -88,6 +91,7 @@ export function Section({
 
   return (
     <Tag
+      id={id}
       className={cn(
         // `isolate` gives every band its own stacking context, so a decorative
         // element positioned inside one cannot land on top of the band after

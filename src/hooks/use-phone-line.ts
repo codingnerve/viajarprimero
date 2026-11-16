@@ -15,6 +15,7 @@ export function usePhoneLine(): PhoneLine {
   const bare = stripLanguagePrefix(pathname);
 
   if (bare === "/trains" || bare.startsWith("/trains/")) return "trains";
+  if (bare === "/enflight") return "flight-lp";
   if (languageFromSegment(pathname.split("/")[1] ?? "") === "es") return "es";
   return "en";
 }

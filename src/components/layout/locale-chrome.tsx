@@ -27,7 +27,7 @@ import { esChrome } from "@/lib/content/es/chrome";
  * with their own phone line), or a translated `/es/…` page (English chrome with
  * the Spanish phone line).
  */
-export type ChromeKey = Locale | "trains" | "es-en";
+export type ChromeKey = Locale | "trains" | "flight-lp" | "es-en";
 
 export function LocaleChrome({
   headers,

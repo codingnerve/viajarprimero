@@ -286,6 +286,14 @@
      the corner of every page, next to a phone number someone is trying to
      read. */
   --animate-live-halo: live-halo 2.6s var(--ease-out) infinite;
+  /* The flight landing page's number ticker. Slow enough to read. */
+  --animate-marquee: marquee 38s linear infinite;
+}
+
+@keyframes marquee {
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
 }
 
 @keyframes rise {
