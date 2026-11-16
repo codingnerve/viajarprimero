@@ -31,8 +31,8 @@ export const siteConfig = {
  * Delete a channel outright rather than shipping one nobody answers.
  */
 export const contactConfig = {
-  email: "info@viajarprimero.com",
-  privacyEmail: "info@viajarprimero.com", // same inbox until a dedicated one exists
+  email: "support@viajarprimero.com",
+  privacyEmail: "support@viajarprimero.com", // same inbox until a dedicated one exists
   // The monitored sales and support line. `phone` is E.164 for the tel: link,
   // `phoneDisplay` is the reading format. Both must stay in sync, and the
   // number must actually be answered during `supportHours` — an advertised
