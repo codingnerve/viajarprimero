@@ -1,0 +1,465 @@
+- generic [ref=e2]:
+  - link "Skip to main content" [ref=e3] [cursor=pointer]:
+    - /url: "#main"
+  - generic [ref=e5]:
+    - paragraph [ref=e6]: Real travel agents, 24/7
+    - generic [ref=e11]:
+      - navigation "Help" [ref=e12]:
+        - list [ref=e13]:
+          - listitem [ref=e14]:
+            - link "Customer support" [ref=e15] [cursor=pointer]:
+              - /url: /customer-support
+          - listitem [ref=e16]:
+            - link "Contact us" [ref=e17] [cursor=pointer]:
+              - /url: /contact
+      - 'button "Language: English (US)" [ref=e20]':
+        - generic [aria-hidden] [ref=e24]: 🇺🇸
+        - generic [ref=e25]: en
+      - button "Manage my trips" [ref=e26]
+  - banner [ref=e30]:
+    - generic [ref=e31]:
+      - link "Viajarprimero — home" [ref=e32] [cursor=pointer]:
+        - /url: /
+        - img "Viajarprimero" [ref=e33]
+      - navigation "Main" [ref=e34]:
+        - list [ref=e35]:
+          - listitem [ref=e36]:
+            - link "Flights" [ref=e37] [cursor=pointer]:
+              - /url: /flights
+          - listitem [ref=e38]:
+            - link "Private jets" [ref=e39] [cursor=pointer]:
+              - /url: /private-jets
+          - listitem [ref=e40]:
+            - link "Cruises" [ref=e41] [cursor=pointer]:
+              - /url: /cruises
+          - listitem [ref=e42]:
+            - link "Hotels" [ref=e43] [cursor=pointer]:
+              - /url: /hotels
+          - listitem [ref=e44]:
+            - link "Cars" [ref=e45] [cursor=pointer]:
+              - /url: /car-rentals
+          - listitem [ref=e46]:
+            - link "Trains" [ref=e47] [cursor=pointer]:
+              - /url: /trains
+          - listitem [ref=e48]:
+            - link "Vacation packages" [ref=e49] [cursor=pointer]:
+              - /url: /vacations
+          - listitem [ref=e50]:
+            - link "About" [ref=e51] [cursor=pointer]:
+              - /url: /about
+          - listitem [ref=e52]:
+            - generic [ref=e54]:
+              - link "Deals" [ref=e55] [cursor=pointer]:
+                - /url: /deals
+              - button "Open deals menu" [ref=e56]
+      - 'link "Call our travel agents: +1 (915) 255-1230" [ref=e60] [cursor=pointer]':
+        - /url: tel:+19152551230
+        - generic [ref=e64]:
+          - generic [ref=e65]: Call our agents
+          - generic [ref=e66]: +1 (915) 255-1230
+  - main [ref=e67]:
+    - generic [ref=e68]:
+      - generic [ref=e78]:
+        - paragraph [ref=e79]: "Photo: Unsplash"
+        - generic [ref=e80]:
+          - list [ref=e81]:
+            - listitem [ref=e82]:
+              - button "Show slide 1" [ref=e83]
+            - listitem [ref=e85]:
+              - button "Show slide 2" [ref=e86]
+            - listitem [ref=e88]:
+              - button "Show slide 3" [ref=e89]
+          - button "Pause the backdrop" [ref=e91]
+      - generic [ref=e95]:
+        - navigation "Breadcrumb" [ref=e96]:
+          - list [ref=e97]:
+            - listitem [ref=e98]:
+              - link "Home" [ref=e99] [cursor=pointer]:
+                - /url: /
+              - generic [aria-hidden] [ref=e100]: /
+            - listitem [ref=e101]:
+              - generic [ref=e102]: Flights
+        - generic [ref=e103]:
+          - paragraph [ref=e104]: Flights
+          - heading "Search flights to anywhere" [level=1] [ref=e106]
+          - paragraph [ref=e107]: Compare fares across airlines for your dates, then book online — or call and a real travel agent books it with you.
+        - form "Flight search" [ref=e109]:
+          - generic [ref=e110]:
+            - radiogroup "Trip type" [ref=e111]:
+              - radio "Round trip" [checked] [ref=e112]
+              - radio "One way" [ref=e113]
+            - generic [ref=e114]:
+              - generic [ref=e115]:
+                - generic [ref=e116]: Adults
+                - combobox "Adults" [ref=e117] [cursor=pointer]:
+                  - option "1 adult" [selected]
+                  - option "2 adults"
+                  - option "3 adults"
+                  - option "4 adults"
+                  - option "5 adults"
+                  - option "6 adults"
+                  - option "7 adults"
+                  - option "8 adults"
+                  - option "9 adults"
+              - generic [ref=e118]:
+                - generic [ref=e119]: Children
+                - combobox "Children" [ref=e120] [cursor=pointer]:
+                  - option "0 children" [selected]
+                  - option "1 child"
+                  - option "2 children"
+                  - option "3 children"
+                  - option "4 children"
+                  - option "5 children"
+                  - option "6 children"
+                  - option "7 children"
+                  - option "8 children"
+              - generic [ref=e121]:
+                - generic [ref=e122]: Cabin
+                - combobox "Cabin" [ref=e123] [cursor=pointer]:
+                  - option "Economy" [selected]
+                  - option "Premium economy"
+                  - option "Business"
+                  - option "First"
+          - generic [ref=e124]:
+            - generic [ref=e125]:
+              - generic [ref=e126]: From
+              - combobox "From" [ref=e133]
+            - generic [ref=e134]:
+              - generic [ref=e135]: To
+              - combobox "To" [ref=e142]
+              - button "Swap departure and destination" [ref=e143]
+            - generic [ref=e146]:
+              - generic [ref=e147]: Depart
+              - textbox "Depart" [ref=e148]
+            - generic [ref=e149]:
+              - generic [ref=e150]: Return
+              - textbox "Return" [ref=e151]
+            - button "Get a quote" [ref=e153]
+    - generic [ref=e158]:
+      - generic [ref=e160]:
+        - paragraph [ref=e161]: Popular routes
+        - heading "Flights travellers search most" [level=2] [ref=e164]
+        - paragraph [ref=e165]: Flight time, airports and the best months to go, route by route.
+      - list [ref=e166]:
+        - listitem [ref=e167]:
+          - article [ref=e168]:
+            - link "JFK LHR New York to London Nonstop about 7h Best months April to June, and September to October" [ref=e169] [cursor=pointer]:
+              - /url: /flights/new-york-to-london
+              - generic [ref=e170]:
+                - generic [ref=e171]: JFK
+                - generic [ref=e176]: LHR
+              - paragraph [ref=e177]: New York to London
+              - generic [ref=e178]:
+                - generic [ref=e179]:
+                  - term [ref=e180]: Nonstop
+                  - definition [ref=e181]: about 7h
+                - generic [ref=e182]:
+                  - term [ref=e183]: Best months
+                  - definition [ref=e184]: April to June, and September to October
+        - listitem [ref=e185]:
+          - article [ref=e186]:
+            - link "JFK MAD New York to Madrid Nonstop about 7h 30m Best months May, and September to October" [ref=e187] [cursor=pointer]:
+              - /url: /flights/new-york-to-madrid
+              - generic [ref=e188]:
+                - generic [ref=e189]: JFK
+                - generic [ref=e194]: MAD
+              - paragraph [ref=e195]: New York to Madrid
+              - generic [ref=e196]:
+                - generic [ref=e197]:
+                  - term [ref=e198]: Nonstop
+                  - definition [ref=e199]: about 7h 30m
+                - generic [ref=e200]:
+                  - term [ref=e201]: Best months
+                  - definition [ref=e202]: May, and September to October
+        - listitem [ref=e203]:
+          - article [ref=e204]:
+            - link "MIA BOG Miami to Bogotá Nonstop about 3h 55m Best months December to March, and July to August" [ref=e205] [cursor=pointer]:
+              - /url: /flights/miami-to-bogota
+              - generic [ref=e206]:
+                - generic [ref=e207]: MIA
+                - generic [ref=e212]: BOG
+              - paragraph [ref=e213]: Miami to Bogotá
+              - generic [ref=e214]:
+                - generic [ref=e215]:
+                  - term [ref=e216]: Nonstop
+                  - definition [ref=e217]: about 3h 55m
+                - generic [ref=e218]:
+                  - term [ref=e219]: Best months
+                  - definition [ref=e220]: December to March, and July to August
+      - group [ref=e221]:
+        - generic "Show all 12 routes" [ref=e222] [cursor=pointer]
+    - generic [ref=e225]:
+      - generic [ref=e226]:
+        - generic [ref=e227]:
+          - paragraph [ref=e228]: Destinations
+          - heading "Where to fly next" [level=2] [ref=e231]
+        - link "All destinations" [ref=e233] [cursor=pointer]:
+          - /url: /destinations
+      - list [ref=e234]:
+        - listitem [ref=e235]:
+          - article [ref=e236]:
+            - link [ref=e237] [cursor=pointer]:
+              - /url: /destinations/london
+              - generic [ref=e238]:
+                - img "London, United Kingdom" [ref=e239]
+                - generic [ref=e241]:
+                  - paragraph [ref=e242]: United Kingdom · LHR
+                  - heading "London" [level=3] [ref=e243]
+              - generic [ref=e244]:
+                - paragraph [ref=e245]: Six airports, endless neighbourhoods, and a transport system that makes all of it reachable.
+                - generic [ref=e246]: Read the guide
+        - listitem [ref=e249]:
+          - article [ref=e250]:
+            - link [ref=e251] [cursor=pointer]:
+              - /url: /destinations/madrid
+              - generic [ref=e252]:
+                - img "Madrid, Spain" [ref=e253]
+                - generic [ref=e255]:
+                  - paragraph [ref=e256]: Spain · MAD
+                  - heading "Madrid" [level=3] [ref=e257]
+              - generic [ref=e258]:
+                - paragraph [ref=e259]: A capital that runs late, eats later, and connects onward to the whole Iberian peninsula.
+                - generic [ref=e260]: Read the guide
+        - listitem [ref=e263]:
+          - article [ref=e264]:
+            - link [ref=e265] [cursor=pointer]:
+              - /url: /destinations/mexico-city
+              - generic [ref=e266]:
+                - img "Mexico City, Mexico" [ref=e267]
+                - generic [ref=e269]:
+                  - paragraph [ref=e270]: Mexico · MEX
+                  - heading "Mexico City" [level=3] [ref=e271]
+              - generic [ref=e272]:
+                - paragraph [ref=e273]: A vast, high-altitude capital best approached one neighbourhood at a time.
+                - generic [ref=e274]: Read the guide
+        - listitem [ref=e277]:
+          - article [ref=e278]:
+            - link [ref=e279] [cursor=pointer]:
+              - /url: /destinations/lisbon
+              - generic [ref=e280]:
+                - img "Lisbon, Portugal" [ref=e281]
+                - generic [ref=e283]:
+                  - paragraph [ref=e284]: Portugal · LIS
+                  - heading "Lisbon" [level=3] [ref=e285]
+              - generic [ref=e286]:
+                - paragraph [ref=e287]: The shortest transatlantic hop from the US East Coast, and a city built on hills.
+                - generic [ref=e288]: Read the guide
+    - generic [ref=e292]:
+      - generic [ref=e293]:
+        - generic [ref=e294]:
+          - paragraph [ref=e295]: Airlines
+          - heading "Airlines we book" [level=2] [ref=e298]
+        - link "All airlines" [ref=e300] [cursor=pointer]:
+          - /url: /airlines
+      - list [ref=e301]:
+        - listitem [ref=e302]:
+          - link "American Airlines" [ref=e303] [cursor=pointer]:
+            - /url: /airlines/american-airlines
+        - listitem [ref=e306]:
+          - link "Delta Air Lines" [ref=e307] [cursor=pointer]:
+            - /url: /airlines/delta-air-lines
+        - listitem [ref=e310]:
+          - link "United Airlines" [ref=e311] [cursor=pointer]:
+            - /url: /airlines/united-airlines
+        - listitem [ref=e314]:
+          - link "Southwest Airlines" [ref=e315] [cursor=pointer]:
+            - /url: /airlines/southwest-airlines
+        - listitem [ref=e318]:
+          - link "Alaska Airlines" [ref=e319] [cursor=pointer]:
+            - /url: /airlines/alaska-airlines
+        - listitem [ref=e322]:
+          - link "JetBlue" [ref=e323] [cursor=pointer]:
+            - /url: /airlines/jetblue
+        - listitem [ref=e326]:
+          - link "Spirit Airlines" [ref=e327] [cursor=pointer]:
+            - /url: /airlines/spirit-airlines
+        - listitem [ref=e330]:
+          - link "Frontier Airlines" [ref=e331] [cursor=pointer]:
+            - /url: /airlines/frontier-airlines
+        - listitem [ref=e334]:
+          - link "Hawaiian Airlines" [ref=e335] [cursor=pointer]:
+            - /url: /airlines/hawaiian-airlines
+        - listitem [ref=e338]:
+          - link "Allegiant Air" [ref=e339] [cursor=pointer]:
+            - /url: /airlines/allegiant-air
+        - listitem [ref=e342]:
+          - link "Air Canada" [ref=e343] [cursor=pointer]:
+            - /url: /airlines/air-canada
+        - listitem [ref=e346]:
+          - link "British Airways" [ref=e347] [cursor=pointer]:
+            - /url: /airlines/british-airways
+    - generic [ref=e351]:
+      - generic [ref=e353]:
+        - paragraph [ref=e354]: Deals
+        - heading "Flight deals" [level=2] [ref=e357]
+      - list [ref=e359]:
+        - listitem [ref=e360]:
+          - link "Last minute flight deals Leaving soon? We check the seats still open for your dates." [ref=e361] [cursor=pointer]:
+            - /url: /deals#last-minute-flight-deals
+            - generic [ref=e365]:
+              - generic [ref=e366]: Last minute flight deals
+              - generic [ref=e367]: Leaving soon? We check the seats still open for your dates.
+        - listitem [ref=e368]:
+          - link "Coupon and promo code deals We check partner coupons and our own codes against your route and apply whichever is lower." [ref=e369] [cursor=pointer]:
+            - /url: /deals#coupon-deals
+            - generic [ref=e373]:
+              - generic [ref=e374]: Coupon and promo code deals
+              - generic [ref=e375]: We check partner coupons and our own codes against your route and apply whichever is lower.
+        - listitem [ref=e376]:
+          - link "Business class flights Negotiated and consolidator business class fares, where one is released for your route." [ref=e377] [cursor=pointer]:
+            - /url: /deals#business-class-flights
+            - generic [ref=e381]:
+              - generic [ref=e382]: Business class flights
+              - generic [ref=e383]: Negotiated and consolidator business class fares, where one is released for your route.
+        - listitem [ref=e384]:
+          - link "Top airline deals Current offers from the major US and international airlines." [ref=e385] [cursor=pointer]:
+            - /url: /deals#top-airline-deals
+            - generic [ref=e389]:
+              - generic [ref=e390]: Top airline deals
+              - generic [ref=e391]: Current offers from the major US and international airlines.
+    - generic [ref=e394]:
+      - generic [ref=e396]:
+        - paragraph [ref=e397]: Reviews
+        - heading "What our travellers say" [level=2] [ref=e400]
+      - generic [ref=e401]:
+        - paragraph [aria-hidden] [ref=e402]
+        - paragraph [ref=e413]: Travelled with us? Tell others how it went.
+        - paragraph [ref=e414]: Every review here comes from a real booking and is published under the traveller's own name.
+        - link "Read and write reviews" [ref=e415] [cursor=pointer]:
+          - /url: /reviews
+  - contentinfo [ref=e416]:
+    - generic [ref=e418]:
+      - generic [ref=e419]:
+        - heading "Ready to plan your trip?" [level=2] [ref=e420]
+        - paragraph [ref=e421]: Call a real agent or send us the details — the full price comes before you pay.
+      - generic [ref=e422]:
+        - link "Call +1 (915) 255-1230" [ref=e423] [cursor=pointer]:
+          - /url: tel:+19152551230
+        - link "Request a quote" [ref=e426] [cursor=pointer]:
+          - /url: /contact
+    - generic [ref=e428]:
+      - generic [ref=e429]:
+        - img "Viajarprimero" [ref=e430]
+        - paragraph [ref=e431]: Flights, hotels, car rental, cruises and private jet charter, booked with a real travel agent — the full price broken down before you pay, and the fare rules explained up front.
+        - generic [ref=e432]:
+          - paragraph [ref=e433]: Viajar Primero LLC
+          - paragraph [ref=e434]: 8832 Parkland Dr, El Paso, Texas, 79925, United States
+          - paragraph [ref=e435]:
+            - link "+1 (915) 255-1230" [ref=e436] [cursor=pointer]:
+              - /url: tel:+19152551230
+            - generic [ref=e437]: 24/7
+          - paragraph [ref=e438]:
+            - link "info@viajarprimero.com" [ref=e439] [cursor=pointer]:
+              - /url: mailto:info@viajarprimero.com
+      - generic [ref=e440]:
+        - navigation "Book" [ref=e441]:
+          - heading "Book" [level=2] [ref=e442]
+          - list [ref=e443]:
+            - listitem [ref=e444]:
+              - link "Flights" [ref=e445] [cursor=pointer]:
+                - /url: /flights
+            - listitem [ref=e446]:
+              - link "Hotels" [ref=e447] [cursor=pointer]:
+                - /url: /hotels
+            - listitem [ref=e448]:
+              - link "Car rental" [ref=e449] [cursor=pointer]:
+                - /url: /car-rentals
+            - listitem [ref=e450]:
+              - link "Cruises" [ref=e451] [cursor=pointer]:
+                - /url: /cruises
+            - listitem [ref=e452]:
+              - link "Trains" [ref=e453] [cursor=pointer]:
+                - /url: /trains
+            - listitem [ref=e454]:
+              - link "Vacation packages" [ref=e455] [cursor=pointer]:
+                - /url: /vacations
+            - listitem [ref=e456]:
+              - link "Private jets" [ref=e457] [cursor=pointer]:
+                - /url: /private-jets
+            - listitem [ref=e458]:
+              - link "Deals" [ref=e459] [cursor=pointer]:
+                - /url: /deals
+        - navigation "Traveller tools" [ref=e460]:
+          - heading "Traveller tools" [level=2] [ref=e461]
+          - list [ref=e462]:
+            - listitem [ref=e463]:
+              - link "Manage a booking" [ref=e464] [cursor=pointer]:
+                - /url: /manage-booking
+            - listitem [ref=e465]:
+              - link "Destinations" [ref=e466] [cursor=pointer]:
+                - /url: /destinations
+            - listitem [ref=e467]:
+              - link "Travel guides" [ref=e468] [cursor=pointer]:
+                - /url: /guides
+            - listitem [ref=e469]:
+              - link "Blogs" [ref=e470] [cursor=pointer]:
+                - /url: /travel-blog
+            - listitem [ref=e471]:
+              - link "Airlines" [ref=e472] [cursor=pointer]:
+                - /url: /airlines
+            - listitem [ref=e473]:
+              - link "Airports" [ref=e474] [cursor=pointer]:
+                - /url: /airports
+            - listitem [ref=e475]:
+              - link "Online check-in" [ref=e476] [cursor=pointer]:
+                - /url: /online-check-in
+            - listitem [ref=e477]:
+              - link "Baggage information" [ref=e478] [cursor=pointer]:
+                - /url: /baggage-information
+        - navigation "Company" [ref=e479]:
+          - heading "Company" [level=2] [ref=e480]
+          - list [ref=e481]:
+            - listitem [ref=e482]:
+              - link "About us" [ref=e483] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e484]:
+              - link "How it works" [ref=e485] [cursor=pointer]:
+                - /url: /how-it-works
+            - listitem [ref=e486]:
+              - link "Contact us" [ref=e487] [cursor=pointer]:
+                - /url: /contact
+            - listitem [ref=e488]:
+              - link "Reviews" [ref=e489] [cursor=pointer]:
+                - /url: /reviews
+            - listitem [ref=e490]:
+              - link "Customer support" [ref=e491] [cursor=pointer]:
+                - /url: /customer-support
+            - listitem [ref=e492]:
+              - link "Site map" [ref=e493] [cursor=pointer]:
+                - /url: /site-map
+        - navigation "Legal" [ref=e494]:
+          - heading "Legal" [level=2] [ref=e495]
+          - list [ref=e496]:
+            - listitem [ref=e497]:
+              - link "Privacy policy" [ref=e498] [cursor=pointer]:
+                - /url: /privacy-policy
+            - listitem [ref=e499]:
+              - link "Your privacy choices" [ref=e500] [cursor=pointer]:
+                - /url: /your-privacy-choices
+            - listitem [ref=e501]:
+              - link "Cookie policy" [ref=e502] [cursor=pointer]:
+                - /url: /cookie-policy
+            - listitem [ref=e503]:
+              - link "Terms & conditions" [ref=e504] [cursor=pointer]:
+                - /url: /terms-and-conditions
+            - listitem [ref=e505]:
+              - link "Refunds & cancellations" [ref=e506] [cursor=pointer]:
+                - /url: /refund-and-cancellation-policy
+            - listitem [ref=e507]:
+              - link "Fees & charges" [ref=e508] [cursor=pointer]:
+                - /url: /fees-and-charges
+            - listitem [ref=e509]:
+              - link "Disclaimer" [ref=e510] [cursor=pointer]:
+                - /url: /disclaimer
+            - listitem [ref=e511]:
+              - link "Accessibility" [ref=e512] [cursor=pointer]:
+                - /url: /accessibility-statement
+            - listitem [ref=e513]:
+              - link "Photo credits" [ref=e514] [cursor=pointer]:
+                - /url: /photo-credits
+            - listitem [ref=e515]:
+              - button "Cookie choices" [ref=e516]
+    - generic [ref=e518]:
+      - paragraph [ref=e519]: Viajarprimero is a travel agency and charter broker. We arrange air travel, accommodation, car rental, cruises and private jet charter as an agent for the airlines, hotels, rental companies, cruise lines and licensed air carriers that operate them; we are not an airline, hotel, rental company, cruise line or air carrier, and we do not own, operate or crew any aircraft, ship or vehicle ourselves. Each supplier's own conditions of carriage, booking conditions and fare rules govern what you buy. Prices and availability are supplied by those operators and change until a booking is confirmed and ticketed.
+      - paragraph [ref=e520]: © 2026 Viajar Primero LLC. All rights reserved.
+  - button "Chat with us" [ref=e521]

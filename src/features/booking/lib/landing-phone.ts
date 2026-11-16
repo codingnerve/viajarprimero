@@ -14,11 +14,13 @@ export interface LandingPhone {
  */
 export function getLandingPhone(lang: "en" | "es" = "en"): LandingPhone | null {
   const phone = configured(
-    lang === "es" ? contactConfig.phoneEs : contactConfig.phoneFlightLanding,
+    lang === "es"
+      ? contactConfig.phoneEsFlightLanding
+      : contactConfig.phoneFlightLanding,
   );
   const display = configured(
     lang === "es"
-      ? contactConfig.phoneDisplayEs
+      ? contactConfig.phoneDisplayEsFlightLanding
       : contactConfig.phoneDisplayFlightLanding,
   );
 

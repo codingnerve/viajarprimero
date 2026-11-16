@@ -20,7 +20,7 @@ export function usePhoneLine(): PhoneLine {
 
   if (bare === "/trains" || bare.startsWith("/trains/")) return "trains";
   if (bare === "/enflight") return "flight-lp";
-  if (bare === SPANISH_FLIGHTS_PATH) return "es";
+  if (bare === SPANISH_FLIGHTS_PATH) return "es-flight-lp";
   if (languageFromSegment(pathname.split("/")[1] ?? "") === "es") return "es";
   return "en";
 }
